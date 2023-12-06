@@ -2,27 +2,19 @@ package com.pj.core.unity;
 
 import android.util.Log;
 
+import com.pj.core.EventManager;
+
 public class NativeBridge{
-
-    // private static AndroidBridge instance;
-
-    // public static AndroidBridge Instance(){
-    //     if(instance == null){
-    //         instance = new AndroidBridge();
-    //     }
-    //     return instance;
-    // }
-
-    private NativeBridgeCallback unityCallback;
+    private UnityEventComponent component;
 
     public void initialize(NativeBridgeCallback unityCallback){
-        this.unityCallback = unityCallback;
-
-        this.unityCallback.onReceive("android native - init complete");
+        Log.d("NativeBridge: " ,"init!!!");
+        this.component = new UnityEventComponent(unityCallback);
+        EventManager.Companion.getMediator().add(component);
+        Log.d("NativeBridge: " ,"init end!!!");
     }
 
-    public void send(String message){
-        Log.d("AndroidBridge", "android - java - message : " + message);
-        this.unityCallback.onReceive(message);
+    public void send(String data){
+        this.component.send(data);
     }
 }

@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 rootProject.name = "NativeCore"
 include(":app")
 include(":core")
+include(":sample")
