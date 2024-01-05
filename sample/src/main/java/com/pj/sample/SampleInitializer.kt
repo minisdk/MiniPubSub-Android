@@ -5,13 +5,13 @@ import android.content.ContentValues
 import android.database.Cursor
 import android.net.Uri
 import android.util.Log
-import com.pj.core.EventManager
+import com.pj.core.MessageManager
 
 class SampleInitializer : ContentProvider() {
     override fun onCreate(): Boolean {
         Log.d("SampleInitializer", "init!!!!")
-        val component = SampleComponent()
-        EventManager.add(component)
+        val component = SampleReceiver()
+        MessageManager.add(component)
         return true;
     }
 

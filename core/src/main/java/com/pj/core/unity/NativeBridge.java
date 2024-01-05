@@ -2,15 +2,15 @@ package com.pj.core.unity;
 
 import android.util.Log;
 
-import com.pj.core.EventManager;
+import com.pj.core.MessageManager;
 
 public class NativeBridge{
-    private UnityEventComponent component;
+    private UnityReceiver component;
 
     public void initialize(NativeBridgeCallback unityCallback){
         Log.d("NativeBridge: " ,"init!!!");
-        this.component = new UnityEventComponent(unityCallback);
-        EventManager.Companion.getMediator().add(component);
+        this.component = new UnityReceiver(unityCallback);
+        MessageManager.Companion.getMediator().add(component);
         Log.d("NativeBridge: " ,"init end!!!");
     }
 
