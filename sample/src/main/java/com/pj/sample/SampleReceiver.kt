@@ -1,11 +1,11 @@
 package com.pj.sample
 
 import android.util.Log
-import com.pj.core.FilterReceiver
+import com.pj.core.FilterNode
 import com.pj.core.Message
 import com.pj.core.MessageBox
 
-class SampleReceiver : FilterReceiver() {
+class SampleReceiver : FilterNode() {
     private val TAG = SampleReceiver::class.java.name
 
     override fun onInitialize(): Map<String, (MessageBox) -> Unit> {

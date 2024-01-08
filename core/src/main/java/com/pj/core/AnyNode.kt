@@ -1,6 +1,6 @@
 package com.pj.core
 
-abstract class AnyReceiver : MessageReceiver {
+abstract class AnyNode : PublishingNode() {
 
     override fun getReceivingMessages(): List<String> {
         return emptyList()

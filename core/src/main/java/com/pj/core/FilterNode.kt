@@ -1,6 +1,6 @@
 package com.pj.core
 
-abstract class FilterReceiver : MessageReceiver{
+abstract class FilterNode : PublishingNode(){
 
     private val handlerMap : MutableMap<String, (MessageBox) -> Unit> by lazy { onInitialize().toMutableMap() }
 

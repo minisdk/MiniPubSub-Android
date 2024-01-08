@@ -5,11 +5,11 @@ import android.util.Log;
 import com.pj.core.MessageManager;
 
 public class NativeBridge{
-    private UnityReceiver component;
+    private UnityNode component;
 
     public void initialize(NativeBridgeCallback unityCallback){
         Log.d("NativeBridge: " ,"init!!!");
-        this.component = new UnityReceiver(unityCallback);
+        this.component = new UnityNode(unityCallback);
         MessageManager.Companion.getMediator().add(component);
         Log.d("NativeBridge: " ,"init end!!!");
     }

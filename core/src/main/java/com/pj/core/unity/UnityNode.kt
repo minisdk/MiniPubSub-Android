@@ -1,23 +1,12 @@
 package com.pj.core.unity
 
-import com.pj.core.AnyReceiver
-import com.pj.core.FilterReceiver
+import com.pj.core.AnyNode
 import com.pj.core.Message
 import com.pj.core.MessageBox
-import com.pj.core.MessageManager
-import com.pj.core.MessageReceiver
-import com.pj.core.MessageNotifier
 
-class UnityReceiver(private val unityCallback : NativeBridgeCallback) : AnyReceiver(), MessageNotifier {
+class UnityNode(private val unityCallback : NativeBridgeCallback) : AnyNode() {
     override fun onAnyMessage(messageBox: MessageBox) {
         sendToUnity(messageBox.message)
-    }
-    override fun notify(message: Message) {
-        MessageManager.mediator.notify(message, this)
-    }
-
-    override fun notify(message: Message, target: MessageReceiver) {
-        MessageManager.mediator.notify(message, this, target)
     }
 
     fun send(message : String){
