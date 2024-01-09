@@ -5,9 +5,9 @@ abstract class AnyNode : PublishingNode() {
     override fun getReceivingMessages(): List<String> {
         return emptyList()
     }
-    override fun onReceive(messageBox: MessageBox){
-        this.onAnyMessage(messageBox)
+    override fun onReceive(messageHolder: MessageHolder){
+        this.onAnyMessage(messageHolder)
     }
 
-    abstract fun onAnyMessage(messageBox: MessageBox)
+    abstract fun onAnyMessage(messageHolder: MessageHolder)
 }

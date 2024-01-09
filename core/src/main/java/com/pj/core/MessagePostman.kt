@@ -1,13 +1,13 @@
 package com.pj.core
 
 
-class MessagePostman(message: Message, receiver: MessageNode?) : MessageBox{
+class MessagePostman(message: Message, notifier: MessageNode?) : MessageHolder{
     private val notifier : MessageNode?
     override val message: Message
 
     init {
         this.message = message
-        this.notifier = receiver
+        this.notifier = notifier
     }
 
     constructor(message: Message) : this(message, null)

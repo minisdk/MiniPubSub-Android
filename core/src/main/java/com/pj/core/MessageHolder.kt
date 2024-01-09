@@ -1,6 +1,6 @@
 package com.pj.core
 
-interface MessageBox {
+interface MessageHolder {
     val message : Message
     fun giveBack(message: Message)
 }

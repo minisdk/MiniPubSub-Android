@@ -2,11 +2,11 @@ package com.pj.core.unity
 
 import com.pj.core.AnyNode
 import com.pj.core.Message
-import com.pj.core.MessageBox
+import com.pj.core.MessageHolder
 
 class UnityNode(private val unityCallback : NativeBridgeCallback) : AnyNode() {
-    override fun onAnyMessage(messageBox: MessageBox) {
-        sendToUnity(messageBox.message)
+    override fun onAnyMessage(messageHolder: MessageHolder) {
+        sendToUnity(messageHolder.message)
     }
 
     fun send(message : String){
