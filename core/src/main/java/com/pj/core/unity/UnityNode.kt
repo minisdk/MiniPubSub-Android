@@ -5,7 +5,7 @@ import com.pj.core.Message
 import com.pj.core.MessageHolder
 
 class UnityNode(private val unityCallback : NativeBridgeCallback) : AnyNode() {
-    override fun onAnyMessage(messageHolder: MessageHolder) {
+    override fun onReceiveAny(messageHolder: MessageHolder) {
         sendToUnity(messageHolder.message)
     }
 

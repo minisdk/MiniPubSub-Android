@@ -11,7 +11,7 @@ abstract class FilterNode : PublishingNode(){
         handler?.invoke(messageHolder)
     }
 
-    override fun getReceivingMessages() : List<String>{
+    override fun getReceivingMessageTypes() : List<String>{
         return handlerMap.keys.toList()
     }
 

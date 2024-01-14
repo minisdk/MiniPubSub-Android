@@ -10,7 +10,7 @@ public class NativeBridge{
     public void initialize(NativeBridgeCallback unityCallback){
         Log.d("NativeBridge: " ,"init!!!");
         this.component = new UnityNode(unityCallback);
-        MessageManager.Companion.getMediator().add(component);
+        MessageManager.Companion.add(component);
         Log.d("NativeBridge: " ,"init end!!!");
     }
 

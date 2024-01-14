@@ -3,16 +3,15 @@ package com.pj.core
 internal class MessageMediatorImpl : MessageMediator {
 
     private val receiverMap : MutableMap<String, MutableList<MessageNode>> by lazy { mutableMapOf() }
-    private val receiverList : MutableList<MessageNode> by lazy { mutableListOf() }
-    private val receiverSet : MutableSet<MessageNode> by lazy { mutableSetOf() }
-    override fun add(receiver: MessageNode) {
-        val messageTypes = receiver.getReceivingMessages()
+//    private val receiverSet : MutableSet<MessageNode> by lazy { mutableSetOf() }
+    override fun add(receiver: MessageNode  ) {
+        val messageTypes = receiver.getReceivingMessageTypes()
         for (type in messageTypes){
             val list = receiverMap.getOrPut(type) { mutableListOf() }
             list.add(receiver)
         }
 
-        receiverSet.add(receiver)
+//        receiverSet.add(receiver)
     }
 
     override fun add(receiver: MessageNode, eventType: String) {

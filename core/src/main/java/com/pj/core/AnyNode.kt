@@ -2,12 +2,12 @@ package com.pj.core
 
 abstract class AnyNode : PublishingNode() {
 
-    override fun getReceivingMessages(): List<String> {
+    override fun getReceivingMessageTypes(): List<String> {
         return emptyList()
     }
     override fun onReceive(messageHolder: MessageHolder){
-        this.onAnyMessage(messageHolder)
+        this.onReceiveAny(messageHolder)
     }
 
-    abstract fun onAnyMessage(messageHolder: MessageHolder)
+    abstract fun onReceiveAny(messageHolder: MessageHolder)
 }
