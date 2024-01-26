@@ -6,7 +6,7 @@ internal class MessageMediatorImpl : MessageMediator {
     private val receiverSet : MutableSet<MessageNode> by lazy { mutableSetOf() }
     override fun add(receiver: MessageNode  ) {
         val messageTypes = receiver.getReceivingMessageTypes()
-        if(messageTypes.isNullOrEmpty())
+        if(messageTypes == null)
         {
             receiverSet.add(receiver);
         }
