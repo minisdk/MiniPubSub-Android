@@ -1,9 +1,9 @@
 package com.pj.core
 
 interface MessageMediator {
-    fun add(receiver: MessageNode)
-    fun add(receiver: MessageNode, eventType: String)
-    fun notify(message: Message, notifier: MessageNode)
-    fun notify(message: Message, notifier: MessageNode, receiver: MessageNode)
-    fun giveBack(message: Message, giveBacked: MessageNode)
+    fun register(node: MessageNode)
+    fun registerType(node: MessageNode, type: String)
+    fun notify(message: Message, notifier: Notifier)
+    fun notify(message: Message, notifier: Notifier, receiver: Receivable)
+    fun giveBack(message: Message, giveBacked: Receivable)
 }

@@ -1,16 +1,20 @@
 package com.pj.core.unity
 
-import com.pj.core.AnyNode
+import com.pj.core.MessageCollector
 import com.pj.core.Message
 import com.pj.core.MessageHolder
 
-class UnityNode(private val unityCallback : NativeBridgeCallback) : AnyNode() {
-    override fun onReceiveAny(messageHolder: MessageHolder) {
+class Game(private val unityCallback : NativeBridgeCallback) {
+    private val collector = MessageCollector()
+
+    init {
+        collector.setHandler(this::onReceive)
+    }
+    private fun onReceive(messageHolder: MessageHolder) {
         sendToUnity(messageHolder.message)
     }
-
     fun send(message : String){
-        this.notify(this.toEvent(message))
+        collector.notify(this.toEvent(message))
     }
     private fun sendToUnity(message: Message){
         val unityMessage = this.toMessage(message)

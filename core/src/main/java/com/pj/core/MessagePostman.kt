@@ -1,8 +1,8 @@
 package com.pj.core
 
 
-class MessagePostman(message: Message, notifier: MessageNode?) : MessageHolder{
-    private val notifier : MessageNode?
+class MessagePostman(message: Message, notifier: Receivable?) : MessageHolder{
+    private val notifier : Receivable?
     override val message: Message
 
     init {

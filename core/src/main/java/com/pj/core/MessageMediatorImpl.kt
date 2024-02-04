@@ -1,50 +1,50 @@
 package com.pj.core
 
+import java.nio.file.NotDirectoryException
+
 internal class MessageMediatorImpl : MessageMediator {
 
-    private val receiverMap : MutableMap<String, MutableList<MessageNode>> by lazy { mutableMapOf() }
-    private val receiverSet : MutableSet<MessageNode> by lazy { mutableSetOf() }
-    override fun add(receiver: MessageNode  ) {
-        val messageTypes = receiver.getReceivingMessageTypes()
-        if(messageTypes == null)
-        {
-            receiverSet.add(receiver);
-        }
-        else
-        {
-            for (type in messageTypes){
-                val list = receiverMap.getOrPut(type) { mutableListOf() }
-                list.add(receiver)
-            }
-        }
+    private val ReceiveAny = "$.ReceiveAny"
+
+    private val nodeFilter : MutableMap<String, MutableList<MessageNode>> by lazy { mutableMapOf() }
+    private val nodeMap : MutableMap<Int, MessageNode> by lazy { mutableMapOf() }
+    override fun register(node: MessageNode) {
+        nodeMap[node.id] = node
     }
 
-    override fun add(receiver: MessageNode, eventType: String) {
-        val list = receiverMap.getOrPut(eventType) { mutableListOf() }
-        if(!list.contains(receiver))
-            list.add(receiver)
+    override fun registerType(node: MessageNode, type: String) {
+        val list = nodeFilter.getOrPut(type) { mutableListOf() }
+        if(!list.contains(node))
+            list.add(node)
     }
 
 
-    override fun notify(message: Message, notifier: MessageNode){
-        val box = MessagePostman(message, notifier)
-        val receivers = receiverMap.getOrDefault(message.type, null)
-        receivers?.forEach { receiver -> receiver.onReceive(box) }
+    override fun notify(message: Message, notifier: Notifier){
+        val box = MessagePostman(message, this.linkReceivable(notifier))
+        val nodes = nodeFilter.getOrDefault(message.type, null)
+        nodes?.forEach { receiver ->
+            if(receiver.id != notifier.id)
+                receiver.onReceive(box)
+        }
 
-        receiverSet.forEach{receiver ->
-            if(notifier !== receiver)
+        nodeFilter[ReceiveAny]?.forEach{receiver ->
+            if(notifier.id !=  receiver.id)
                 receiver.onReceive(box)
         }
     }
 
-    override fun notify(message: Message, notifier: MessageNode, receiver: MessageNode) {
-        val box = MessagePostman(message, notifier)
+    override fun notify(message: Message, notifier: Notifier, receiver: Receivable) {
+        val box = MessagePostman(message, linkReceivable(notifier))
         receiver.onReceive(box)
     }
 
-    override fun giveBack(message: Message, giveBacked: MessageNode) {
+    override fun giveBack(message: Message, giveBacked: Receivable) {
         val box = MessagePostman(message)
         giveBacked.onReceive(box)
+    }
+
+    private fun linkReceivable(notifier: Notifier) : Receivable{
+        return nodeMap[notifier.id] as Receivable
     }
 
 }

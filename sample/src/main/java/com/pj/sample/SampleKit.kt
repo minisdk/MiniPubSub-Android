@@ -1,22 +1,24 @@
 package com.pj.sample
 
 import android.util.Log
-import com.pj.core.FilterNode
+import com.pj.core.MessageHandler
 import com.pj.core.Message
 import com.pj.core.MessageHolder
+import kotlinx.coroutines.handleCoroutineException
 
-class SampleReceiver : FilterNode() {
-    private val TAG = SampleReceiver::class.java.name
+class SampleKit {
+    private val TAG = SampleKit::class.java.name
 
-    override fun onInitialize(): Map<String, (MessageHolder) -> Unit> {
-        return mapOf(
-            Pair("test", this::onTest),
-            Pair("testRecall", this::onTestRecall)
-        )
+    private val handler : MessageHandler = MessageHandler()
+
+    init {
+        handler.setHandler("test", this::onTest)
+        handler.setHandler("testRecall", this::onTestRecall)
     }
 
     private fun onTest(messageHolder: MessageHolder){
         Log.d(TAG, "onTest : ${messageHolder.message.data}" )
+        handler.notify(Message("native", "this is android message :D"))
     }
 
     private fun onTestRecall(messageHolder: MessageHolder){

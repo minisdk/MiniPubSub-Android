@@ -10,8 +10,7 @@ import com.pj.core.MessageManager
 class SampleInitializer : ContentProvider() {
     override fun onCreate(): Boolean {
         Log.d("SampleInitializer", "init!!!!")
-        val component = SampleReceiver()
-        MessageManager.add(component)
+        val sample = SampleKit()
         return true;
     }
 
