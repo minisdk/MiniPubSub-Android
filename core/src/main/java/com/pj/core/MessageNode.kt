@@ -2,10 +2,11 @@ package com.pj.core
 
 
 interface Receivable{
+    fun hasKey(key: String): Boolean
     fun onReceive(messageHolder: MessageHolder)
 }
 
-open class Notifier{
+open class Notifier(tag: Tag){
 
     private object IDCounter {
         private var id = 0;
@@ -15,12 +16,13 @@ open class Notifier{
             }
     }
     val id:Int = IDCounter.ID
-    fun notify(message : Message){
-        MessageManager.mediator.notify(message, this)
+    val tag: Tag
+    init {
+        this.tag = tag
     }
-    fun notify(message: Message, target: MessageNode){
-        MessageManager.mediator.notify(message, this, target)
+    fun notify(message : Message, tag: Tag){
+        MessageManager.mediator.notify(message, tag,this)
     }
 }
-abstract class MessageNode : Notifier(), Receivable{
+abstract class MessageNode(tag: Tag) : Notifier(tag), Receivable{
 }

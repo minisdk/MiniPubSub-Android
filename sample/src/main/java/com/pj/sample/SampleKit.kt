@@ -4,12 +4,13 @@ import android.util.Log
 import com.pj.core.MessageHandler
 import com.pj.core.Message
 import com.pj.core.MessageHolder
+import com.pj.core.Tag
 import kotlinx.coroutines.handleCoroutineException
 
 class SampleKit {
     private val TAG = SampleKit::class.java.name
 
-    private val handler : MessageHandler = MessageHandler()
+    private val handler : MessageHandler = MessageHandler(Tag.native)
 
     init {
         handler.setHandler("test", this::onTest)
@@ -18,7 +19,7 @@ class SampleKit {
 
     private fun onTest(messageHolder: MessageHolder){
         Log.d(TAG, "onTest : ${messageHolder.message.data}" )
-        handler.notify(Message("native", "this is android message :D"))
+        handler.notify(Message("native", "this is android message :D"), Tag.game)
     }
 
     private fun onTestRecall(messageHolder: MessageHolder){

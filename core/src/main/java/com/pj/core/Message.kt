@@ -1,6 +1,6 @@
 package com.pj.core
 
 data class Message (
-    val type: String,
+    val key: String,
     val data: String){
 }
