@@ -1,5 +1,7 @@
 package com.pj.core
 
+import com.pj.core.extensions.Message
+
 internal class MessageMediatorImpl : MessageMediator {
 
     private val idFilter : MutableMap<Int, MessageNode> by lazy { mutableMapOf() }

@@ -1,6 +1,5 @@
 package com.pj.core
 
-
 class MessageHandler(tag: Tag) : MessageNode(tag){
 
     private val handlerMap : MutableMap<String, (MessageHolder) -> Unit> = mutableMapOf()

@@ -1,5 +1,6 @@
 package com.pj.core
 
+import com.pj.core.extensions.Message
 
 class MessagePostman(message: Message, notifier: Receivable?) : MessageHolder{
     private val notifier : Receivable?

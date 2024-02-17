@@ -5,7 +5,6 @@ import android.content.ContentValues
 import android.database.Cursor
 import android.net.Uri
 import android.util.Log
-import com.pj.core.MessageManager
 
 class SampleInitializer : ContentProvider() {
     override fun onCreate(): Boolean {

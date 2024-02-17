@@ -1,5 +1,6 @@
 package com.pj.core
 
+import com.pj.core.extensions.Message
 
 interface Receivable{
     fun hasKey(key: String): Boolean
