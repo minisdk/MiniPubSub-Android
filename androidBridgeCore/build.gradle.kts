@@ -1,3 +1,5 @@
+import com.android.build.api.dsl.Packaging
+
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
@@ -33,6 +35,12 @@ android {
 //    lint {
 //        disable.add("EnsureInitializerMetadata")
 //    }
+
+    packaging{
+        resources{
+            excludes+="META-INF/*.kotlin_module"
+        }
+    }
 }
 
 dependencies {
