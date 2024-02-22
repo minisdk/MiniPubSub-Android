@@ -37,10 +37,23 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew androidBridgeCore:build
 
+    - name: upload artifact
+      id: upload-artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: androidBridgeCore AAR 
+        path: androidBridgeCore/build/outputs/aar/*.aar
+
+    - name: check artifact
+      run: |
+        echo 'artifact id -> ${{ steps.upload-artifact.outputs.artifact-id }}'
+        echo 'artifact url -> ${{ steps.upload-artifact.outputs.artifact-url }}'
+
+
     # The USERNAME and TOKEN need to correspond to the credentials environment variables used in
     # the publishing section of your build.gradle
-    - name: Publish to GitHub Packages
-      run: ./gradlew publish
-      env:
-        USERNAME: ${{ github.actor }}
-        TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    # - name: Publish to GitHub Packages
+    #   run: ./gradlew publish
+    #   env:
+    #     USERNAME: ${{ github.actor }}
+    #     TOKEN: ${{ secrets.GITHUB_TOKEN }}
