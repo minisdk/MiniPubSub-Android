@@ -10,6 +10,7 @@ name: NativeBridge android gradle build
 on:
   workflow_dispatch:
   push:
+    branches: main
     tags:
       - v*.*.*
 
