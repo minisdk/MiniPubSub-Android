@@ -48,7 +48,7 @@ class NativeUIController{
 
         // Create ContainerBuilder and set data.
         val containerBuilder = ContainerBuilder()
-        containerBuilder.add(pressOk, pressOk)
+        containerBuilder.add("pressOk", pressOk)
         val message = Message("ALERT_RESULT", containerBuilder.build())
         
         // Give back message to message notifier
