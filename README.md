@@ -1,18 +1,29 @@
 # AndroidCore
 Helps comunication between Android and game(Unity only)
 
+## Getting started
+Download androidBridgeCore aar in [Release](https://github.com/psmjazz/NativeBridge-Android/releases).
+and place it in your module project.
+
+Add aar to your android module project. In your module level build.gradle
+```groovy
+compileOnly(files("[relative path of aar in your project]"))
+```
+
 ## How to use
 
 ### Container
 Data storing unit.
 
 Currently storess the following types:
-- Boolean
-- Int
-- Float
-- String
-- ByteArray
-- Other Container object
+|types|c#|kotlin|swift|
+|---|---|---|---|
+|boolean|bool|Boolean|Bool|
+|32bit-integer|int|Int|Int32|
+|float|float|Float|Float|
+|string|string|String|String|
+|byte array|byte[]|ByteArray|Data|
+|other Container object|Container|Conatiner|Conatiner|
 
 ### Message
 Data deliver unit.
