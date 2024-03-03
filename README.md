@@ -45,30 +45,43 @@ Sample Code Receiving open native alert request from game.
 ```java
 
 class NativeUIController{
-    private val handler = MessageHandler(Tag.Native)
+    private val handler = MessageHandler(Tag.native)
 
     init {
         // Set handler with key
-        handler.setHandler("OPEN_ALRET", onReceive)
+        handler.setHandler("OPEN_ALERT", ::onReceive)
     }
 
     private fun onReceive(messageHolder : MessageHolder){
         // Get data from container
         val alertMessage = messageHolder.message.container.getString("alertMessage")
-        val pressOk = openAlert(alertMessage)
 
-        // Create ContainerBuilder and set data.
-        val containerBuilder = ContainerBuilder()
-        containerBuilder.add("pressOk", pressOk)
-        val message = Message("ALERT_RESULT", containerBuilder.build())
-        
-        // Give back message to message notifier
-        messageHolder.giveBack(message)
+        openAlert(alertMessage ?: "OPEN_ALERT", messageHolder)
     }
 
-    private openAlert(message: String): Boolean{
-        // Alert open code...
-        return true
+    private fun openAlert(alertMessage: String, messageHolder: MessageHolder){
+        fun giveBackResult(okPressed : Boolean){
+            // Create ContainerBuilder and set data.
+            val containerBuilder = ContainerBuilder()
+            containerBuilder.add("pressOk", okPressed)
+            val message = Message("ALERT_RESULT", containerBuilder.build())
+
+            // Give back message to message notifier
+            messageHolder.giveBack(message)
+        }
+
+        val builder = AlertDialog.Builder(UnityPlayer.currentActivity)
+        builder.setTitle("Alert")
+        builder.setMessage(alertMessage)
+        builder.setPositiveButton("OK"){_, _ ->
+            giveBackResult(true)
+        }
+        builder.setOnCancelListener {_->
+            giveBackResult(false)
+        }
+
+        val dialog = builder.create()
+        dialog.show()
     }
 
 }
