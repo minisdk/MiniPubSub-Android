@@ -1,10 +1,12 @@
+import com.android.build.api.dsl.Packaging
+
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
 }
 
 android {
-    namespace = "com.pj.sample"
+    namespace = "com.pj.core"
     compileSdk = 34
 
     defaultConfig {
@@ -30,14 +32,23 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+//    lint {
+//        disable.add("EnsureInitializerMetadata")
+//    }
+
+//    packaging{
+//        resources{
+//            excludes+="META-INF/*.kotlin_module"
+//        }
+//    }
 }
 
 dependencies {
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.10.0")
-    implementation(project(mapOf("path" to ":android-pubsub")))
+    implementation("com.google.android.material:material:1.8.0")
+    implementation("androidx.core:core-ktx:+")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")

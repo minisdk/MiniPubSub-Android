@@ -1,23 +1,23 @@
 package com.pj.sample
 
 import android.util.Log
-import com.pj.core.MessageHandler
-import com.pj.core.extensions.Message
-import com.pj.core.MessageHolder
-import com.pj.core.Tag
-import com.pj.core.extensions.ContainerBuilder
-import com.pj.core.extensions.add
-import com.pj.core.extensions.getString
+import com.pj.pubsub.Messenger
+import com.pj.pubsub.extensions.Message
+import com.pj.pubsub.MessageHolder
+import com.pj.pubsub.Tag
+import com.pj.pubsub.extensions.ContainerBuilder
+import com.pj.pubsub.extensions.add
+import com.pj.pubsub.extensions.getString
 
 class SampleKit {
     private val TAG = SampleKit::class.java.name
 
-    private val handler : MessageHandler = MessageHandler(Tag.native)
+    private val handler : Messenger = Messenger(Tag.native)
 
     init {
         handler.apply {  }
-        handler.setHandler("test", this::onTest)
-        handler.setHandler("testRecall", this::onTestRecall)
+        handler.subscribe("test", this::onTest)
+        handler.subscribe("testRecall", this::onTestRecall)
     }
 
     private fun onTest(messageHolder: MessageHolder){
@@ -27,7 +27,7 @@ class SampleKit {
         val containerBuilder = ContainerBuilder()
         containerBuilder.add("data", "this is android message :D")
         val message = Message("native", containerBuilder.build())
-        handler.notify(message, Tag.game)
+        handler.publish(message, Tag.game)
     }
 
     private fun onTestRecall(messageHolder: MessageHolder){
