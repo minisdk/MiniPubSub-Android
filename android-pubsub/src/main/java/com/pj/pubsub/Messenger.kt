@@ -38,4 +38,10 @@ class Messenger(tag: Tag) : ReceivablePublisher(tag){
         val pair = Pair(handler, condition)
         conditionHandlers.add(pair)
     }
+
+    fun unsubscribe(handler: (MessageHolder) -> Unit){
+        conditionHandlers.removeIf{ conditionHandler ->
+            conditionHandler.first == handler
+        }
+    }
 }
