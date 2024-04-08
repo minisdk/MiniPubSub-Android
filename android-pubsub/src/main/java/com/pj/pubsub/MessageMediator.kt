@@ -1,9 +1,9 @@
 package com.pj.pubsub
 
 import com.pj.pubsub.extensions.Message
+import com.pj.pubsub.proto.NativePubSub.Envelope
 
 interface MessageMediator {
     fun register(node: ReceivablePublisher)
-    fun publish(message: Message, tag: Tag, publisher: Publisher)
-    fun giveBack(message: Message, giveBacked: Receivable)
+    fun publish(envelope: Envelope, tag: Tag)
 }

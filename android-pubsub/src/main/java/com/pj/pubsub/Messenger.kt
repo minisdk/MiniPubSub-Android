@@ -1,32 +1,37 @@
 package com.pj.pubsub
 
-import android.util.Log
 import com.pj.pubsub.extensions.Message
 
-class Messenger(tag: Tag) : ReceivablePublisher(tag){
+class Messenger : ReceivablePublisher(){
 
-    private val handlerMap : MutableMap<String, (MessageHolder) -> Unit> = mutableMapOf()
-    private val conditionHandlers : MutableList<Pair<(MessageHolder)->Unit, (Message)->Boolean>> = mutableListOf()
+    private var allTag: Tag = Tag.none
+    private val handlerMap : MutableMap<String, (Channel) -> Unit> = mutableMapOf()
+    private val conditionHandlers : MutableList<Pair<(Channel)->Unit, (Message)->Boolean>> = mutableListOf()
 
     init {
         MessageManager.mediator.register(this)
     }
 
-    override fun hasKey(key: String): Boolean {
-        return handlerMap.containsKey(key)
+    override fun setTagRule(all: Tag) {
+        allTag = all
     }
-    override fun onReceive(messageHolder: MessageHolder){
-        val handler = handlerMap[messageHolder.message.key]
-        handler?.invoke(messageHolder)
+
+    override fun matchTag(tag: Tag): Boolean {
+        return tag.contains(allTag)
+    }
+
+    override fun onReceive(channel: Channel){
+        val handler = handlerMap[channel.message.key]
+        handler?.invoke(channel)
 
         conditionHandlers.filter { conditionHandler ->
-            conditionHandler.second.invoke(messageHolder.message)
+            conditionHandler.second.invoke(channel.message)
         }.forEach { conditionHandler ->
-            conditionHandler.first?.invoke(messageHolder)
+            conditionHandler.first?.invoke(channel)
         }
     }
 
-    fun subscribe(key: String, handler : (MessageHolder) -> Unit){
+    fun subscribe(key: String, handler : (Channel) -> Unit){
         handlerMap[key] = handler
     }
 
@@ -34,12 +39,12 @@ class Messenger(tag: Tag) : ReceivablePublisher(tag){
         handlerMap.remove(key);
     }
 
-    fun subscribe(handler: (MessageHolder) -> Unit, condition: (Message) -> Boolean ){
+    fun subscribe(handler: (Channel) -> Unit, condition: (Message) -> Boolean ){
         val pair = Pair(handler, condition)
         conditionHandlers.add(pair)
     }
 
-    fun unsubscribe(handler: (MessageHolder) -> Unit){
+    fun unsubscribe(handler: (Channel) -> Unit){
         conditionHandlers.removeIf{ conditionHandler ->
             conditionHandler.first == handler
         }

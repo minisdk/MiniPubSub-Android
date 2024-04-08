@@ -1,13 +1,16 @@
 package com.pj.pubsub
 
+import com.pj.pubsub.extensions.Envelope
 import com.pj.pubsub.extensions.Message
+import com.pj.pubsub.proto.NativePubSub.Envelope
 
 interface Receivable{
-    fun hasKey(key: String): Boolean
-    fun onReceive(messageHolder: MessageHolder)
+    fun setTagRule(all: Tag)
+    fun matchTag(tag: Tag): Boolean
+    fun onReceive(channel: Channel)
 }
 
-open class Publisher(tag: Tag){
+open class Publisher(){
 
     private object IDCounter {
         private var id = 0;
@@ -17,13 +20,28 @@ open class Publisher(tag: Tag){
             }
     }
     val id:Int = IDCounter.ID
-    val tag: Tag
-    init {
-        this.tag = tag
+
+    private var baseTag: Tag = Tag.none
+
+    fun setBaseTag(tag: Tag){
+        baseTag = tag
     }
+
+    fun publish(message: Message){
+        val envelope = Envelope(message, this.id)
+        MessageManager.mediator.publish(envelope, baseTag)
+    }
+
     fun publish(message : Message, tag: Tag){
-        MessageManager.mediator.publish(message, tag,this)
+        val envelope = Envelope(message, this.id)
+        val joined = baseTag.join(tag)
+        MessageManager.mediator.publish(envelope, joined)
+    }
+
+    internal fun publish(envelope: Envelope, tag: Tag){
+        val joined = baseTag.join(tag)
+        MessageManager.mediator.publish(envelope, joined)
     }
 }
-abstract class ReceivablePublisher(tag: Tag) : Publisher(tag), Receivable{
+abstract class ReceivablePublisher() : Publisher(), Receivable{
 }

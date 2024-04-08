@@ -2,8 +2,8 @@ package com.pj.pubsub
 
 import com.pj.pubsub.extensions.Message
 
-interface MessageHolder {
+interface Channel {
 
     val message : Message
-    fun giveBack(message: Message)
+    fun reply(message: Message)
 }

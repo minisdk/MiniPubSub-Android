@@ -23,7 +23,7 @@ public final class NativePubSub {
      * <code>string key = 1;</code>
      * @return The key.
      */
-    java.lang.String getKey();
+    String getKey();
     /**
      * <code>string key = 1;</code>
      * @return The bytes for key.
@@ -40,11 +40,11 @@ public final class NativePubSub {
      * <code>.Container container = 2;</code>
      * @return The container.
      */
-    com.pj.pubsub.proto.NativePubSub.Container getContainer();
+    Container getContainer();
     /**
      * <code>.Container container = 2;</code>
      */
-    com.pj.pubsub.proto.NativePubSub.ContainerOrBuilder getContainerOrBuilder();
+    ContainerOrBuilder getContainerOrBuilder();
   }
   /**
    * Protobuf type {@code Message}
@@ -62,43 +62,43 @@ public final class NativePubSub {
       key_ = "";
     }
 
-    @java.lang.Override
+    @Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
+    protected Object newInstance(
         UnusedPrivateParameter unused) {
       return new Message();
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.pj.pubsub.proto.NativePubSub.internal_static_Message_descriptor;
+      return NativePubSub.internal_static_Message_descriptor;
     }
 
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    @Override
+    protected FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.pj.pubsub.proto.NativePubSub.internal_static_Message_fieldAccessorTable
+      return NativePubSub.internal_static_Message_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.pj.pubsub.proto.NativePubSub.Message.class, com.pj.pubsub.proto.NativePubSub.Message.Builder.class);
+              Message.class, Builder.class);
     }
 
     private int bitField0_;
     public static final int KEY_FIELD_NUMBER = 1;
     @SuppressWarnings("serial")
-    private volatile java.lang.Object key_ = "";
+    private volatile Object key_ = "";
     /**
      * <code>string key = 1;</code>
      * @return The key.
      */
-    @java.lang.Override
-    public java.lang.String getKey() {
-      java.lang.Object ref = key_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
+    @Override
+    public String getKey() {
+      Object ref = key_;
+      if (ref instanceof String) {
+        return (String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
+        String s = bs.toStringUtf8();
         key_ = s;
         return s;
       }
@@ -107,14 +107,14 @@ public final class NativePubSub {
      * <code>string key = 1;</code>
      * @return The bytes for key.
      */
-    @java.lang.Override
+    @Override
     public com.google.protobuf.ByteString
         getKeyBytes() {
-      java.lang.Object ref = key_;
-      if (ref instanceof java.lang.String) {
+      Object ref = key_;
+      if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+                (String) ref);
         key_ = b;
         return b;
       } else {
@@ -123,12 +123,12 @@ public final class NativePubSub {
     }
 
     public static final int CONTAINER_FIELD_NUMBER = 2;
-    private com.pj.pubsub.proto.NativePubSub.Container container_;
+    private Container container_;
     /**
      * <code>.Container container = 2;</code>
      * @return Whether the container field is set.
      */
-    @java.lang.Override
+    @Override
     public boolean hasContainer() {
       return ((bitField0_ & 0x00000001) != 0);
     }
@@ -136,20 +136,20 @@ public final class NativePubSub {
      * <code>.Container container = 2;</code>
      * @return The container.
      */
-    @java.lang.Override
-    public com.pj.pubsub.proto.NativePubSub.Container getContainer() {
-      return container_ == null ? com.pj.pubsub.proto.NativePubSub.Container.getDefaultInstance() : container_;
+    @Override
+    public Container getContainer() {
+      return container_ == null ? Container.getDefaultInstance() : container_;
     }
     /**
      * <code>.Container container = 2;</code>
      */
-    @java.lang.Override
-    public com.pj.pubsub.proto.NativePubSub.ContainerOrBuilder getContainerOrBuilder() {
-      return container_ == null ? com.pj.pubsub.proto.NativePubSub.Container.getDefaultInstance() : container_;
+    @Override
+    public ContainerOrBuilder getContainerOrBuilder() {
+      return container_ == null ? Container.getDefaultInstance() : container_;
     }
 
     private byte memoizedIsInitialized = -1;
-    @java.lang.Override
+    @Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -159,7 +159,7 @@ public final class NativePubSub {
       return true;
     }
 
-    @java.lang.Override
+    @Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(key_)) {
@@ -171,7 +171,7 @@ public final class NativePubSub {
       getUnknownFields().writeTo(output);
     }
 
-    @java.lang.Override
+    @Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -189,15 +189,15 @@ public final class NativePubSub {
       return size;
     }
 
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
+    @Override
+    public boolean equals(final Object obj) {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof com.pj.pubsub.proto.NativePubSub.Message)) {
+      if (!(obj instanceof Message)) {
         return super.equals(obj);
       }
-      com.pj.pubsub.proto.NativePubSub.Message other = (com.pj.pubsub.proto.NativePubSub.Message) obj;
+      Message other = (Message) obj;
 
       if (!getKey()
           .equals(other.getKey())) return false;
@@ -210,7 +210,7 @@ public final class NativePubSub {
       return true;
     }
 
-    @java.lang.Override
+    @Override
     public int hashCode() {
       if (memoizedHashCode != 0) {
         return memoizedHashCode;
@@ -228,44 +228,44 @@ public final class NativePubSub {
       return hash;
     }
 
-    public static com.pj.pubsub.proto.NativePubSub.Message parseFrom(
+    public static Message parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.pj.pubsub.proto.NativePubSub.Message parseFrom(
+    public static Message parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.pj.pubsub.proto.NativePubSub.Message parseFrom(
+    public static Message parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.pj.pubsub.proto.NativePubSub.Message parseFrom(
+    public static Message parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.pj.pubsub.proto.NativePubSub.Message parseFrom(byte[] data)
+    public static Message parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.pj.pubsub.proto.NativePubSub.Message parseFrom(
+    public static Message parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.pj.pubsub.proto.NativePubSub.Message parseFrom(java.io.InputStream input)
+    public static Message parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.pj.pubsub.proto.NativePubSub.Message parseFrom(
+    public static Message parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -273,26 +273,26 @@ public final class NativePubSub {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static com.pj.pubsub.proto.NativePubSub.Message parseDelimitedFrom(java.io.InputStream input)
+    public static Message parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
 
-    public static com.pj.pubsub.proto.NativePubSub.Message parseDelimitedFrom(
+    public static Message parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.pj.pubsub.proto.NativePubSub.Message parseFrom(
+    public static Message parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.pj.pubsub.proto.NativePubSub.Message parseFrom(
+    public static Message parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -300,23 +300,23 @@ public final class NativePubSub {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    @java.lang.Override
+    @Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(com.pj.pubsub.proto.NativePubSub.Message prototype) {
+    public static Builder newBuilder(Message prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
-    @java.lang.Override
+    @Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
     }
 
-    @java.lang.Override
+    @Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -326,18 +326,18 @@ public final class NativePubSub {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:Message)
-        com.pj.pubsub.proto.NativePubSub.MessageOrBuilder {
+        MessageOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.pj.pubsub.proto.NativePubSub.internal_static_Message_descriptor;
+        return NativePubSub.internal_static_Message_descriptor;
       }
 
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      @Override
+      protected FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.pj.pubsub.proto.NativePubSub.internal_static_Message_fieldAccessorTable
+        return NativePubSub.internal_static_Message_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.pj.pubsub.proto.NativePubSub.Message.class, com.pj.pubsub.proto.NativePubSub.Message.Builder.class);
+                Message.class, Builder.class);
       }
 
       // Construct using com.pj.pubsub.proto.NativePubSub.Message.newBuilder()
@@ -346,7 +346,7 @@ public final class NativePubSub {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -356,7 +356,7 @@ public final class NativePubSub {
           getContainerFieldBuilder();
         }
       }
-      @java.lang.Override
+      @Override
       public Builder clear() {
         super.clear();
         bitField0_ = 0;
@@ -369,35 +369,35 @@ public final class NativePubSub {
         return this;
       }
 
-      @java.lang.Override
+      @Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.pj.pubsub.proto.NativePubSub.internal_static_Message_descriptor;
+        return NativePubSub.internal_static_Message_descriptor;
       }
 
-      @java.lang.Override
-      public com.pj.pubsub.proto.NativePubSub.Message getDefaultInstanceForType() {
-        return com.pj.pubsub.proto.NativePubSub.Message.getDefaultInstance();
+      @Override
+      public Message getDefaultInstanceForType() {
+        return Message.getDefaultInstance();
       }
 
-      @java.lang.Override
-      public com.pj.pubsub.proto.NativePubSub.Message build() {
-        com.pj.pubsub.proto.NativePubSub.Message result = buildPartial();
+      @Override
+      public Message build() {
+        Message result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      @java.lang.Override
-      public com.pj.pubsub.proto.NativePubSub.Message buildPartial() {
-        com.pj.pubsub.proto.NativePubSub.Message result = new com.pj.pubsub.proto.NativePubSub.Message(this);
+      @Override
+      public Message buildPartial() {
+        Message result = new Message(this);
         if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      private void buildPartial0(com.pj.pubsub.proto.NativePubSub.Message result) {
+      private void buildPartial0(Message result) {
         int from_bitField0_ = bitField0_;
         if (((from_bitField0_ & 0x00000001) != 0)) {
           result.key_ = key_;
@@ -412,50 +412,50 @@ public final class NativePubSub {
         result.bitField0_ |= to_bitField0_;
       }
 
-      @java.lang.Override
+      @Override
       public Builder clone() {
         return super.clone();
       }
-      @java.lang.Override
+      @Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          Object value) {
         return super.setField(field, value);
       }
-      @java.lang.Override
+      @Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
-      @java.lang.Override
+      @Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
-      @java.lang.Override
+      @Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index, Object value) {
         return super.setRepeatedField(field, index, value);
       }
-      @java.lang.Override
+      @Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          Object value) {
         return super.addRepeatedField(field, value);
       }
-      @java.lang.Override
+      @Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.pj.pubsub.proto.NativePubSub.Message) {
-          return mergeFrom((com.pj.pubsub.proto.NativePubSub.Message)other);
+        if (other instanceof Message) {
+          return mergeFrom((Message)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.pj.pubsub.proto.NativePubSub.Message other) {
-        if (other == com.pj.pubsub.proto.NativePubSub.Message.getDefaultInstance()) return this;
+      public Builder mergeFrom(Message other) {
+        if (other == Message.getDefaultInstance()) return this;
         if (!other.getKey().isEmpty()) {
           key_ = other.key_;
           bitField0_ |= 0x00000001;
@@ -469,18 +469,18 @@ public final class NativePubSub {
         return this;
       }
 
-      @java.lang.Override
+      @Override
       public final boolean isInitialized() {
         return true;
       }
 
-      @java.lang.Override
+      @Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         if (extensionRegistry == null) {
-          throw new java.lang.NullPointerException();
+          throw new NullPointerException();
         }
         try {
           boolean done = false;
@@ -519,21 +519,21 @@ public final class NativePubSub {
       }
       private int bitField0_;
 
-      private java.lang.Object key_ = "";
+      private Object key_ = "";
       /**
        * <code>string key = 1;</code>
        * @return The key.
        */
-      public java.lang.String getKey() {
-        java.lang.Object ref = key_;
-        if (!(ref instanceof java.lang.String)) {
+      public String getKey() {
+        Object ref = key_;
+        if (!(ref instanceof String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
+          String s = bs.toStringUtf8();
           key_ = s;
           return s;
         } else {
-          return (java.lang.String) ref;
+          return (String) ref;
         }
       }
       /**
@@ -542,11 +542,11 @@ public final class NativePubSub {
        */
       public com.google.protobuf.ByteString
           getKeyBytes() {
-        java.lang.Object ref = key_;
+        Object ref = key_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+                  (String) ref);
           key_ = b;
           return b;
         } else {
@@ -559,7 +559,7 @@ public final class NativePubSub {
        * @return This builder for chaining.
        */
       public Builder setKey(
-          java.lang.String value) {
+          String value) {
         if (value == null) { throw new NullPointerException(); }
         key_ = value;
         bitField0_ |= 0x00000001;
@@ -591,9 +591,9 @@ public final class NativePubSub {
         return this;
       }
 
-      private com.pj.pubsub.proto.NativePubSub.Container container_;
+      private Container container_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.pj.pubsub.proto.NativePubSub.Container, com.pj.pubsub.proto.NativePubSub.Container.Builder, com.pj.pubsub.proto.NativePubSub.ContainerOrBuilder> containerBuilder_;
+          Container, Container.Builder, ContainerOrBuilder> containerBuilder_;
       /**
        * <code>.Container container = 2;</code>
        * @return Whether the container field is set.
@@ -605,9 +605,9 @@ public final class NativePubSub {
        * <code>.Container container = 2;</code>
        * @return The container.
        */
-      public com.pj.pubsub.proto.NativePubSub.Container getContainer() {
+      public Container getContainer() {
         if (containerBuilder_ == null) {
-          return container_ == null ? com.pj.pubsub.proto.NativePubSub.Container.getDefaultInstance() : container_;
+          return container_ == null ? Container.getDefaultInstance() : container_;
         } else {
           return containerBuilder_.getMessage();
         }
@@ -615,7 +615,7 @@ public final class NativePubSub {
       /**
        * <code>.Container container = 2;</code>
        */
-      public Builder setContainer(com.pj.pubsub.proto.NativePubSub.Container value) {
+      public Builder setContainer(Container value) {
         if (containerBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -632,7 +632,7 @@ public final class NativePubSub {
        * <code>.Container container = 2;</code>
        */
       public Builder setContainer(
-          com.pj.pubsub.proto.NativePubSub.Container.Builder builderForValue) {
+          Container.Builder builderForValue) {
         if (containerBuilder_ == null) {
           container_ = builderForValue.build();
         } else {
@@ -645,11 +645,11 @@ public final class NativePubSub {
       /**
        * <code>.Container container = 2;</code>
        */
-      public Builder mergeContainer(com.pj.pubsub.proto.NativePubSub.Container value) {
+      public Builder mergeContainer(Container value) {
         if (containerBuilder_ == null) {
           if (((bitField0_ & 0x00000002) != 0) &&
             container_ != null &&
-            container_ != com.pj.pubsub.proto.NativePubSub.Container.getDefaultInstance()) {
+            container_ != Container.getDefaultInstance()) {
             getContainerBuilder().mergeFrom(value);
           } else {
             container_ = value;
@@ -679,7 +679,7 @@ public final class NativePubSub {
       /**
        * <code>.Container container = 2;</code>
        */
-      public com.pj.pubsub.proto.NativePubSub.Container.Builder getContainerBuilder() {
+      public Container.Builder getContainerBuilder() {
         bitField0_ |= 0x00000002;
         onChanged();
         return getContainerFieldBuilder().getBuilder();
@@ -687,23 +687,23 @@ public final class NativePubSub {
       /**
        * <code>.Container container = 2;</code>
        */
-      public com.pj.pubsub.proto.NativePubSub.ContainerOrBuilder getContainerOrBuilder() {
+      public ContainerOrBuilder getContainerOrBuilder() {
         if (containerBuilder_ != null) {
           return containerBuilder_.getMessageOrBuilder();
         } else {
           return container_ == null ?
-              com.pj.pubsub.proto.NativePubSub.Container.getDefaultInstance() : container_;
+              Container.getDefaultInstance() : container_;
         }
       }
       /**
        * <code>.Container container = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.pj.pubsub.proto.NativePubSub.Container, com.pj.pubsub.proto.NativePubSub.Container.Builder, com.pj.pubsub.proto.NativePubSub.ContainerOrBuilder> 
+          Container, Container.Builder, ContainerOrBuilder>
           getContainerFieldBuilder() {
         if (containerBuilder_ == null) {
           containerBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.pj.pubsub.proto.NativePubSub.Container, com.pj.pubsub.proto.NativePubSub.Container.Builder, com.pj.pubsub.proto.NativePubSub.ContainerOrBuilder>(
+              Container, Container.Builder, ContainerOrBuilder>(
                   getContainer(),
                   getParentForChildren(),
                   isClean());
@@ -711,13 +711,13 @@ public final class NativePubSub {
         }
         return containerBuilder_;
       }
-      @java.lang.Override
+      @Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFields(unknownFields);
       }
 
-      @java.lang.Override
+      @Override
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
@@ -728,18 +728,18 @@ public final class NativePubSub {
     }
 
     // @@protoc_insertion_point(class_scope:Message)
-    private static final com.pj.pubsub.proto.NativePubSub.Message DEFAULT_INSTANCE;
+    private static final Message DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new com.pj.pubsub.proto.NativePubSub.Message();
+      DEFAULT_INSTANCE = new Message();
     }
 
-    public static com.pj.pubsub.proto.NativePubSub.Message getDefaultInstance() {
+    public static Message getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
     private static final com.google.protobuf.Parser<Message>
         PARSER = new com.google.protobuf.AbstractParser<Message>() {
-      @java.lang.Override
+      @Override
       public Message parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -763,13 +763,13 @@ public final class NativePubSub {
       return PARSER;
     }
 
-    @java.lang.Override
+    @Override
     public com.google.protobuf.Parser<Message> getParserForType() {
       return PARSER;
     }
 
-    @java.lang.Override
-    public com.pj.pubsub.proto.NativePubSub.Message getDefaultInstanceForType() {
+    @Override
+    public Message getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -787,29 +787,29 @@ public final class NativePubSub {
      * <code>map&lt;string, bool&gt; booleans = 1;</code>
      */
     boolean containsBooleans(
-        java.lang.String key);
+        String key);
     /**
      * Use {@link #getBooleansMap()} instead.
      */
-    @java.lang.Deprecated
-    java.util.Map<java.lang.String, java.lang.Boolean>
+    @Deprecated
+    java.util.Map<String, Boolean>
     getBooleans();
     /**
      * <code>map&lt;string, bool&gt; booleans = 1;</code>
      */
-    java.util.Map<java.lang.String, java.lang.Boolean>
+    java.util.Map<String, Boolean>
     getBooleansMap();
     /**
      * <code>map&lt;string, bool&gt; booleans = 1;</code>
      */
     boolean getBooleansOrDefault(
-        java.lang.String key,
+        String key,
         boolean defaultValue);
     /**
      * <code>map&lt;string, bool&gt; booleans = 1;</code>
      */
     boolean getBooleansOrThrow(
-        java.lang.String key);
+        String key);
 
     /**
      * <code>map&lt;string, int32&gt; integers = 2;</code>
@@ -819,29 +819,29 @@ public final class NativePubSub {
      * <code>map&lt;string, int32&gt; integers = 2;</code>
      */
     boolean containsIntegers(
-        java.lang.String key);
+        String key);
     /**
      * Use {@link #getIntegersMap()} instead.
      */
-    @java.lang.Deprecated
-    java.util.Map<java.lang.String, java.lang.Integer>
+    @Deprecated
+    java.util.Map<String, Integer>
     getIntegers();
     /**
      * <code>map&lt;string, int32&gt; integers = 2;</code>
      */
-    java.util.Map<java.lang.String, java.lang.Integer>
+    java.util.Map<String, Integer>
     getIntegersMap();
     /**
      * <code>map&lt;string, int32&gt; integers = 2;</code>
      */
     int getIntegersOrDefault(
-        java.lang.String key,
+        String key,
         int defaultValue);
     /**
      * <code>map&lt;string, int32&gt; integers = 2;</code>
      */
     int getIntegersOrThrow(
-        java.lang.String key);
+        String key);
 
     /**
      * <code>map&lt;string, float&gt; floats = 3;</code>
@@ -851,29 +851,29 @@ public final class NativePubSub {
      * <code>map&lt;string, float&gt; floats = 3;</code>
      */
     boolean containsFloats(
-        java.lang.String key);
+        String key);
     /**
      * Use {@link #getFloatsMap()} instead.
      */
-    @java.lang.Deprecated
-    java.util.Map<java.lang.String, java.lang.Float>
+    @Deprecated
+    java.util.Map<String, Float>
     getFloats();
     /**
      * <code>map&lt;string, float&gt; floats = 3;</code>
      */
-    java.util.Map<java.lang.String, java.lang.Float>
+    java.util.Map<String, Float>
     getFloatsMap();
     /**
      * <code>map&lt;string, float&gt; floats = 3;</code>
      */
     float getFloatsOrDefault(
-        java.lang.String key,
+        String key,
         float defaultValue);
     /**
      * <code>map&lt;string, float&gt; floats = 3;</code>
      */
     float getFloatsOrThrow(
-        java.lang.String key);
+        String key);
 
     /**
      * <code>map&lt;string, string&gt; strings = 4;</code>
@@ -883,31 +883,31 @@ public final class NativePubSub {
      * <code>map&lt;string, string&gt; strings = 4;</code>
      */
     boolean containsStrings(
-        java.lang.String key);
+        String key);
     /**
      * Use {@link #getStringsMap()} instead.
      */
-    @java.lang.Deprecated
-    java.util.Map<java.lang.String, java.lang.String>
+    @Deprecated
+    java.util.Map<String, String>
     getStrings();
     /**
      * <code>map&lt;string, string&gt; strings = 4;</code>
      */
-    java.util.Map<java.lang.String, java.lang.String>
+    java.util.Map<String, String>
     getStringsMap();
     /**
      * <code>map&lt;string, string&gt; strings = 4;</code>
      */
     /* nullable */
-java.lang.String getStringsOrDefault(
-        java.lang.String key,
+String getStringsOrDefault(
+        String key,
         /* nullable */
-java.lang.String defaultValue);
+String defaultValue);
     /**
      * <code>map&lt;string, string&gt; strings = 4;</code>
      */
-    java.lang.String getStringsOrThrow(
-        java.lang.String key);
+    String getStringsOrThrow(
+        String key);
 
     /**
      * <code>map&lt;string, bytes&gt; bytes = 5;</code>
@@ -917,31 +917,31 @@ java.lang.String defaultValue);
      * <code>map&lt;string, bytes&gt; bytes = 5;</code>
      */
     boolean containsBytes(
-        java.lang.String key);
+        String key);
     /**
      * Use {@link #getBytesMap()} instead.
      */
-    @java.lang.Deprecated
-    java.util.Map<java.lang.String, com.google.protobuf.ByteString>
+    @Deprecated
+    java.util.Map<String, com.google.protobuf.ByteString>
     getBytes();
     /**
      * <code>map&lt;string, bytes&gt; bytes = 5;</code>
      */
-    java.util.Map<java.lang.String, com.google.protobuf.ByteString>
+    java.util.Map<String, com.google.protobuf.ByteString>
     getBytesMap();
     /**
      * <code>map&lt;string, bytes&gt; bytes = 5;</code>
      */
     /* nullable */
 com.google.protobuf.ByteString getBytesOrDefault(
-        java.lang.String key,
+        String key,
         /* nullable */
 com.google.protobuf.ByteString defaultValue);
     /**
      * <code>map&lt;string, bytes&gt; bytes = 5;</code>
      */
     com.google.protobuf.ByteString getBytesOrThrow(
-        java.lang.String key);
+        String key);
 
     /**
      * <code>map&lt;string, .Container&gt; containers = 6;</code>
@@ -951,31 +951,31 @@ com.google.protobuf.ByteString defaultValue);
      * <code>map&lt;string, .Container&gt; containers = 6;</code>
      */
     boolean containsContainers(
-        java.lang.String key);
+        String key);
     /**
      * Use {@link #getContainersMap()} instead.
      */
-    @java.lang.Deprecated
-    java.util.Map<java.lang.String, com.pj.pubsub.proto.NativePubSub.Container>
+    @Deprecated
+    java.util.Map<String, Container>
     getContainers();
     /**
      * <code>map&lt;string, .Container&gt; containers = 6;</code>
      */
-    java.util.Map<java.lang.String, com.pj.pubsub.proto.NativePubSub.Container>
+    java.util.Map<String, Container>
     getContainersMap();
     /**
      * <code>map&lt;string, .Container&gt; containers = 6;</code>
      */
     /* nullable */
-com.pj.pubsub.proto.NativePubSub.Container getContainersOrDefault(
-        java.lang.String key,
+Container getContainersOrDefault(
+        String key,
         /* nullable */
-com.pj.pubsub.proto.NativePubSub.Container defaultValue);
+Container defaultValue);
     /**
      * <code>map&lt;string, .Container&gt; containers = 6;</code>
      */
-    com.pj.pubsub.proto.NativePubSub.Container getContainersOrThrow(
-        java.lang.String key);
+    Container getContainersOrThrow(
+        String key);
   }
   /**
    * Protobuf type {@code Container}
@@ -992,20 +992,20 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue);
     private Container() {
     }
 
-    @java.lang.Override
+    @Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
+    protected Object newInstance(
         UnusedPrivateParameter unused) {
       return new Container();
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.pj.pubsub.proto.NativePubSub.internal_static_Container_descriptor;
+      return NativePubSub.internal_static_Container_descriptor;
     }
 
     @SuppressWarnings({"rawtypes"})
-    @java.lang.Override
+    @Override
     protected com.google.protobuf.MapFieldReflectionAccessor internalGetMapFieldReflection(
         int number) {
       switch (number) {
@@ -1026,21 +1026,21 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue);
               "Invalid map field number: " + number);
       }
     }
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    @Override
+    protected FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.pj.pubsub.proto.NativePubSub.internal_static_Container_fieldAccessorTable
+      return NativePubSub.internal_static_Container_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.pj.pubsub.proto.NativePubSub.Container.class, com.pj.pubsub.proto.NativePubSub.Container.Builder.class);
+              Container.class, Builder.class);
     }
 
     public static final int BOOLEANS_FIELD_NUMBER = 1;
     private static final class BooleansDefaultEntryHolder {
       static final com.google.protobuf.MapEntry<
-          java.lang.String, java.lang.Boolean> defaultEntry =
+          String, Boolean> defaultEntry =
               com.google.protobuf.MapEntry
-              .<java.lang.String, java.lang.Boolean>newDefaultInstance(
-                  com.pj.pubsub.proto.NativePubSub.internal_static_Container_BooleansEntry_descriptor, 
+              .<String, Boolean>newDefaultInstance(
+                  NativePubSub.internal_static_Container_BooleansEntry_descriptor,
                   com.google.protobuf.WireFormat.FieldType.STRING,
                   "",
                   com.google.protobuf.WireFormat.FieldType.BOOL,
@@ -1048,8 +1048,8 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue);
     }
     @SuppressWarnings("serial")
     private com.google.protobuf.MapField<
-        java.lang.String, java.lang.Boolean> booleans_;
-    private com.google.protobuf.MapField<java.lang.String, java.lang.Boolean>
+        String, Boolean> booleans_;
+    private com.google.protobuf.MapField<String, Boolean>
     internalGetBooleans() {
       if (booleans_ == null) {
         return com.google.protobuf.MapField.emptyMapField(
@@ -1063,50 +1063,50 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue);
     /**
      * <code>map&lt;string, bool&gt; booleans = 1;</code>
      */
-    @java.lang.Override
+    @Override
     public boolean containsBooleans(
-        java.lang.String key) {
+        String key) {
       if (key == null) { throw new NullPointerException("map key"); }
       return internalGetBooleans().getMap().containsKey(key);
     }
     /**
      * Use {@link #getBooleansMap()} instead.
      */
-    @java.lang.Override
-    @java.lang.Deprecated
-    public java.util.Map<java.lang.String, java.lang.Boolean> getBooleans() {
+    @Override
+    @Deprecated
+    public java.util.Map<String, Boolean> getBooleans() {
       return getBooleansMap();
     }
     /**
      * <code>map&lt;string, bool&gt; booleans = 1;</code>
      */
-    @java.lang.Override
-    public java.util.Map<java.lang.String, java.lang.Boolean> getBooleansMap() {
+    @Override
+    public java.util.Map<String, Boolean> getBooleansMap() {
       return internalGetBooleans().getMap();
     }
     /**
      * <code>map&lt;string, bool&gt; booleans = 1;</code>
      */
-    @java.lang.Override
+    @Override
     public boolean getBooleansOrDefault(
-        java.lang.String key,
+        String key,
         boolean defaultValue) {
       if (key == null) { throw new NullPointerException("map key"); }
-      java.util.Map<java.lang.String, java.lang.Boolean> map =
+      java.util.Map<String, Boolean> map =
           internalGetBooleans().getMap();
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
      * <code>map&lt;string, bool&gt; booleans = 1;</code>
      */
-    @java.lang.Override
+    @Override
     public boolean getBooleansOrThrow(
-        java.lang.String key) {
+        String key) {
       if (key == null) { throw new NullPointerException("map key"); }
-      java.util.Map<java.lang.String, java.lang.Boolean> map =
+      java.util.Map<String, Boolean> map =
           internalGetBooleans().getMap();
       if (!map.containsKey(key)) {
-        throw new java.lang.IllegalArgumentException();
+        throw new IllegalArgumentException();
       }
       return map.get(key);
     }
@@ -1114,10 +1114,10 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue);
     public static final int INTEGERS_FIELD_NUMBER = 2;
     private static final class IntegersDefaultEntryHolder {
       static final com.google.protobuf.MapEntry<
-          java.lang.String, java.lang.Integer> defaultEntry =
+          String, Integer> defaultEntry =
               com.google.protobuf.MapEntry
-              .<java.lang.String, java.lang.Integer>newDefaultInstance(
-                  com.pj.pubsub.proto.NativePubSub.internal_static_Container_IntegersEntry_descriptor, 
+              .<String, Integer>newDefaultInstance(
+                  NativePubSub.internal_static_Container_IntegersEntry_descriptor,
                   com.google.protobuf.WireFormat.FieldType.STRING,
                   "",
                   com.google.protobuf.WireFormat.FieldType.INT32,
@@ -1125,8 +1125,8 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue);
     }
     @SuppressWarnings("serial")
     private com.google.protobuf.MapField<
-        java.lang.String, java.lang.Integer> integers_;
-    private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+        String, Integer> integers_;
+    private com.google.protobuf.MapField<String, Integer>
     internalGetIntegers() {
       if (integers_ == null) {
         return com.google.protobuf.MapField.emptyMapField(
@@ -1140,50 +1140,50 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue);
     /**
      * <code>map&lt;string, int32&gt; integers = 2;</code>
      */
-    @java.lang.Override
+    @Override
     public boolean containsIntegers(
-        java.lang.String key) {
+        String key) {
       if (key == null) { throw new NullPointerException("map key"); }
       return internalGetIntegers().getMap().containsKey(key);
     }
     /**
      * Use {@link #getIntegersMap()} instead.
      */
-    @java.lang.Override
-    @java.lang.Deprecated
-    public java.util.Map<java.lang.String, java.lang.Integer> getIntegers() {
+    @Override
+    @Deprecated
+    public java.util.Map<String, Integer> getIntegers() {
       return getIntegersMap();
     }
     /**
      * <code>map&lt;string, int32&gt; integers = 2;</code>
      */
-    @java.lang.Override
-    public java.util.Map<java.lang.String, java.lang.Integer> getIntegersMap() {
+    @Override
+    public java.util.Map<String, Integer> getIntegersMap() {
       return internalGetIntegers().getMap();
     }
     /**
      * <code>map&lt;string, int32&gt; integers = 2;</code>
      */
-    @java.lang.Override
+    @Override
     public int getIntegersOrDefault(
-        java.lang.String key,
+        String key,
         int defaultValue) {
       if (key == null) { throw new NullPointerException("map key"); }
-      java.util.Map<java.lang.String, java.lang.Integer> map =
+      java.util.Map<String, Integer> map =
           internalGetIntegers().getMap();
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
      * <code>map&lt;string, int32&gt; integers = 2;</code>
      */
-    @java.lang.Override
+    @Override
     public int getIntegersOrThrow(
-        java.lang.String key) {
+        String key) {
       if (key == null) { throw new NullPointerException("map key"); }
-      java.util.Map<java.lang.String, java.lang.Integer> map =
+      java.util.Map<String, Integer> map =
           internalGetIntegers().getMap();
       if (!map.containsKey(key)) {
-        throw new java.lang.IllegalArgumentException();
+        throw new IllegalArgumentException();
       }
       return map.get(key);
     }
@@ -1191,10 +1191,10 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue);
     public static final int FLOATS_FIELD_NUMBER = 3;
     private static final class FloatsDefaultEntryHolder {
       static final com.google.protobuf.MapEntry<
-          java.lang.String, java.lang.Float> defaultEntry =
+          String, Float> defaultEntry =
               com.google.protobuf.MapEntry
-              .<java.lang.String, java.lang.Float>newDefaultInstance(
-                  com.pj.pubsub.proto.NativePubSub.internal_static_Container_FloatsEntry_descriptor, 
+              .<String, Float>newDefaultInstance(
+                  NativePubSub.internal_static_Container_FloatsEntry_descriptor,
                   com.google.protobuf.WireFormat.FieldType.STRING,
                   "",
                   com.google.protobuf.WireFormat.FieldType.FLOAT,
@@ -1202,8 +1202,8 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue);
     }
     @SuppressWarnings("serial")
     private com.google.protobuf.MapField<
-        java.lang.String, java.lang.Float> floats_;
-    private com.google.protobuf.MapField<java.lang.String, java.lang.Float>
+        String, Float> floats_;
+    private com.google.protobuf.MapField<String, Float>
     internalGetFloats() {
       if (floats_ == null) {
         return com.google.protobuf.MapField.emptyMapField(
@@ -1217,50 +1217,50 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue);
     /**
      * <code>map&lt;string, float&gt; floats = 3;</code>
      */
-    @java.lang.Override
+    @Override
     public boolean containsFloats(
-        java.lang.String key) {
+        String key) {
       if (key == null) { throw new NullPointerException("map key"); }
       return internalGetFloats().getMap().containsKey(key);
     }
     /**
      * Use {@link #getFloatsMap()} instead.
      */
-    @java.lang.Override
-    @java.lang.Deprecated
-    public java.util.Map<java.lang.String, java.lang.Float> getFloats() {
+    @Override
+    @Deprecated
+    public java.util.Map<String, Float> getFloats() {
       return getFloatsMap();
     }
     /**
      * <code>map&lt;string, float&gt; floats = 3;</code>
      */
-    @java.lang.Override
-    public java.util.Map<java.lang.String, java.lang.Float> getFloatsMap() {
+    @Override
+    public java.util.Map<String, Float> getFloatsMap() {
       return internalGetFloats().getMap();
     }
     /**
      * <code>map&lt;string, float&gt; floats = 3;</code>
      */
-    @java.lang.Override
+    @Override
     public float getFloatsOrDefault(
-        java.lang.String key,
+        String key,
         float defaultValue) {
       if (key == null) { throw new NullPointerException("map key"); }
-      java.util.Map<java.lang.String, java.lang.Float> map =
+      java.util.Map<String, Float> map =
           internalGetFloats().getMap();
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
      * <code>map&lt;string, float&gt; floats = 3;</code>
      */
-    @java.lang.Override
+    @Override
     public float getFloatsOrThrow(
-        java.lang.String key) {
+        String key) {
       if (key == null) { throw new NullPointerException("map key"); }
-      java.util.Map<java.lang.String, java.lang.Float> map =
+      java.util.Map<String, Float> map =
           internalGetFloats().getMap();
       if (!map.containsKey(key)) {
-        throw new java.lang.IllegalArgumentException();
+        throw new IllegalArgumentException();
       }
       return map.get(key);
     }
@@ -1268,10 +1268,10 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue);
     public static final int STRINGS_FIELD_NUMBER = 4;
     private static final class StringsDefaultEntryHolder {
       static final com.google.protobuf.MapEntry<
-          java.lang.String, java.lang.String> defaultEntry =
+          String, String> defaultEntry =
               com.google.protobuf.MapEntry
-              .<java.lang.String, java.lang.String>newDefaultInstance(
-                  com.pj.pubsub.proto.NativePubSub.internal_static_Container_StringsEntry_descriptor, 
+              .<String, String>newDefaultInstance(
+                  NativePubSub.internal_static_Container_StringsEntry_descriptor,
                   com.google.protobuf.WireFormat.FieldType.STRING,
                   "",
                   com.google.protobuf.WireFormat.FieldType.STRING,
@@ -1279,8 +1279,8 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue);
     }
     @SuppressWarnings("serial")
     private com.google.protobuf.MapField<
-        java.lang.String, java.lang.String> strings_;
-    private com.google.protobuf.MapField<java.lang.String, java.lang.String>
+        String, String> strings_;
+    private com.google.protobuf.MapField<String, String>
     internalGetStrings() {
       if (strings_ == null) {
         return com.google.protobuf.MapField.emptyMapField(
@@ -1294,52 +1294,52 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue);
     /**
      * <code>map&lt;string, string&gt; strings = 4;</code>
      */
-    @java.lang.Override
+    @Override
     public boolean containsStrings(
-        java.lang.String key) {
+        String key) {
       if (key == null) { throw new NullPointerException("map key"); }
       return internalGetStrings().getMap().containsKey(key);
     }
     /**
      * Use {@link #getStringsMap()} instead.
      */
-    @java.lang.Override
-    @java.lang.Deprecated
-    public java.util.Map<java.lang.String, java.lang.String> getStrings() {
+    @Override
+    @Deprecated
+    public java.util.Map<String, String> getStrings() {
       return getStringsMap();
     }
     /**
      * <code>map&lt;string, string&gt; strings = 4;</code>
      */
-    @java.lang.Override
-    public java.util.Map<java.lang.String, java.lang.String> getStringsMap() {
+    @Override
+    public java.util.Map<String, String> getStringsMap() {
       return internalGetStrings().getMap();
     }
     /**
      * <code>map&lt;string, string&gt; strings = 4;</code>
      */
-    @java.lang.Override
+    @Override
     public /* nullable */
-java.lang.String getStringsOrDefault(
-        java.lang.String key,
+String getStringsOrDefault(
+        String key,
         /* nullable */
-java.lang.String defaultValue) {
+String defaultValue) {
       if (key == null) { throw new NullPointerException("map key"); }
-      java.util.Map<java.lang.String, java.lang.String> map =
+      java.util.Map<String, String> map =
           internalGetStrings().getMap();
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
      * <code>map&lt;string, string&gt; strings = 4;</code>
      */
-    @java.lang.Override
-    public java.lang.String getStringsOrThrow(
-        java.lang.String key) {
+    @Override
+    public String getStringsOrThrow(
+        String key) {
       if (key == null) { throw new NullPointerException("map key"); }
-      java.util.Map<java.lang.String, java.lang.String> map =
+      java.util.Map<String, String> map =
           internalGetStrings().getMap();
       if (!map.containsKey(key)) {
-        throw new java.lang.IllegalArgumentException();
+        throw new IllegalArgumentException();
       }
       return map.get(key);
     }
@@ -1347,10 +1347,10 @@ java.lang.String defaultValue) {
     public static final int BYTES_FIELD_NUMBER = 5;
     private static final class BytesDefaultEntryHolder {
       static final com.google.protobuf.MapEntry<
-          java.lang.String, com.google.protobuf.ByteString> defaultEntry =
+          String, com.google.protobuf.ByteString> defaultEntry =
               com.google.protobuf.MapEntry
-              .<java.lang.String, com.google.protobuf.ByteString>newDefaultInstance(
-                  com.pj.pubsub.proto.NativePubSub.internal_static_Container_BytesEntry_descriptor, 
+              .<String, com.google.protobuf.ByteString>newDefaultInstance(
+                  NativePubSub.internal_static_Container_BytesEntry_descriptor,
                   com.google.protobuf.WireFormat.FieldType.STRING,
                   "",
                   com.google.protobuf.WireFormat.FieldType.BYTES,
@@ -1358,8 +1358,8 @@ java.lang.String defaultValue) {
     }
     @SuppressWarnings("serial")
     private com.google.protobuf.MapField<
-        java.lang.String, com.google.protobuf.ByteString> bytes_;
-    private com.google.protobuf.MapField<java.lang.String, com.google.protobuf.ByteString>
+        String, com.google.protobuf.ByteString> bytes_;
+    private com.google.protobuf.MapField<String, com.google.protobuf.ByteString>
     internalGetBytes() {
       if (bytes_ == null) {
         return com.google.protobuf.MapField.emptyMapField(
@@ -1373,52 +1373,52 @@ java.lang.String defaultValue) {
     /**
      * <code>map&lt;string, bytes&gt; bytes = 5;</code>
      */
-    @java.lang.Override
+    @Override
     public boolean containsBytes(
-        java.lang.String key) {
+        String key) {
       if (key == null) { throw new NullPointerException("map key"); }
       return internalGetBytes().getMap().containsKey(key);
     }
     /**
      * Use {@link #getBytesMap()} instead.
      */
-    @java.lang.Override
-    @java.lang.Deprecated
-    public java.util.Map<java.lang.String, com.google.protobuf.ByteString> getBytes() {
+    @Override
+    @Deprecated
+    public java.util.Map<String, com.google.protobuf.ByteString> getBytes() {
       return getBytesMap();
     }
     /**
      * <code>map&lt;string, bytes&gt; bytes = 5;</code>
      */
-    @java.lang.Override
-    public java.util.Map<java.lang.String, com.google.protobuf.ByteString> getBytesMap() {
+    @Override
+    public java.util.Map<String, com.google.protobuf.ByteString> getBytesMap() {
       return internalGetBytes().getMap();
     }
     /**
      * <code>map&lt;string, bytes&gt; bytes = 5;</code>
      */
-    @java.lang.Override
+    @Override
     public /* nullable */
 com.google.protobuf.ByteString getBytesOrDefault(
-        java.lang.String key,
+        String key,
         /* nullable */
 com.google.protobuf.ByteString defaultValue) {
       if (key == null) { throw new NullPointerException("map key"); }
-      java.util.Map<java.lang.String, com.google.protobuf.ByteString> map =
+      java.util.Map<String, com.google.protobuf.ByteString> map =
           internalGetBytes().getMap();
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
      * <code>map&lt;string, bytes&gt; bytes = 5;</code>
      */
-    @java.lang.Override
+    @Override
     public com.google.protobuf.ByteString getBytesOrThrow(
-        java.lang.String key) {
+        String key) {
       if (key == null) { throw new NullPointerException("map key"); }
-      java.util.Map<java.lang.String, com.google.protobuf.ByteString> map =
+      java.util.Map<String, com.google.protobuf.ByteString> map =
           internalGetBytes().getMap();
       if (!map.containsKey(key)) {
-        throw new java.lang.IllegalArgumentException();
+        throw new IllegalArgumentException();
       }
       return map.get(key);
     }
@@ -1426,19 +1426,19 @@ com.google.protobuf.ByteString defaultValue) {
     public static final int CONTAINERS_FIELD_NUMBER = 6;
     private static final class ContainersDefaultEntryHolder {
       static final com.google.protobuf.MapEntry<
-          java.lang.String, com.pj.pubsub.proto.NativePubSub.Container> defaultEntry =
+          String, Container> defaultEntry =
               com.google.protobuf.MapEntry
-              .<java.lang.String, com.pj.pubsub.proto.NativePubSub.Container>newDefaultInstance(
-                  com.pj.pubsub.proto.NativePubSub.internal_static_Container_ContainersEntry_descriptor, 
+              .<String, Container>newDefaultInstance(
+                  NativePubSub.internal_static_Container_ContainersEntry_descriptor,
                   com.google.protobuf.WireFormat.FieldType.STRING,
                   "",
                   com.google.protobuf.WireFormat.FieldType.MESSAGE,
-                  com.pj.pubsub.proto.NativePubSub.Container.getDefaultInstance());
+                  Container.getDefaultInstance());
     }
     @SuppressWarnings("serial")
     private com.google.protobuf.MapField<
-        java.lang.String, com.pj.pubsub.proto.NativePubSub.Container> containers_;
-    private com.google.protobuf.MapField<java.lang.String, com.pj.pubsub.proto.NativePubSub.Container>
+        String, Container> containers_;
+    private com.google.protobuf.MapField<String, Container>
     internalGetContainers() {
       if (containers_ == null) {
         return com.google.protobuf.MapField.emptyMapField(
@@ -1452,58 +1452,58 @@ com.google.protobuf.ByteString defaultValue) {
     /**
      * <code>map&lt;string, .Container&gt; containers = 6;</code>
      */
-    @java.lang.Override
+    @Override
     public boolean containsContainers(
-        java.lang.String key) {
+        String key) {
       if (key == null) { throw new NullPointerException("map key"); }
       return internalGetContainers().getMap().containsKey(key);
     }
     /**
      * Use {@link #getContainersMap()} instead.
      */
-    @java.lang.Override
-    @java.lang.Deprecated
-    public java.util.Map<java.lang.String, com.pj.pubsub.proto.NativePubSub.Container> getContainers() {
+    @Override
+    @Deprecated
+    public java.util.Map<String, Container> getContainers() {
       return getContainersMap();
     }
     /**
      * <code>map&lt;string, .Container&gt; containers = 6;</code>
      */
-    @java.lang.Override
-    public java.util.Map<java.lang.String, com.pj.pubsub.proto.NativePubSub.Container> getContainersMap() {
+    @Override
+    public java.util.Map<String, Container> getContainersMap() {
       return internalGetContainers().getMap();
     }
     /**
      * <code>map&lt;string, .Container&gt; containers = 6;</code>
      */
-    @java.lang.Override
+    @Override
     public /* nullable */
-com.pj.pubsub.proto.NativePubSub.Container getContainersOrDefault(
-        java.lang.String key,
+Container getContainersOrDefault(
+        String key,
         /* nullable */
-com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
+Container defaultValue) {
       if (key == null) { throw new NullPointerException("map key"); }
-      java.util.Map<java.lang.String, com.pj.pubsub.proto.NativePubSub.Container> map =
+      java.util.Map<String, Container> map =
           internalGetContainers().getMap();
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
      * <code>map&lt;string, .Container&gt; containers = 6;</code>
      */
-    @java.lang.Override
-    public com.pj.pubsub.proto.NativePubSub.Container getContainersOrThrow(
-        java.lang.String key) {
+    @Override
+    public Container getContainersOrThrow(
+        String key) {
       if (key == null) { throw new NullPointerException("map key"); }
-      java.util.Map<java.lang.String, com.pj.pubsub.proto.NativePubSub.Container> map =
+      java.util.Map<String, Container> map =
           internalGetContainers().getMap();
       if (!map.containsKey(key)) {
-        throw new java.lang.IllegalArgumentException();
+        throw new IllegalArgumentException();
       }
       return map.get(key);
     }
 
     private byte memoizedIsInitialized = -1;
-    @java.lang.Override
+    @Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -1513,7 +1513,7 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
       return true;
     }
 
-    @java.lang.Override
+    @Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       com.google.protobuf.GeneratedMessageV3
@@ -1555,15 +1555,15 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
       getUnknownFields().writeTo(output);
     }
 
-    @java.lang.Override
+    @Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
-      for (java.util.Map.Entry<java.lang.String, java.lang.Boolean> entry
+      for (java.util.Map.Entry<String, Boolean> entry
            : internalGetBooleans().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.String, java.lang.Boolean>
+        com.google.protobuf.MapEntry<String, Boolean>
         booleans__ = BooleansDefaultEntryHolder.defaultEntry.newBuilderForType()
             .setKey(entry.getKey())
             .setValue(entry.getValue())
@@ -1571,9 +1571,9 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
         size += com.google.protobuf.CodedOutputStream
             .computeMessageSize(1, booleans__);
       }
-      for (java.util.Map.Entry<java.lang.String, java.lang.Integer> entry
+      for (java.util.Map.Entry<String, Integer> entry
            : internalGetIntegers().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.String, java.lang.Integer>
+        com.google.protobuf.MapEntry<String, Integer>
         integers__ = IntegersDefaultEntryHolder.defaultEntry.newBuilderForType()
             .setKey(entry.getKey())
             .setValue(entry.getValue())
@@ -1581,9 +1581,9 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
         size += com.google.protobuf.CodedOutputStream
             .computeMessageSize(2, integers__);
       }
-      for (java.util.Map.Entry<java.lang.String, java.lang.Float> entry
+      for (java.util.Map.Entry<String, Float> entry
            : internalGetFloats().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.String, java.lang.Float>
+        com.google.protobuf.MapEntry<String, Float>
         floats__ = FloatsDefaultEntryHolder.defaultEntry.newBuilderForType()
             .setKey(entry.getKey())
             .setValue(entry.getValue())
@@ -1591,9 +1591,9 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
         size += com.google.protobuf.CodedOutputStream
             .computeMessageSize(3, floats__);
       }
-      for (java.util.Map.Entry<java.lang.String, java.lang.String> entry
+      for (java.util.Map.Entry<String, String> entry
            : internalGetStrings().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.String, java.lang.String>
+        com.google.protobuf.MapEntry<String, String>
         strings__ = StringsDefaultEntryHolder.defaultEntry.newBuilderForType()
             .setKey(entry.getKey())
             .setValue(entry.getValue())
@@ -1601,9 +1601,9 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
         size += com.google.protobuf.CodedOutputStream
             .computeMessageSize(4, strings__);
       }
-      for (java.util.Map.Entry<java.lang.String, com.google.protobuf.ByteString> entry
+      for (java.util.Map.Entry<String, com.google.protobuf.ByteString> entry
            : internalGetBytes().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.String, com.google.protobuf.ByteString>
+        com.google.protobuf.MapEntry<String, com.google.protobuf.ByteString>
         bytes__ = BytesDefaultEntryHolder.defaultEntry.newBuilderForType()
             .setKey(entry.getKey())
             .setValue(entry.getValue())
@@ -1611,9 +1611,9 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
         size += com.google.protobuf.CodedOutputStream
             .computeMessageSize(5, bytes__);
       }
-      for (java.util.Map.Entry<java.lang.String, com.pj.pubsub.proto.NativePubSub.Container> entry
+      for (java.util.Map.Entry<String, Container> entry
            : internalGetContainers().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.String, com.pj.pubsub.proto.NativePubSub.Container>
+        com.google.protobuf.MapEntry<String, Container>
         containers__ = ContainersDefaultEntryHolder.defaultEntry.newBuilderForType()
             .setKey(entry.getKey())
             .setValue(entry.getValue())
@@ -1626,15 +1626,15 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
       return size;
     }
 
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
+    @Override
+    public boolean equals(final Object obj) {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof com.pj.pubsub.proto.NativePubSub.Container)) {
+      if (!(obj instanceof Container)) {
         return super.equals(obj);
       }
-      com.pj.pubsub.proto.NativePubSub.Container other = (com.pj.pubsub.proto.NativePubSub.Container) obj;
+      Container other = (Container) obj;
 
       if (!internalGetBooleans().equals(
           other.internalGetBooleans())) return false;
@@ -1652,7 +1652,7 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
       return true;
     }
 
-    @java.lang.Override
+    @Override
     public int hashCode() {
       if (memoizedHashCode != 0) {
         return memoizedHashCode;
@@ -1688,44 +1688,44 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
       return hash;
     }
 
-    public static com.pj.pubsub.proto.NativePubSub.Container parseFrom(
+    public static Container parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.pj.pubsub.proto.NativePubSub.Container parseFrom(
+    public static Container parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.pj.pubsub.proto.NativePubSub.Container parseFrom(
+    public static Container parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.pj.pubsub.proto.NativePubSub.Container parseFrom(
+    public static Container parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.pj.pubsub.proto.NativePubSub.Container parseFrom(byte[] data)
+    public static Container parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.pj.pubsub.proto.NativePubSub.Container parseFrom(
+    public static Container parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.pj.pubsub.proto.NativePubSub.Container parseFrom(java.io.InputStream input)
+    public static Container parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.pj.pubsub.proto.NativePubSub.Container parseFrom(
+    public static Container parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1733,26 +1733,26 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static com.pj.pubsub.proto.NativePubSub.Container parseDelimitedFrom(java.io.InputStream input)
+    public static Container parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
 
-    public static com.pj.pubsub.proto.NativePubSub.Container parseDelimitedFrom(
+    public static Container parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.pj.pubsub.proto.NativePubSub.Container parseFrom(
+    public static Container parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.pj.pubsub.proto.NativePubSub.Container parseFrom(
+    public static Container parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1760,23 +1760,23 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    @java.lang.Override
+    @Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(com.pj.pubsub.proto.NativePubSub.Container prototype) {
+    public static Builder newBuilder(Container prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
-    @java.lang.Override
+    @Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
     }
 
-    @java.lang.Override
+    @Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -1786,10 +1786,10 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:Container)
-        com.pj.pubsub.proto.NativePubSub.ContainerOrBuilder {
+        ContainerOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.pj.pubsub.proto.NativePubSub.internal_static_Container_descriptor;
+        return NativePubSub.internal_static_Container_descriptor;
       }
 
       @SuppressWarnings({"rawtypes"})
@@ -1834,12 +1834,12 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
                 "Invalid map field number: " + number);
         }
       }
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      @Override
+      protected FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.pj.pubsub.proto.NativePubSub.internal_static_Container_fieldAccessorTable
+        return NativePubSub.internal_static_Container_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.pj.pubsub.proto.NativePubSub.Container.class, com.pj.pubsub.proto.NativePubSub.Container.Builder.class);
+                Container.class, Builder.class);
       }
 
       // Construct using com.pj.pubsub.proto.NativePubSub.Container.newBuilder()
@@ -1848,11 +1848,11 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          BuilderParent parent) {
         super(parent);
 
       }
-      @java.lang.Override
+      @Override
       public Builder clear() {
         super.clear();
         bitField0_ = 0;
@@ -1865,35 +1865,35 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
         return this;
       }
 
-      @java.lang.Override
+      @Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.pj.pubsub.proto.NativePubSub.internal_static_Container_descriptor;
+        return NativePubSub.internal_static_Container_descriptor;
       }
 
-      @java.lang.Override
-      public com.pj.pubsub.proto.NativePubSub.Container getDefaultInstanceForType() {
-        return com.pj.pubsub.proto.NativePubSub.Container.getDefaultInstance();
+      @Override
+      public Container getDefaultInstanceForType() {
+        return Container.getDefaultInstance();
       }
 
-      @java.lang.Override
-      public com.pj.pubsub.proto.NativePubSub.Container build() {
-        com.pj.pubsub.proto.NativePubSub.Container result = buildPartial();
+      @Override
+      public Container build() {
+        Container result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      @java.lang.Override
-      public com.pj.pubsub.proto.NativePubSub.Container buildPartial() {
-        com.pj.pubsub.proto.NativePubSub.Container result = new com.pj.pubsub.proto.NativePubSub.Container(this);
+      @Override
+      public Container buildPartial() {
+        Container result = new Container(this);
         if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      private void buildPartial0(com.pj.pubsub.proto.NativePubSub.Container result) {
+      private void buildPartial0(Container result) {
         int from_bitField0_ = bitField0_;
         if (((from_bitField0_ & 0x00000001) != 0)) {
           result.booleans_ = internalGetBooleans();
@@ -1920,50 +1920,50 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
         }
       }
 
-      @java.lang.Override
+      @Override
       public Builder clone() {
         return super.clone();
       }
-      @java.lang.Override
+      @Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          Object value) {
         return super.setField(field, value);
       }
-      @java.lang.Override
+      @Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
-      @java.lang.Override
+      @Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
-      @java.lang.Override
+      @Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index, Object value) {
         return super.setRepeatedField(field, index, value);
       }
-      @java.lang.Override
+      @Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          Object value) {
         return super.addRepeatedField(field, value);
       }
-      @java.lang.Override
+      @Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.pj.pubsub.proto.NativePubSub.Container) {
-          return mergeFrom((com.pj.pubsub.proto.NativePubSub.Container)other);
+        if (other instanceof Container) {
+          return mergeFrom((Container)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.pj.pubsub.proto.NativePubSub.Container other) {
-        if (other == com.pj.pubsub.proto.NativePubSub.Container.getDefaultInstance()) return this;
+      public Builder mergeFrom(Container other) {
+        if (other == Container.getDefaultInstance()) return this;
         internalGetMutableBooleans().mergeFrom(
             other.internalGetBooleans());
         bitField0_ |= 0x00000001;
@@ -1987,18 +1987,18 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
         return this;
       }
 
-      @java.lang.Override
+      @Override
       public final boolean isInitialized() {
         return true;
       }
 
-      @java.lang.Override
+      @Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         if (extensionRegistry == null) {
-          throw new java.lang.NullPointerException();
+          throw new NullPointerException();
         }
         try {
           boolean done = false;
@@ -2009,7 +2009,7 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
                 done = true;
                 break;
               case 10: {
-                com.google.protobuf.MapEntry<java.lang.String, java.lang.Boolean>
+                com.google.protobuf.MapEntry<String, Boolean>
                 booleans__ = input.readMessage(
                     BooleansDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
                 internalGetMutableBooleans().getMutableMap().put(
@@ -2018,7 +2018,7 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
                 break;
               } // case 10
               case 18: {
-                com.google.protobuf.MapEntry<java.lang.String, java.lang.Integer>
+                com.google.protobuf.MapEntry<String, Integer>
                 integers__ = input.readMessage(
                     IntegersDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
                 internalGetMutableIntegers().getMutableMap().put(
@@ -2027,7 +2027,7 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
                 break;
               } // case 18
               case 26: {
-                com.google.protobuf.MapEntry<java.lang.String, java.lang.Float>
+                com.google.protobuf.MapEntry<String, Float>
                 floats__ = input.readMessage(
                     FloatsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
                 internalGetMutableFloats().getMutableMap().put(
@@ -2036,7 +2036,7 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
                 break;
               } // case 26
               case 34: {
-                com.google.protobuf.MapEntry<java.lang.String, java.lang.String>
+                com.google.protobuf.MapEntry<String, String>
                 strings__ = input.readMessage(
                     StringsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
                 internalGetMutableStrings().getMutableMap().put(
@@ -2045,7 +2045,7 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
                 break;
               } // case 34
               case 42: {
-                com.google.protobuf.MapEntry<java.lang.String, com.google.protobuf.ByteString>
+                com.google.protobuf.MapEntry<String, com.google.protobuf.ByteString>
                 bytes__ = input.readMessage(
                     BytesDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
                 internalGetMutableBytes().getMutableMap().put(
@@ -2054,7 +2054,7 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
                 break;
               } // case 42
               case 50: {
-                com.google.protobuf.MapEntry<java.lang.String, com.pj.pubsub.proto.NativePubSub.Container>
+                com.google.protobuf.MapEntry<String, Container>
                 containers__ = input.readMessage(
                     ContainersDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
                 internalGetMutableContainers().ensureBuilderMap().put(
@@ -2080,8 +2080,8 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
       private int bitField0_;
 
       private com.google.protobuf.MapField<
-          java.lang.String, java.lang.Boolean> booleans_;
-      private com.google.protobuf.MapField<java.lang.String, java.lang.Boolean>
+          String, Boolean> booleans_;
+      private com.google.protobuf.MapField<String, Boolean>
           internalGetBooleans() {
         if (booleans_ == null) {
           return com.google.protobuf.MapField.emptyMapField(
@@ -2089,7 +2089,7 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
         }
         return booleans_;
       }
-      private com.google.protobuf.MapField<java.lang.String, java.lang.Boolean>
+      private com.google.protobuf.MapField<String, Boolean>
           internalGetMutableBooleans() {
         if (booleans_ == null) {
           booleans_ = com.google.protobuf.MapField.newMapField(
@@ -2108,50 +2108,50 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
       /**
        * <code>map&lt;string, bool&gt; booleans = 1;</code>
        */
-      @java.lang.Override
+      @Override
       public boolean containsBooleans(
-          java.lang.String key) {
+          String key) {
         if (key == null) { throw new NullPointerException("map key"); }
         return internalGetBooleans().getMap().containsKey(key);
       }
       /**
        * Use {@link #getBooleansMap()} instead.
        */
-      @java.lang.Override
-      @java.lang.Deprecated
-      public java.util.Map<java.lang.String, java.lang.Boolean> getBooleans() {
+      @Override
+      @Deprecated
+      public java.util.Map<String, Boolean> getBooleans() {
         return getBooleansMap();
       }
       /**
        * <code>map&lt;string, bool&gt; booleans = 1;</code>
        */
-      @java.lang.Override
-      public java.util.Map<java.lang.String, java.lang.Boolean> getBooleansMap() {
+      @Override
+      public java.util.Map<String, Boolean> getBooleansMap() {
         return internalGetBooleans().getMap();
       }
       /**
        * <code>map&lt;string, bool&gt; booleans = 1;</code>
        */
-      @java.lang.Override
+      @Override
       public boolean getBooleansOrDefault(
-          java.lang.String key,
+          String key,
           boolean defaultValue) {
         if (key == null) { throw new NullPointerException("map key"); }
-        java.util.Map<java.lang.String, java.lang.Boolean> map =
+        java.util.Map<String, Boolean> map =
             internalGetBooleans().getMap();
         return map.containsKey(key) ? map.get(key) : defaultValue;
       }
       /**
        * <code>map&lt;string, bool&gt; booleans = 1;</code>
        */
-      @java.lang.Override
+      @Override
       public boolean getBooleansOrThrow(
-          java.lang.String key) {
+          String key) {
         if (key == null) { throw new NullPointerException("map key"); }
-        java.util.Map<java.lang.String, java.lang.Boolean> map =
+        java.util.Map<String, Boolean> map =
             internalGetBooleans().getMap();
         if (!map.containsKey(key)) {
-          throw new java.lang.IllegalArgumentException();
+          throw new IllegalArgumentException();
         }
         return map.get(key);
       }
@@ -2165,7 +2165,7 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
        * <code>map&lt;string, bool&gt; booleans = 1;</code>
        */
       public Builder removeBooleans(
-          java.lang.String key) {
+          String key) {
         if (key == null) { throw new NullPointerException("map key"); }
         internalGetMutableBooleans().getMutableMap()
             .remove(key);
@@ -2174,8 +2174,8 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
       /**
        * Use alternate mutation accessors instead.
        */
-      @java.lang.Deprecated
-      public java.util.Map<java.lang.String, java.lang.Boolean>
+      @Deprecated
+      public java.util.Map<String, Boolean>
           getMutableBooleans() {
         bitField0_ |= 0x00000001;
         return internalGetMutableBooleans().getMutableMap();
@@ -2184,7 +2184,7 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
        * <code>map&lt;string, bool&gt; booleans = 1;</code>
        */
       public Builder putBooleans(
-          java.lang.String key,
+          String key,
           boolean value) {
         if (key == null) { throw new NullPointerException("map key"); }
 
@@ -2197,7 +2197,7 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
        * <code>map&lt;string, bool&gt; booleans = 1;</code>
        */
       public Builder putAllBooleans(
-          java.util.Map<java.lang.String, java.lang.Boolean> values) {
+          java.util.Map<String, Boolean> values) {
         internalGetMutableBooleans().getMutableMap()
             .putAll(values);
         bitField0_ |= 0x00000001;
@@ -2205,8 +2205,8 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
       }
 
       private com.google.protobuf.MapField<
-          java.lang.String, java.lang.Integer> integers_;
-      private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+          String, Integer> integers_;
+      private com.google.protobuf.MapField<String, Integer>
           internalGetIntegers() {
         if (integers_ == null) {
           return com.google.protobuf.MapField.emptyMapField(
@@ -2214,7 +2214,7 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
         }
         return integers_;
       }
-      private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+      private com.google.protobuf.MapField<String, Integer>
           internalGetMutableIntegers() {
         if (integers_ == null) {
           integers_ = com.google.protobuf.MapField.newMapField(
@@ -2233,50 +2233,50 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
       /**
        * <code>map&lt;string, int32&gt; integers = 2;</code>
        */
-      @java.lang.Override
+      @Override
       public boolean containsIntegers(
-          java.lang.String key) {
+          String key) {
         if (key == null) { throw new NullPointerException("map key"); }
         return internalGetIntegers().getMap().containsKey(key);
       }
       /**
        * Use {@link #getIntegersMap()} instead.
        */
-      @java.lang.Override
-      @java.lang.Deprecated
-      public java.util.Map<java.lang.String, java.lang.Integer> getIntegers() {
+      @Override
+      @Deprecated
+      public java.util.Map<String, Integer> getIntegers() {
         return getIntegersMap();
       }
       /**
        * <code>map&lt;string, int32&gt; integers = 2;</code>
        */
-      @java.lang.Override
-      public java.util.Map<java.lang.String, java.lang.Integer> getIntegersMap() {
+      @Override
+      public java.util.Map<String, Integer> getIntegersMap() {
         return internalGetIntegers().getMap();
       }
       /**
        * <code>map&lt;string, int32&gt; integers = 2;</code>
        */
-      @java.lang.Override
+      @Override
       public int getIntegersOrDefault(
-          java.lang.String key,
+          String key,
           int defaultValue) {
         if (key == null) { throw new NullPointerException("map key"); }
-        java.util.Map<java.lang.String, java.lang.Integer> map =
+        java.util.Map<String, Integer> map =
             internalGetIntegers().getMap();
         return map.containsKey(key) ? map.get(key) : defaultValue;
       }
       /**
        * <code>map&lt;string, int32&gt; integers = 2;</code>
        */
-      @java.lang.Override
+      @Override
       public int getIntegersOrThrow(
-          java.lang.String key) {
+          String key) {
         if (key == null) { throw new NullPointerException("map key"); }
-        java.util.Map<java.lang.String, java.lang.Integer> map =
+        java.util.Map<String, Integer> map =
             internalGetIntegers().getMap();
         if (!map.containsKey(key)) {
-          throw new java.lang.IllegalArgumentException();
+          throw new IllegalArgumentException();
         }
         return map.get(key);
       }
@@ -2290,7 +2290,7 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
        * <code>map&lt;string, int32&gt; integers = 2;</code>
        */
       public Builder removeIntegers(
-          java.lang.String key) {
+          String key) {
         if (key == null) { throw new NullPointerException("map key"); }
         internalGetMutableIntegers().getMutableMap()
             .remove(key);
@@ -2299,8 +2299,8 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
       /**
        * Use alternate mutation accessors instead.
        */
-      @java.lang.Deprecated
-      public java.util.Map<java.lang.String, java.lang.Integer>
+      @Deprecated
+      public java.util.Map<String, Integer>
           getMutableIntegers() {
         bitField0_ |= 0x00000002;
         return internalGetMutableIntegers().getMutableMap();
@@ -2309,7 +2309,7 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
        * <code>map&lt;string, int32&gt; integers = 2;</code>
        */
       public Builder putIntegers(
-          java.lang.String key,
+          String key,
           int value) {
         if (key == null) { throw new NullPointerException("map key"); }
 
@@ -2322,7 +2322,7 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
        * <code>map&lt;string, int32&gt; integers = 2;</code>
        */
       public Builder putAllIntegers(
-          java.util.Map<java.lang.String, java.lang.Integer> values) {
+          java.util.Map<String, Integer> values) {
         internalGetMutableIntegers().getMutableMap()
             .putAll(values);
         bitField0_ |= 0x00000002;
@@ -2330,8 +2330,8 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
       }
 
       private com.google.protobuf.MapField<
-          java.lang.String, java.lang.Float> floats_;
-      private com.google.protobuf.MapField<java.lang.String, java.lang.Float>
+          String, Float> floats_;
+      private com.google.protobuf.MapField<String, Float>
           internalGetFloats() {
         if (floats_ == null) {
           return com.google.protobuf.MapField.emptyMapField(
@@ -2339,7 +2339,7 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
         }
         return floats_;
       }
-      private com.google.protobuf.MapField<java.lang.String, java.lang.Float>
+      private com.google.protobuf.MapField<String, Float>
           internalGetMutableFloats() {
         if (floats_ == null) {
           floats_ = com.google.protobuf.MapField.newMapField(
@@ -2358,50 +2358,50 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
       /**
        * <code>map&lt;string, float&gt; floats = 3;</code>
        */
-      @java.lang.Override
+      @Override
       public boolean containsFloats(
-          java.lang.String key) {
+          String key) {
         if (key == null) { throw new NullPointerException("map key"); }
         return internalGetFloats().getMap().containsKey(key);
       }
       /**
        * Use {@link #getFloatsMap()} instead.
        */
-      @java.lang.Override
-      @java.lang.Deprecated
-      public java.util.Map<java.lang.String, java.lang.Float> getFloats() {
+      @Override
+      @Deprecated
+      public java.util.Map<String, Float> getFloats() {
         return getFloatsMap();
       }
       /**
        * <code>map&lt;string, float&gt; floats = 3;</code>
        */
-      @java.lang.Override
-      public java.util.Map<java.lang.String, java.lang.Float> getFloatsMap() {
+      @Override
+      public java.util.Map<String, Float> getFloatsMap() {
         return internalGetFloats().getMap();
       }
       /**
        * <code>map&lt;string, float&gt; floats = 3;</code>
        */
-      @java.lang.Override
+      @Override
       public float getFloatsOrDefault(
-          java.lang.String key,
+          String key,
           float defaultValue) {
         if (key == null) { throw new NullPointerException("map key"); }
-        java.util.Map<java.lang.String, java.lang.Float> map =
+        java.util.Map<String, Float> map =
             internalGetFloats().getMap();
         return map.containsKey(key) ? map.get(key) : defaultValue;
       }
       /**
        * <code>map&lt;string, float&gt; floats = 3;</code>
        */
-      @java.lang.Override
+      @Override
       public float getFloatsOrThrow(
-          java.lang.String key) {
+          String key) {
         if (key == null) { throw new NullPointerException("map key"); }
-        java.util.Map<java.lang.String, java.lang.Float> map =
+        java.util.Map<String, Float> map =
             internalGetFloats().getMap();
         if (!map.containsKey(key)) {
-          throw new java.lang.IllegalArgumentException();
+          throw new IllegalArgumentException();
         }
         return map.get(key);
       }
@@ -2415,7 +2415,7 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
        * <code>map&lt;string, float&gt; floats = 3;</code>
        */
       public Builder removeFloats(
-          java.lang.String key) {
+          String key) {
         if (key == null) { throw new NullPointerException("map key"); }
         internalGetMutableFloats().getMutableMap()
             .remove(key);
@@ -2424,8 +2424,8 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
       /**
        * Use alternate mutation accessors instead.
        */
-      @java.lang.Deprecated
-      public java.util.Map<java.lang.String, java.lang.Float>
+      @Deprecated
+      public java.util.Map<String, Float>
           getMutableFloats() {
         bitField0_ |= 0x00000004;
         return internalGetMutableFloats().getMutableMap();
@@ -2434,7 +2434,7 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
        * <code>map&lt;string, float&gt; floats = 3;</code>
        */
       public Builder putFloats(
-          java.lang.String key,
+          String key,
           float value) {
         if (key == null) { throw new NullPointerException("map key"); }
 
@@ -2447,7 +2447,7 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
        * <code>map&lt;string, float&gt; floats = 3;</code>
        */
       public Builder putAllFloats(
-          java.util.Map<java.lang.String, java.lang.Float> values) {
+          java.util.Map<String, Float> values) {
         internalGetMutableFloats().getMutableMap()
             .putAll(values);
         bitField0_ |= 0x00000004;
@@ -2455,8 +2455,8 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
       }
 
       private com.google.protobuf.MapField<
-          java.lang.String, java.lang.String> strings_;
-      private com.google.protobuf.MapField<java.lang.String, java.lang.String>
+          String, String> strings_;
+      private com.google.protobuf.MapField<String, String>
           internalGetStrings() {
         if (strings_ == null) {
           return com.google.protobuf.MapField.emptyMapField(
@@ -2464,7 +2464,7 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
         }
         return strings_;
       }
-      private com.google.protobuf.MapField<java.lang.String, java.lang.String>
+      private com.google.protobuf.MapField<String, String>
           internalGetMutableStrings() {
         if (strings_ == null) {
           strings_ = com.google.protobuf.MapField.newMapField(
@@ -2483,52 +2483,52 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
       /**
        * <code>map&lt;string, string&gt; strings = 4;</code>
        */
-      @java.lang.Override
+      @Override
       public boolean containsStrings(
-          java.lang.String key) {
+          String key) {
         if (key == null) { throw new NullPointerException("map key"); }
         return internalGetStrings().getMap().containsKey(key);
       }
       /**
        * Use {@link #getStringsMap()} instead.
        */
-      @java.lang.Override
-      @java.lang.Deprecated
-      public java.util.Map<java.lang.String, java.lang.String> getStrings() {
+      @Override
+      @Deprecated
+      public java.util.Map<String, String> getStrings() {
         return getStringsMap();
       }
       /**
        * <code>map&lt;string, string&gt; strings = 4;</code>
        */
-      @java.lang.Override
-      public java.util.Map<java.lang.String, java.lang.String> getStringsMap() {
+      @Override
+      public java.util.Map<String, String> getStringsMap() {
         return internalGetStrings().getMap();
       }
       /**
        * <code>map&lt;string, string&gt; strings = 4;</code>
        */
-      @java.lang.Override
+      @Override
       public /* nullable */
-java.lang.String getStringsOrDefault(
-          java.lang.String key,
+String getStringsOrDefault(
+          String key,
           /* nullable */
-java.lang.String defaultValue) {
+String defaultValue) {
         if (key == null) { throw new NullPointerException("map key"); }
-        java.util.Map<java.lang.String, java.lang.String> map =
+        java.util.Map<String, String> map =
             internalGetStrings().getMap();
         return map.containsKey(key) ? map.get(key) : defaultValue;
       }
       /**
        * <code>map&lt;string, string&gt; strings = 4;</code>
        */
-      @java.lang.Override
-      public java.lang.String getStringsOrThrow(
-          java.lang.String key) {
+      @Override
+      public String getStringsOrThrow(
+          String key) {
         if (key == null) { throw new NullPointerException("map key"); }
-        java.util.Map<java.lang.String, java.lang.String> map =
+        java.util.Map<String, String> map =
             internalGetStrings().getMap();
         if (!map.containsKey(key)) {
-          throw new java.lang.IllegalArgumentException();
+          throw new IllegalArgumentException();
         }
         return map.get(key);
       }
@@ -2542,7 +2542,7 @@ java.lang.String defaultValue) {
        * <code>map&lt;string, string&gt; strings = 4;</code>
        */
       public Builder removeStrings(
-          java.lang.String key) {
+          String key) {
         if (key == null) { throw new NullPointerException("map key"); }
         internalGetMutableStrings().getMutableMap()
             .remove(key);
@@ -2551,8 +2551,8 @@ java.lang.String defaultValue) {
       /**
        * Use alternate mutation accessors instead.
        */
-      @java.lang.Deprecated
-      public java.util.Map<java.lang.String, java.lang.String>
+      @Deprecated
+      public java.util.Map<String, String>
           getMutableStrings() {
         bitField0_ |= 0x00000008;
         return internalGetMutableStrings().getMutableMap();
@@ -2561,8 +2561,8 @@ java.lang.String defaultValue) {
        * <code>map&lt;string, string&gt; strings = 4;</code>
        */
       public Builder putStrings(
-          java.lang.String key,
-          java.lang.String value) {
+          String key,
+          String value) {
         if (key == null) { throw new NullPointerException("map key"); }
         if (value == null) { throw new NullPointerException("map value"); }
         internalGetMutableStrings().getMutableMap()
@@ -2574,7 +2574,7 @@ java.lang.String defaultValue) {
        * <code>map&lt;string, string&gt; strings = 4;</code>
        */
       public Builder putAllStrings(
-          java.util.Map<java.lang.String, java.lang.String> values) {
+          java.util.Map<String, String> values) {
         internalGetMutableStrings().getMutableMap()
             .putAll(values);
         bitField0_ |= 0x00000008;
@@ -2582,8 +2582,8 @@ java.lang.String defaultValue) {
       }
 
       private com.google.protobuf.MapField<
-          java.lang.String, com.google.protobuf.ByteString> bytes_;
-      private com.google.protobuf.MapField<java.lang.String, com.google.protobuf.ByteString>
+          String, com.google.protobuf.ByteString> bytes_;
+      private com.google.protobuf.MapField<String, com.google.protobuf.ByteString>
           internalGetBytes() {
         if (bytes_ == null) {
           return com.google.protobuf.MapField.emptyMapField(
@@ -2591,7 +2591,7 @@ java.lang.String defaultValue) {
         }
         return bytes_;
       }
-      private com.google.protobuf.MapField<java.lang.String, com.google.protobuf.ByteString>
+      private com.google.protobuf.MapField<String, com.google.protobuf.ByteString>
           internalGetMutableBytes() {
         if (bytes_ == null) {
           bytes_ = com.google.protobuf.MapField.newMapField(
@@ -2610,52 +2610,52 @@ java.lang.String defaultValue) {
       /**
        * <code>map&lt;string, bytes&gt; bytes = 5;</code>
        */
-      @java.lang.Override
+      @Override
       public boolean containsBytes(
-          java.lang.String key) {
+          String key) {
         if (key == null) { throw new NullPointerException("map key"); }
         return internalGetBytes().getMap().containsKey(key);
       }
       /**
        * Use {@link #getBytesMap()} instead.
        */
-      @java.lang.Override
-      @java.lang.Deprecated
-      public java.util.Map<java.lang.String, com.google.protobuf.ByteString> getBytes() {
+      @Override
+      @Deprecated
+      public java.util.Map<String, com.google.protobuf.ByteString> getBytes() {
         return getBytesMap();
       }
       /**
        * <code>map&lt;string, bytes&gt; bytes = 5;</code>
        */
-      @java.lang.Override
-      public java.util.Map<java.lang.String, com.google.protobuf.ByteString> getBytesMap() {
+      @Override
+      public java.util.Map<String, com.google.protobuf.ByteString> getBytesMap() {
         return internalGetBytes().getMap();
       }
       /**
        * <code>map&lt;string, bytes&gt; bytes = 5;</code>
        */
-      @java.lang.Override
+      @Override
       public /* nullable */
 com.google.protobuf.ByteString getBytesOrDefault(
-          java.lang.String key,
+          String key,
           /* nullable */
 com.google.protobuf.ByteString defaultValue) {
         if (key == null) { throw new NullPointerException("map key"); }
-        java.util.Map<java.lang.String, com.google.protobuf.ByteString> map =
+        java.util.Map<String, com.google.protobuf.ByteString> map =
             internalGetBytes().getMap();
         return map.containsKey(key) ? map.get(key) : defaultValue;
       }
       /**
        * <code>map&lt;string, bytes&gt; bytes = 5;</code>
        */
-      @java.lang.Override
+      @Override
       public com.google.protobuf.ByteString getBytesOrThrow(
-          java.lang.String key) {
+          String key) {
         if (key == null) { throw new NullPointerException("map key"); }
-        java.util.Map<java.lang.String, com.google.protobuf.ByteString> map =
+        java.util.Map<String, com.google.protobuf.ByteString> map =
             internalGetBytes().getMap();
         if (!map.containsKey(key)) {
-          throw new java.lang.IllegalArgumentException();
+          throw new IllegalArgumentException();
         }
         return map.get(key);
       }
@@ -2669,7 +2669,7 @@ com.google.protobuf.ByteString defaultValue) {
        * <code>map&lt;string, bytes&gt; bytes = 5;</code>
        */
       public Builder removeBytes(
-          java.lang.String key) {
+          String key) {
         if (key == null) { throw new NullPointerException("map key"); }
         internalGetMutableBytes().getMutableMap()
             .remove(key);
@@ -2678,8 +2678,8 @@ com.google.protobuf.ByteString defaultValue) {
       /**
        * Use alternate mutation accessors instead.
        */
-      @java.lang.Deprecated
-      public java.util.Map<java.lang.String, com.google.protobuf.ByteString>
+      @Deprecated
+      public java.util.Map<String, com.google.protobuf.ByteString>
           getMutableBytes() {
         bitField0_ |= 0x00000010;
         return internalGetMutableBytes().getMutableMap();
@@ -2688,7 +2688,7 @@ com.google.protobuf.ByteString defaultValue) {
        * <code>map&lt;string, bytes&gt; bytes = 5;</code>
        */
       public Builder putBytes(
-          java.lang.String key,
+          String key,
           com.google.protobuf.ByteString value) {
         if (key == null) { throw new NullPointerException("map key"); }
         if (value == null) { throw new NullPointerException("map value"); }
@@ -2701,37 +2701,37 @@ com.google.protobuf.ByteString defaultValue) {
        * <code>map&lt;string, bytes&gt; bytes = 5;</code>
        */
       public Builder putAllBytes(
-          java.util.Map<java.lang.String, com.google.protobuf.ByteString> values) {
+          java.util.Map<String, com.google.protobuf.ByteString> values) {
         internalGetMutableBytes().getMutableMap()
             .putAll(values);
         bitField0_ |= 0x00000010;
         return this;
       }
 
-      private static final class ContainersConverter implements com.google.protobuf.MapFieldBuilder.Converter<java.lang.String, com.pj.pubsub.proto.NativePubSub.ContainerOrBuilder, com.pj.pubsub.proto.NativePubSub.Container> {
-        @java.lang.Override
-        public com.pj.pubsub.proto.NativePubSub.Container build(com.pj.pubsub.proto.NativePubSub.ContainerOrBuilder val) {
-          if (val instanceof com.pj.pubsub.proto.NativePubSub.Container) { return (com.pj.pubsub.proto.NativePubSub.Container) val; }
-          return ((com.pj.pubsub.proto.NativePubSub.Container.Builder) val).build();
+      private static final class ContainersConverter implements com.google.protobuf.MapFieldBuilder.Converter<String, ContainerOrBuilder, Container> {
+        @Override
+        public Container build(ContainerOrBuilder val) {
+          if (val instanceof Container) { return (Container) val; }
+          return ((Builder) val).build();
         }
 
-        @java.lang.Override
-        public com.google.protobuf.MapEntry<java.lang.String, com.pj.pubsub.proto.NativePubSub.Container> defaultEntry() {
+        @Override
+        public com.google.protobuf.MapEntry<String, Container> defaultEntry() {
           return ContainersDefaultEntryHolder.defaultEntry;
         }
       };
       private static final ContainersConverter containersConverter = new ContainersConverter();
 
       private com.google.protobuf.MapFieldBuilder<
-          java.lang.String, com.pj.pubsub.proto.NativePubSub.ContainerOrBuilder, com.pj.pubsub.proto.NativePubSub.Container, com.pj.pubsub.proto.NativePubSub.Container.Builder> containers_;
-      private com.google.protobuf.MapFieldBuilder<java.lang.String, com.pj.pubsub.proto.NativePubSub.ContainerOrBuilder, com.pj.pubsub.proto.NativePubSub.Container, com.pj.pubsub.proto.NativePubSub.Container.Builder>
+          String, ContainerOrBuilder, Container, Builder> containers_;
+      private com.google.protobuf.MapFieldBuilder<String, ContainerOrBuilder, Container, Builder>
           internalGetContainers() {
         if (containers_ == null) {
           return new com.google.protobuf.MapFieldBuilder<>(containersConverter);
         }
         return containers_;
       }
-      private com.google.protobuf.MapFieldBuilder<java.lang.String, com.pj.pubsub.proto.NativePubSub.ContainerOrBuilder, com.pj.pubsub.proto.NativePubSub.Container, com.pj.pubsub.proto.NativePubSub.Container.Builder>
+      private com.google.protobuf.MapFieldBuilder<String, ContainerOrBuilder, Container, Builder>
           internalGetMutableContainers() {
         if (containers_ == null) {
           containers_ = new com.google.protobuf.MapFieldBuilder<>(containersConverter);
@@ -2746,50 +2746,50 @@ com.google.protobuf.ByteString defaultValue) {
       /**
        * <code>map&lt;string, .Container&gt; containers = 6;</code>
        */
-      @java.lang.Override
+      @Override
       public boolean containsContainers(
-          java.lang.String key) {
+          String key) {
         if (key == null) { throw new NullPointerException("map key"); }
         return internalGetContainers().ensureBuilderMap().containsKey(key);
       }
       /**
        * Use {@link #getContainersMap()} instead.
        */
-      @java.lang.Override
-      @java.lang.Deprecated
-      public java.util.Map<java.lang.String, com.pj.pubsub.proto.NativePubSub.Container> getContainers() {
+      @Override
+      @Deprecated
+      public java.util.Map<String, Container> getContainers() {
         return getContainersMap();
       }
       /**
        * <code>map&lt;string, .Container&gt; containers = 6;</code>
        */
-      @java.lang.Override
-      public java.util.Map<java.lang.String, com.pj.pubsub.proto.NativePubSub.Container> getContainersMap() {
+      @Override
+      public java.util.Map<String, Container> getContainersMap() {
         return internalGetContainers().getImmutableMap();
       }
       /**
        * <code>map&lt;string, .Container&gt; containers = 6;</code>
        */
-      @java.lang.Override
+      @Override
       public /* nullable */
-com.pj.pubsub.proto.NativePubSub.Container getContainersOrDefault(
-          java.lang.String key,
+Container getContainersOrDefault(
+          String key,
           /* nullable */
-com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
+Container defaultValue) {
         if (key == null) { throw new NullPointerException("map key"); }
-        java.util.Map<java.lang.String, com.pj.pubsub.proto.NativePubSub.ContainerOrBuilder> map = internalGetMutableContainers().ensureBuilderMap();
+        java.util.Map<String, ContainerOrBuilder> map = internalGetMutableContainers().ensureBuilderMap();
         return map.containsKey(key) ? containersConverter.build(map.get(key)) : defaultValue;
       }
       /**
        * <code>map&lt;string, .Container&gt; containers = 6;</code>
        */
-      @java.lang.Override
-      public com.pj.pubsub.proto.NativePubSub.Container getContainersOrThrow(
-          java.lang.String key) {
+      @Override
+      public Container getContainersOrThrow(
+          String key) {
         if (key == null) { throw new NullPointerException("map key"); }
-        java.util.Map<java.lang.String, com.pj.pubsub.proto.NativePubSub.ContainerOrBuilder> map = internalGetMutableContainers().ensureBuilderMap();
+        java.util.Map<String, ContainerOrBuilder> map = internalGetMutableContainers().ensureBuilderMap();
         if (!map.containsKey(key)) {
-          throw new java.lang.IllegalArgumentException();
+          throw new IllegalArgumentException();
         }
         return containersConverter.build(map.get(key));
       }
@@ -2802,7 +2802,7 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
        * <code>map&lt;string, .Container&gt; containers = 6;</code>
        */
       public Builder removeContainers(
-          java.lang.String key) {
+          String key) {
         if (key == null) { throw new NullPointerException("map key"); }
         internalGetMutableContainers().ensureBuilderMap()
             .remove(key);
@@ -2811,8 +2811,8 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
       /**
        * Use alternate mutation accessors instead.
        */
-      @java.lang.Deprecated
-      public java.util.Map<java.lang.String, com.pj.pubsub.proto.NativePubSub.Container>
+      @Deprecated
+      public java.util.Map<String, Container>
           getMutableContainers() {
         bitField0_ |= 0x00000020;
         return internalGetMutableContainers().ensureMessageMap();
@@ -2821,8 +2821,8 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
        * <code>map&lt;string, .Container&gt; containers = 6;</code>
        */
       public Builder putContainers(
-          java.lang.String key,
-          com.pj.pubsub.proto.NativePubSub.Container value) {
+          String key,
+          Container value) {
         if (key == null) { throw new NullPointerException("map key"); }
         if (value == null) { throw new NullPointerException("map value"); }
         internalGetMutableContainers().ensureBuilderMap()
@@ -2834,8 +2834,8 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
        * <code>map&lt;string, .Container&gt; containers = 6;</code>
        */
       public Builder putAllContainers(
-          java.util.Map<java.lang.String, com.pj.pubsub.proto.NativePubSub.Container> values) {
-        for (java.util.Map.Entry<java.lang.String, com.pj.pubsub.proto.NativePubSub.Container> e : values.entrySet()) {
+          java.util.Map<String, Container> values) {
+        for (java.util.Map.Entry<String, Container> e : values.entrySet()) {
           if (e.getKey() == null || e.getValue() == null) {
             throw new NullPointerException();
           }
@@ -2848,27 +2848,27 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
       /**
        * <code>map&lt;string, .Container&gt; containers = 6;</code>
        */
-      public com.pj.pubsub.proto.NativePubSub.Container.Builder putContainersBuilderIfAbsent(
-          java.lang.String key) {
-        java.util.Map<java.lang.String, com.pj.pubsub.proto.NativePubSub.ContainerOrBuilder> builderMap = internalGetMutableContainers().ensureBuilderMap();
-        com.pj.pubsub.proto.NativePubSub.ContainerOrBuilder entry = builderMap.get(key);
+      public Builder putContainersBuilderIfAbsent(
+          String key) {
+        java.util.Map<String, ContainerOrBuilder> builderMap = internalGetMutableContainers().ensureBuilderMap();
+        ContainerOrBuilder entry = builderMap.get(key);
         if (entry == null) {
-          entry = com.pj.pubsub.proto.NativePubSub.Container.newBuilder();
+          entry = Container.newBuilder();
           builderMap.put(key, entry);
         }
-        if (entry instanceof com.pj.pubsub.proto.NativePubSub.Container) {
-          entry = ((com.pj.pubsub.proto.NativePubSub.Container) entry).toBuilder();
+        if (entry instanceof Container) {
+          entry = ((Container) entry).toBuilder();
           builderMap.put(key, entry);
         }
-        return (com.pj.pubsub.proto.NativePubSub.Container.Builder) entry;
+        return (Builder) entry;
       }
-      @java.lang.Override
+      @Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFields(unknownFields);
       }
 
-      @java.lang.Override
+      @Override
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
@@ -2879,18 +2879,18 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
     }
 
     // @@protoc_insertion_point(class_scope:Container)
-    private static final com.pj.pubsub.proto.NativePubSub.Container DEFAULT_INSTANCE;
+    private static final Container DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new com.pj.pubsub.proto.NativePubSub.Container();
+      DEFAULT_INSTANCE = new Container();
     }
 
-    public static com.pj.pubsub.proto.NativePubSub.Container getDefaultInstance() {
+    public static Container getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
     private static final com.google.protobuf.Parser<Container>
         PARSER = new com.google.protobuf.AbstractParser<Container>() {
-      @java.lang.Override
+      @Override
       public Container parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -2914,13 +2914,1010 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
       return PARSER;
     }
 
-    @java.lang.Override
+    @Override
     public com.google.protobuf.Parser<Container> getParserForType() {
       return PARSER;
     }
 
-    @java.lang.Override
-    public com.pj.pubsub.proto.NativePubSub.Container getDefaultInstanceForType() {
+    @Override
+    public Container getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface EnvelopeOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:Envelope)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.Message message = 1;</code>
+     * @return Whether the message field is set.
+     */
+    boolean hasMessage();
+    /**
+     * <code>.Message message = 1;</code>
+     * @return The message.
+     */
+    Message getMessage();
+    /**
+     * <code>.Message message = 1;</code>
+     */
+    MessageOrBuilder getMessageOrBuilder();
+
+    /**
+     * <code>int32 senderID = 2;</code>
+     * @return The senderID.
+     */
+    int getSenderID();
+
+    /**
+     * <code>optional int32 receiverID = 3;</code>
+     * @return Whether the receiverID field is set.
+     */
+    boolean hasReceiverID();
+    /**
+     * <code>optional int32 receiverID = 3;</code>
+     * @return The receiverID.
+     */
+    int getReceiverID();
+
+    /**
+     * <code>repeated string tagNames = 4;</code>
+     * @return A list containing the tagNames.
+     */
+    java.util.List<String>
+        getTagNamesList();
+    /**
+     * <code>repeated string tagNames = 4;</code>
+     * @return The count of tagNames.
+     */
+    int getTagNamesCount();
+    /**
+     * <code>repeated string tagNames = 4;</code>
+     * @param index The index of the element to return.
+     * @return The tagNames at the given index.
+     */
+    String getTagNames(int index);
+    /**
+     * <code>repeated string tagNames = 4;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the tagNames at the given index.
+     */
+    com.google.protobuf.ByteString
+        getTagNamesBytes(int index);
+  }
+  /**
+   * Protobuf type {@code Envelope}
+   */
+  public static final class Envelope extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:Envelope)
+      EnvelopeOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use Envelope.newBuilder() to construct.
+    private Envelope(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private Envelope() {
+      tagNames_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+    }
+
+    @Override
+    @SuppressWarnings({"unused"})
+    protected Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new Envelope();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return NativePubSub.internal_static_Envelope_descriptor;
+    }
+
+    @Override
+    protected FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return NativePubSub.internal_static_Envelope_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              Envelope.class, Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int MESSAGE_FIELD_NUMBER = 1;
+    private Message message_;
+    /**
+     * <code>.Message message = 1;</code>
+     * @return Whether the message field is set.
+     */
+    @Override
+    public boolean hasMessage() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>.Message message = 1;</code>
+     * @return The message.
+     */
+    @Override
+    public Message getMessage() {
+      return message_ == null ? Message.getDefaultInstance() : message_;
+    }
+    /**
+     * <code>.Message message = 1;</code>
+     */
+    @Override
+    public MessageOrBuilder getMessageOrBuilder() {
+      return message_ == null ? Message.getDefaultInstance() : message_;
+    }
+
+    public static final int SENDERID_FIELD_NUMBER = 2;
+    private int senderID_ = 0;
+    /**
+     * <code>int32 senderID = 2;</code>
+     * @return The senderID.
+     */
+    @Override
+    public int getSenderID() {
+      return senderID_;
+    }
+
+    public static final int RECEIVERID_FIELD_NUMBER = 3;
+    private int receiverID_ = 0;
+    /**
+     * <code>optional int32 receiverID = 3;</code>
+     * @return Whether the receiverID field is set.
+     */
+    @Override
+    public boolean hasReceiverID() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <code>optional int32 receiverID = 3;</code>
+     * @return The receiverID.
+     */
+    @Override
+    public int getReceiverID() {
+      return receiverID_;
+    }
+
+    public static final int TAGNAMES_FIELD_NUMBER = 4;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.LazyStringArrayList tagNames_ =
+        com.google.protobuf.LazyStringArrayList.emptyList();
+    /**
+     * <code>repeated string tagNames = 4;</code>
+     * @return A list containing the tagNames.
+     */
+    public com.google.protobuf.ProtocolStringList
+        getTagNamesList() {
+      return tagNames_;
+    }
+    /**
+     * <code>repeated string tagNames = 4;</code>
+     * @return The count of tagNames.
+     */
+    public int getTagNamesCount() {
+      return tagNames_.size();
+    }
+    /**
+     * <code>repeated string tagNames = 4;</code>
+     * @param index The index of the element to return.
+     * @return The tagNames at the given index.
+     */
+    public String getTagNames(int index) {
+      return tagNames_.get(index);
+    }
+    /**
+     * <code>repeated string tagNames = 4;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the tagNames at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getTagNamesBytes(int index) {
+      return tagNames_.getByteString(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeMessage(1, getMessage());
+      }
+      if (senderID_ != 0) {
+        output.writeInt32(2, senderID_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        output.writeInt32(3, receiverID_);
+      }
+      for (int i = 0; i < tagNames_.size(); i++) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, tagNames_.getRaw(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getMessage());
+      }
+      if (senderID_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, senderID_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, receiverID_);
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < tagNames_.size(); i++) {
+          dataSize += computeStringSizeNoTag(tagNames_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getTagNamesList().size();
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @Override
+    public boolean equals(final Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof Envelope)) {
+        return super.equals(obj);
+      }
+      Envelope other = (Envelope) obj;
+
+      if (hasMessage() != other.hasMessage()) return false;
+      if (hasMessage()) {
+        if (!getMessage()
+            .equals(other.getMessage())) return false;
+      }
+      if (getSenderID()
+          != other.getSenderID()) return false;
+      if (hasReceiverID() != other.hasReceiverID()) return false;
+      if (hasReceiverID()) {
+        if (getReceiverID()
+            != other.getReceiverID()) return false;
+      }
+      if (!getTagNamesList()
+          .equals(other.getTagNamesList())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasMessage()) {
+        hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
+        hash = (53 * hash) + getMessage().hashCode();
+      }
+      hash = (37 * hash) + SENDERID_FIELD_NUMBER;
+      hash = (53 * hash) + getSenderID();
+      if (hasReceiverID()) {
+        hash = (37 * hash) + RECEIVERID_FIELD_NUMBER;
+        hash = (53 * hash) + getReceiverID();
+      }
+      if (getTagNamesCount() > 0) {
+        hash = (37 * hash) + TAGNAMES_FIELD_NUMBER;
+        hash = (53 * hash) + getTagNamesList().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static Envelope parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Envelope parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Envelope parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Envelope parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Envelope parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Envelope parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Envelope parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static Envelope parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static Envelope parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static Envelope parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static Envelope parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static Envelope parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(Envelope prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @Override
+    protected Builder newBuilderForType(
+        BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code Envelope}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:Envelope)
+        EnvelopeOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return NativePubSub.internal_static_Envelope_descriptor;
+      }
+
+      @Override
+      protected FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return NativePubSub.internal_static_Envelope_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                Envelope.class, Builder.class);
+      }
+
+      // Construct using com.pj.pubsub.proto.NativePubSub.Envelope.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getMessageFieldBuilder();
+        }
+      }
+      @Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        message_ = null;
+        if (messageBuilder_ != null) {
+          messageBuilder_.dispose();
+          messageBuilder_ = null;
+        }
+        senderID_ = 0;
+        receiverID_ = 0;
+        tagNames_ =
+            com.google.protobuf.LazyStringArrayList.emptyList();
+        return this;
+      }
+
+      @Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return NativePubSub.internal_static_Envelope_descriptor;
+      }
+
+      @Override
+      public Envelope getDefaultInstanceForType() {
+        return Envelope.getDefaultInstance();
+      }
+
+      @Override
+      public Envelope build() {
+        Envelope result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @Override
+      public Envelope buildPartial() {
+        Envelope result = new Envelope(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(Envelope result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.message_ = messageBuilder_ == null
+              ? message_
+              : messageBuilder_.build();
+          to_bitField0_ |= 0x00000001;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.senderID_ = senderID_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.receiverID_ = receiverID_;
+          to_bitField0_ |= 0x00000002;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          tagNames_.makeImmutable();
+          result.tagNames_ = tagNames_;
+        }
+        result.bitField0_ |= to_bitField0_;
+      }
+
+      @Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return super.setField(field, value);
+      }
+      @Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof Envelope) {
+          return mergeFrom((Envelope)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(Envelope other) {
+        if (other == Envelope.getDefaultInstance()) return this;
+        if (other.hasMessage()) {
+          mergeMessage(other.getMessage());
+        }
+        if (other.getSenderID() != 0) {
+          setSenderID(other.getSenderID());
+        }
+        if (other.hasReceiverID()) {
+          setReceiverID(other.getReceiverID());
+        }
+        if (!other.tagNames_.isEmpty()) {
+          if (tagNames_.isEmpty()) {
+            tagNames_ = other.tagNames_;
+            bitField0_ |= 0x00000008;
+          } else {
+            ensureTagNamesIsMutable();
+            tagNames_.addAll(other.tagNames_);
+          }
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                input.readMessage(
+                    getMessageFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 16: {
+                senderID_ = input.readInt32();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 24: {
+                receiverID_ = input.readInt32();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 24
+              case 34: {
+                String s = input.readStringRequireUtf8();
+                ensureTagNamesIsMutable();
+                tagNames_.add(s);
+                break;
+              } // case 34
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private Message message_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          Message, Message.Builder, MessageOrBuilder> messageBuilder_;
+      /**
+       * <code>.Message message = 1;</code>
+       * @return Whether the message field is set.
+       */
+      public boolean hasMessage() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <code>.Message message = 1;</code>
+       * @return The message.
+       */
+      public Message getMessage() {
+        if (messageBuilder_ == null) {
+          return message_ == null ? Message.getDefaultInstance() : message_;
+        } else {
+          return messageBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.Message message = 1;</code>
+       */
+      public Builder setMessage(Message value) {
+        if (messageBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          message_ = value;
+        } else {
+          messageBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.Message message = 1;</code>
+       */
+      public Builder setMessage(
+          Message.Builder builderForValue) {
+        if (messageBuilder_ == null) {
+          message_ = builderForValue.build();
+        } else {
+          messageBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.Message message = 1;</code>
+       */
+      public Builder mergeMessage(Message value) {
+        if (messageBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0) &&
+            message_ != null &&
+            message_ != Message.getDefaultInstance()) {
+            getMessageBuilder().mergeFrom(value);
+          } else {
+            message_ = value;
+          }
+        } else {
+          messageBuilder_.mergeFrom(value);
+        }
+        if (message_ != null) {
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <code>.Message message = 1;</code>
+       */
+      public Builder clearMessage() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        message_ = null;
+        if (messageBuilder_ != null) {
+          messageBuilder_.dispose();
+          messageBuilder_ = null;
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.Message message = 1;</code>
+       */
+      public Message.Builder getMessageBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return getMessageFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.Message message = 1;</code>
+       */
+      public MessageOrBuilder getMessageOrBuilder() {
+        if (messageBuilder_ != null) {
+          return messageBuilder_.getMessageOrBuilder();
+        } else {
+          return message_ == null ?
+              Message.getDefaultInstance() : message_;
+        }
+      }
+      /**
+       * <code>.Message message = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          Message, Message.Builder, MessageOrBuilder>
+          getMessageFieldBuilder() {
+        if (messageBuilder_ == null) {
+          messageBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              Message, Message.Builder, MessageOrBuilder>(
+                  getMessage(),
+                  getParentForChildren(),
+                  isClean());
+          message_ = null;
+        }
+        return messageBuilder_;
+      }
+
+      private int senderID_ ;
+      /**
+       * <code>int32 senderID = 2;</code>
+       * @return The senderID.
+       */
+      @Override
+      public int getSenderID() {
+        return senderID_;
+      }
+      /**
+       * <code>int32 senderID = 2;</code>
+       * @param value The senderID to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSenderID(int value) {
+
+        senderID_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 senderID = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSenderID() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        senderID_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int receiverID_ ;
+      /**
+       * <code>optional int32 receiverID = 3;</code>
+       * @return Whether the receiverID field is set.
+       */
+      @Override
+      public boolean hasReceiverID() {
+        return ((bitField0_ & 0x00000004) != 0);
+      }
+      /**
+       * <code>optional int32 receiverID = 3;</code>
+       * @return The receiverID.
+       */
+      @Override
+      public int getReceiverID() {
+        return receiverID_;
+      }
+      /**
+       * <code>optional int32 receiverID = 3;</code>
+       * @param value The receiverID to set.
+       * @return This builder for chaining.
+       */
+      public Builder setReceiverID(int value) {
+
+        receiverID_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 receiverID = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearReceiverID() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        receiverID_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.LazyStringArrayList tagNames_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+      private void ensureTagNamesIsMutable() {
+        if (!tagNames_.isModifiable()) {
+          tagNames_ = new com.google.protobuf.LazyStringArrayList(tagNames_);
+        }
+        bitField0_ |= 0x00000008;
+      }
+      /**
+       * <code>repeated string tagNames = 4;</code>
+       * @return A list containing the tagNames.
+       */
+      public com.google.protobuf.ProtocolStringList
+          getTagNamesList() {
+        tagNames_.makeImmutable();
+        return tagNames_;
+      }
+      /**
+       * <code>repeated string tagNames = 4;</code>
+       * @return The count of tagNames.
+       */
+      public int getTagNamesCount() {
+        return tagNames_.size();
+      }
+      /**
+       * <code>repeated string tagNames = 4;</code>
+       * @param index The index of the element to return.
+       * @return The tagNames at the given index.
+       */
+      public String getTagNames(int index) {
+        return tagNames_.get(index);
+      }
+      /**
+       * <code>repeated string tagNames = 4;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the tagNames at the given index.
+       */
+      public com.google.protobuf.ByteString
+          getTagNamesBytes(int index) {
+        return tagNames_.getByteString(index);
+      }
+      /**
+       * <code>repeated string tagNames = 4;</code>
+       * @param index The index to set the value at.
+       * @param value The tagNames to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTagNames(
+          int index, String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureTagNamesIsMutable();
+        tagNames_.set(index, value);
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string tagNames = 4;</code>
+       * @param value The tagNames to add.
+       * @return This builder for chaining.
+       */
+      public Builder addTagNames(
+          String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureTagNamesIsMutable();
+        tagNames_.add(value);
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string tagNames = 4;</code>
+       * @param values The tagNames to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllTagNames(
+          Iterable<String> values) {
+        ensureTagNamesIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, tagNames_);
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string tagNames = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTagNames() {
+        tagNames_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000008);;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string tagNames = 4;</code>
+       * @param value The bytes of the tagNames to add.
+       * @return This builder for chaining.
+       */
+      public Builder addTagNamesBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        ensureTagNamesIsMutable();
+        tagNames_.add(value);
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      @Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:Envelope)
+    }
+
+    // @@protoc_insertion_point(class_scope:Envelope)
+    private static final Envelope DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new Envelope();
+    }
+
+    public static Envelope getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<Envelope>
+        PARSER = new com.google.protobuf.AbstractParser<Envelope>() {
+      @Override
+      public Envelope parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<Envelope> parser() {
+      return PARSER;
+    }
+
+    @Override
+    public com.google.protobuf.Parser<Envelope> getParserForType() {
+      return PARSER;
+    }
+
+    @Override
+    public Envelope getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -2966,6 +3963,11 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Container_ContainersEntry_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Envelope_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Envelope_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -2974,7 +3976,7 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
   private static  com.google.protobuf.Descriptors.FileDescriptor
       descriptor;
   static {
-    java.lang.String[] descriptorData = {
+    String[] descriptorData = {
       "\n\022NativePubSub.proto\"5\n\007Message\022\013\n\003key\030\001" +
       " \001(\t\022\035\n\tcontainer\030\002 \001(\0132\n.Container\"\271\004\n\t" +
       "Container\022*\n\010booleans\030\001 \003(\0132\030.Container." +
@@ -2991,8 +3993,11 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
       "\r\n\005value\030\002 \001(\t:\0028\001\032,\n\nBytesEntry\022\013\n\003key\030" +
       "\001 \001(\t\022\r\n\005value\030\002 \001(\014:\0028\001\032=\n\017ContainersEn" +
       "try\022\013\n\003key\030\001 \001(\t\022\031\n\005value\030\002 \001(\0132\n.Contai" +
-      "ner:\0028\001B\'\n\023com.pj.pubsub.proto\252\002\017PJ.Nati" +
-      "ve.Protob\006proto3"
+      "ner:\0028\001\"q\n\010Envelope\022\031\n\007message\030\001 \001(\0132\010.M" +
+      "essage\022\020\n\010senderID\030\002 \001(\005\022\027\n\nreceiverID\030\003" +
+      " \001(\005H\000\210\001\001\022\020\n\010tagNames\030\004 \003(\tB\r\n\013_receiver" +
+      "IDB\'\n\023com.pj.pubsub.proto\252\002\017PJ.Native.Pr" +
+      "otob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -3003,49 +4008,55 @@ com.pj.pubsub.proto.NativePubSub.Container defaultValue) {
     internal_static_Message_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_descriptor,
-        new java.lang.String[] { "Key", "Container", });
+        new String[] { "Key", "Container", });
     internal_static_Container_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_Container_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Container_descriptor,
-        new java.lang.String[] { "Booleans", "Integers", "Floats", "Strings", "Bytes", "Containers", });
+        new String[] { "Booleans", "Integers", "Floats", "Strings", "Bytes", "Containers", });
     internal_static_Container_BooleansEntry_descriptor =
       internal_static_Container_descriptor.getNestedTypes().get(0);
     internal_static_Container_BooleansEntry_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Container_BooleansEntry_descriptor,
-        new java.lang.String[] { "Key", "Value", });
+        new String[] { "Key", "Value", });
     internal_static_Container_IntegersEntry_descriptor =
       internal_static_Container_descriptor.getNestedTypes().get(1);
     internal_static_Container_IntegersEntry_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Container_IntegersEntry_descriptor,
-        new java.lang.String[] { "Key", "Value", });
+        new String[] { "Key", "Value", });
     internal_static_Container_FloatsEntry_descriptor =
       internal_static_Container_descriptor.getNestedTypes().get(2);
     internal_static_Container_FloatsEntry_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Container_FloatsEntry_descriptor,
-        new java.lang.String[] { "Key", "Value", });
+        new String[] { "Key", "Value", });
     internal_static_Container_StringsEntry_descriptor =
       internal_static_Container_descriptor.getNestedTypes().get(3);
     internal_static_Container_StringsEntry_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Container_StringsEntry_descriptor,
-        new java.lang.String[] { "Key", "Value", });
+        new String[] { "Key", "Value", });
     internal_static_Container_BytesEntry_descriptor =
       internal_static_Container_descriptor.getNestedTypes().get(4);
     internal_static_Container_BytesEntry_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Container_BytesEntry_descriptor,
-        new java.lang.String[] { "Key", "Value", });
+        new String[] { "Key", "Value", });
     internal_static_Container_ContainersEntry_descriptor =
       internal_static_Container_descriptor.getNestedTypes().get(5);
     internal_static_Container_ContainersEntry_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Container_ContainersEntry_descriptor,
-        new java.lang.String[] { "Key", "Value", });
+        new String[] { "Key", "Value", });
+    internal_static_Envelope_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_Envelope_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Envelope_descriptor,
+        new String[] { "Message", "SenderID", "ReceiverID", "TagNames", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
