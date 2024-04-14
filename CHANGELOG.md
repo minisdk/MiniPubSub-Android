@@ -5,6 +5,7 @@
 ### Added
 
 - Envelop struct added. Envelop has a Message
+- EnvelopeHolder struct added. Holds Envelope struct internally.
 - Add matchTag to Receivable
 - Add setTagRules to Receivable
 - Add setBaseTag to ReceivablePublisher
@@ -13,14 +14,12 @@
 
 - Rename package com.pj.core to com.pj.pubsub
 - Rename module name androidBridgeCore to android-pubsub
-- Rename MessageHandler's method
-- Rename MessageHandler to Messenger.
-- Rename MessageHolder to Channel
-- Rename MessageHolder.giveBack to Channel.reply
+- Tags are now synced between unity and native.
 
 ### Removed
 
 - Delete MessageCollector.
+- Delete MessageHandler.
 
 ## [0.0.1] - 2024-02-29
 

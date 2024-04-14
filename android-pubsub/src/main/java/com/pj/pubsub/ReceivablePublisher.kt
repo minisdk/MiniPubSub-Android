@@ -7,7 +7,7 @@ import com.pj.pubsub.proto.NativePubSub.Envelope
 interface Receivable{
     fun setTagRule(all: Tag)
     fun matchTag(tag: Tag): Boolean
-    fun onReceive(channel: Channel)
+    fun onReceive(envelopeHolder: EnvelopeHolder)
 }
 
 open class Publisher(){

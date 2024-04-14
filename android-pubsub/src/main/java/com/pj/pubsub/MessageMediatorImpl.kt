@@ -13,8 +13,8 @@ internal class MessageMediatorImpl : MessageMediator {
         if(envelope.hasReceiverID()){
             val receiver = idFilter[envelope.receiverID]
             if(receiver != null){
-                val channel = ChannelConnection(envelope, receiver.id, tag)
-                receiver.onReceive(channel)
+                val envelopeHolder = EnvelopeHolder(envelope, tag)
+                receiver.onReceive(envelopeHolder)
             }
             else
             {
@@ -30,8 +30,8 @@ internal class MessageMediatorImpl : MessageMediator {
         idFilter.values.filter { receiver ->
             receiver.matchTag(tag) && receiver.id != envelope.senderID
         }.forEach { receiver ->
-            val channel = ChannelConnection(envelope, receiver.id, tag)
-            receiver.onReceive(channel)
+            val envelopeHolder = EnvelopeHolder(envelope, tag)
+            receiver.onReceive(envelopeHolder)
         }
     }
 

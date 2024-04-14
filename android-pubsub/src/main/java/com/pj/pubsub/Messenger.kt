@@ -5,8 +5,8 @@ import com.pj.pubsub.extensions.Message
 class Messenger : ReceivablePublisher(){
 
     private var allTag: Tag = Tag.none
-    private val handlerMap : MutableMap<String, (Channel) -> Unit> = mutableMapOf()
-    private val conditionHandlers : MutableList<Pair<(Channel)->Unit, (Message)->Boolean>> = mutableListOf()
+    private val handlerMap : MutableMap<String, (Message) -> Unit> = mutableMapOf()
+    private val conditionHandlers : MutableList<Pair<(Message)->Unit, (Message)->Boolean>> = mutableListOf()
 
     init {
         MessageManager.mediator.register(this)
@@ -20,18 +20,19 @@ class Messenger : ReceivablePublisher(){
         return tag.contains(allTag)
     }
 
-    override fun onReceive(channel: Channel){
-        val handler = handlerMap[channel.message.key]
-        handler?.invoke(channel)
+    override fun onReceive(envelopeHolder: EnvelopeHolder){
+        val envelope = envelopeHolder.envelope
+        val handler = handlerMap[envelope.message.key]
+        handler?.invoke(envelope.message)
 
         conditionHandlers.filter { conditionHandler ->
-            conditionHandler.second.invoke(channel.message)
+            conditionHandler.second.invoke(envelope.message)
         }.forEach { conditionHandler ->
-            conditionHandler.first?.invoke(channel)
+            conditionHandler.first.invoke(envelope.message)
         }
     }
 
-    fun subscribe(key: String, handler : (Channel) -> Unit){
+    fun subscribe(key: String, handler : (Message) -> Unit){
         handlerMap[key] = handler
     }
 
@@ -39,12 +40,12 @@ class Messenger : ReceivablePublisher(){
         handlerMap.remove(key);
     }
 
-    fun subscribe(handler: (Channel) -> Unit, condition: (Message) -> Boolean ){
+    fun subscribe(handler: (Message) -> Unit, condition: (Message) -> Boolean ){
         val pair = Pair(handler, condition)
         conditionHandlers.add(pair)
     }
 
-    fun unsubscribe(handler: (Channel) -> Unit){
+    fun unsubscribe(handler: (Message) -> Unit){
         conditionHandlers.removeIf{ conditionHandler ->
             conditionHandler.first == handler
         }
