@@ -12,7 +12,7 @@ class Messenger : ReceivablePublisher(){
         MessageManager.mediator.register(this)
     }
 
-    override fun setTagRule(all: Tag) {
+    override fun setReceivingRule(all: Tag) {
         allTag = all
     }
 

@@ -11,7 +11,7 @@ class GameRelay(private val unityCallback : NativeBridgeCallback) {
     private val className = this.javaClass::class.java.name
 
     init {
-        bridgeMessenger.setTagRule(Tag.game)
+        bridgeMessenger.setReceivingRule(Tag.game)
         bridgeMessenger.subscribe(this::onReceiveFromNative)
     }
     private fun onReceiveFromNative(envelopeHolder: EnvelopeHolder) {

@@ -14,7 +14,7 @@ class SampleKit {
     private val messenger : Messenger = Messenger()
 
     init {
-        messenger.setBaseTag(Tag.game)
+        messenger.setBasePublishingTag(Tag.game)
         messenger.subscribe("test", this::onTest)
         messenger.subscribe("testRecall", this::onTestRecall)
     }
