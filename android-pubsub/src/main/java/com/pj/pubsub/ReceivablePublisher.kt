@@ -1,5 +1,6 @@
 package com.pj.pubsub
 
+import android.util.Log
 import com.pj.pubsub.extensions.Envelope
 import com.pj.pubsub.extensions.Message
 import com.pj.pubsub.proto.NativePubSub.Envelope
@@ -9,14 +10,13 @@ interface Receivable{
     fun matchTag(tag: Tag): Boolean
     fun onReceive(envelopeHolder: EnvelopeHolder)
 }
-
 open class Publisher(){
 
     private object IDCounter {
-        private var id = 0;
+        private var id: Int = PublisherType.Android.defaultID
         val ID : Int
             get() {
-                return id++
+                return ++id
             }
     }
     val id:Int = IDCounter.ID

@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.pj.core"
+    namespace = "com.pj.pubsub"
     compileSdk = 34
 
     defaultConfig {

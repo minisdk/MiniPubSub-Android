@@ -6,7 +6,7 @@ class Messenger : ReceivablePublisher(){
 
     private var allTag: Tag = Tag.none
     private val handlerMap : MutableMap<String, (Message) -> Unit> = mutableMapOf()
-    private val conditionHandlers : MutableList<Pair<(Message)->Unit, (Message)->Boolean>> = mutableListOf()
+    private val handlerList : MutableList<(Message)->Unit> = mutableListOf()
 
     init {
         MessageManager.mediator.register(this)
@@ -25,10 +25,8 @@ class Messenger : ReceivablePublisher(){
         val handler = handlerMap[envelope.message.key]
         handler?.invoke(envelope.message)
 
-        conditionHandlers.filter { conditionHandler ->
-            conditionHandler.second.invoke(envelope.message)
-        }.forEach { conditionHandler ->
-            conditionHandler.first.invoke(envelope.message)
+        handlerList.forEach { conditionHandler ->
+            conditionHandler.invoke(envelope.message)
         }
     }
 
@@ -40,14 +38,13 @@ class Messenger : ReceivablePublisher(){
         handlerMap.remove(key);
     }
 
-    fun subscribe(handler: (Message) -> Unit, condition: (Message) -> Boolean ){
-        val pair = Pair(handler, condition)
-        conditionHandlers.add(pair)
+    fun subscribe(handler: (Message) -> Unit){
+        handlerList.add(handler)
     }
 
     fun unsubscribe(handler: (Message) -> Unit){
-        conditionHandlers.removeIf{ conditionHandler ->
-            conditionHandler.first == handler
+        handlerList.removeIf{ conditionHandler ->
+            conditionHandler == handler
         }
     }
 }
