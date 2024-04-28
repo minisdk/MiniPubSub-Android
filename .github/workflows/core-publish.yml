@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
   push:
     tags:
-      - v*.*.*
+      - '*.*.*'
 
 jobs:
   build:
@@ -34,14 +34,14 @@ jobs:
       uses: gradle/actions/setup-gradle@v3
 
     - name: Build with Gradle
-      run: ./gradlew androidBridgeCore:build
+      run: ./gradlew android-pubsub:build
 
     - name: upload artifact
       id: upload-artifact
       uses: actions/upload-artifact@v4
       with:
-        name: androidBridgeCore-AAR 
-        path: androidBridgeCore/build/outputs/aar/*.aar
+        name: android-pubsub-AAR 
+        path: android-pubsub/build/outputs/aar/*.aar
 
     - name: check artifact
       run: |
@@ -59,10 +59,10 @@ jobs:
     - name: download artifact
       uses: actions/download-artifact@v4
       with:
-        name: androidBridgeCore-AAR
+        name: android-pubsub-AAR
     - name: create release
-      uses: softprops/action-gh-release@v1
+      uses: softprops/action-gh-release@v1.1.0
       with:
-        files: androidBridgeCore-*.aar
+        files: android-pubsub-*.aar
       
 
