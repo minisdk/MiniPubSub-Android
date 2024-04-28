@@ -2,12 +2,14 @@
 Helps comunication between Android and game(Unity only)
 
 ## Getting started
-Download androidBridgeCore aar in [Release](https://github.com/psmjazz/NativeBridge-Android/releases).
+Download pubsubcore aar in [Release](https://github.com/psmjazz/NativeBridge-Android/releases).
 and place it in your module project.
 
 Add aar to your android module project. In your module level build.gradle
 ```groovy
-compileOnly(files("[relative path of aar in your project]"))
+compileOnly(files("[relative path of pubsubcore aar in your project]"))
+compileOnly("com.google.protobuf:protobuf-java:3.25.3")
+compileOnly("com.google.protobuf:protobuf-kotlin:3.25.3")
 ```
 
 ## How to use

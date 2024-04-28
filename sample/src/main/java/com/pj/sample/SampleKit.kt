@@ -1,42 +1,41 @@
 package com.pj.sample
 
 import android.util.Log
-import com.pj.core.MessageHandler
-import com.pj.core.extensions.Message
-import com.pj.core.MessageHolder
-import com.pj.core.Tag
-import com.pj.core.extensions.ContainerBuilder
-import com.pj.core.extensions.add
-import com.pj.core.extensions.getString
+import com.pj.pubsub.Messenger
+import com.pj.pubsub.extensions.Message
+import com.pj.pubsub.Tag
+import com.pj.pubsub.extensions.ContainerBuilder
+import com.pj.pubsub.extensions.add
+import com.pj.pubsub.extensions.getString
 
 class SampleKit {
     private val TAG = SampleKit::class.java.name
 
-    private val handler : MessageHandler = MessageHandler(Tag.native)
+    private val messenger : Messenger = Messenger()
 
     init {
-        handler.apply {  }
-        handler.setHandler("test", this::onTest)
-        handler.setHandler("testRecall", this::onTestRecall)
+        messenger.setBasePublishingTag(Tag.game)
+        messenger.subscribe("test", this::onTest)
+        messenger.subscribe("testRecall", this::onTestRecall)
     }
 
-    private fun onTest(messageHolder: MessageHolder){
-        val data = messageHolder.message.container.getString("data")
+    private fun onTest(message: Message){
+        val data = message.container.getString("data")
         Log.d(TAG, "onTest : $data" )
 
         val containerBuilder = ContainerBuilder()
         containerBuilder.add("data", "this is android message :D")
-        val message = Message("native", containerBuilder.build())
-        handler.notify(message, Tag.game)
+        val result = Message("native", containerBuilder.build())
+        messenger.publish(result)
     }
 
-    private fun onTestRecall(messageHolder: MessageHolder){
-        val data = messageHolder.message.container.getString("data")
+    private fun onTestRecall(message: Message){
+        val data = message.container.getString("data")
         Log.d(TAG, "onTestReCall : $data")
 
         val containerBuilder = ContainerBuilder()
         containerBuilder.add("data", "RECALL [$data]")
-        val returned = Message("testReturn", containerBuilder.build())
-        messageHolder.giveBack(returned)
+        val reply = Message("testReturn", containerBuilder.build())
+        messenger.publish(reply)
     }
 }

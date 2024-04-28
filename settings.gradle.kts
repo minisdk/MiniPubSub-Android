@@ -15,5 +15,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "NativeCore"
 include(":app")
-include(":androidBridgeCore")
+include(":android-pubsub")
 include(":sample")
