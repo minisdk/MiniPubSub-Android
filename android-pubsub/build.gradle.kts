@@ -53,6 +53,6 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
-    compileOnly("com.google.protobuf:protobuf-java:3.25.3")
-    compileOnly("com.google.protobuf:protobuf-kotlin:3.25.3")
+    implementation("com.google.protobuf:protobuf-java:3.25.3")
+    implementation("com.google.protobuf:protobuf-kotlin:3.25.3")
 }
