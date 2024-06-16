@@ -5,13 +5,13 @@
 # This workflow will build a package using Gradle and then publish it to GitHub packages when a release is created
 # For more information see: https://github.com/actions/setup-java/blob/main/docs/advanced-usage.md#Publishing-using-gradle
 
-name: NativeBridge android gradle build
+name: android-pubsub android gradle build
 
 on:
   workflow_dispatch:
   push:
     tags:
-      - v*.*.*
+      - '*.*.*'
 
 jobs:
   build:
@@ -34,14 +34,14 @@ jobs:
       uses: gradle/actions/setup-gradle@v3
 
     - name: Build with Gradle
-      run: ./gradlew androidBridgeCore:build
+      run: ./gradlew android-pubsub:build
 
     - name: upload artifact
       id: upload-artifact
       uses: actions/upload-artifact@v4
       with:
-        name: androidBridgeCore-AAR 
-        path: androidBridgeCore/build/outputs/aar/*.aar
+        name: android-pubsub-AAR 
+        path: android-pubsub/build/outputs/aar/*.aar
 
     - name: check artifact
       run: |
@@ -59,10 +59,10 @@ jobs:
     - name: download artifact
       uses: actions/download-artifact@v4
       with:
-        name: androidBridgeCore-AAR
+        name: android-pubsub-AAR
     - name: create release
       uses: softprops/action-gh-release@v1
       with:
-        files: androidBridgeCore-*.aar
+        files: android-pubsub-*.aar
       
 
