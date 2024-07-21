@@ -1,47 +1,41 @@
 package com.pj.pubsub
 
 import android.util.Log
-import com.pj.pubsub.extensions.Envelope
-import com.pj.pubsub.extensions.Message
-import com.pj.pubsub.proto.NativePubSub.Envelope
+import com.pj.pubsub.data.Message
 
-interface Receivable{
-    fun setReceivingRule(all: Tag)
-    fun matchTag(tag: Tag): Boolean
-    fun onReceive(envelopeHolder: EnvelopeHolder)
+internal object IDCounter {
+    private var id: Int = PublisherType.Android.defaultID
+    val ID : Int
+        get() {
+            return ++id
+        }
 }
-open class Publisher(){
 
-    private object IDCounter {
-        private var id: Int = PublisherType.Android.defaultID
-        val ID : Int
-            get() {
-                return ++id
-            }
-    }
-    val id:Int = IDCounter.ID
+typealias ReceiverDelegate = (Message) -> Unit
 
-    private var baseTag: Tag = Tag.none
+data class Receiver(
+    val nodeId: Int,
+    val key: String,
+    val delegate: ReceiverDelegate)
 
-    fun setBasePublishingTag(tag: Tag){
-        baseTag = tag
-    }
+interface Node{
+    val id : Int
+}
+
+interface Subscribable : Node{
+    fun subscribe(key: String, delegate : ReceiverDelegate)
+    fun unsubscribe(key: String)
+}
+
+interface Watchable : Node{
+    fun watch(delegate: (Message) -> Unit)
+    fun unwatch()
+}
+
+open class Publisher : Node{
+    override val id = IDCounter.ID
 
     fun publish(message: Message){
-        val envelope = Envelope(message, this.id)
-        MessageManager.mediator.publish(envelope, baseTag)
+        MessageManager.mediator.publish(message, id)
     }
-
-    fun publish(message : Message, tag: Tag){
-        val envelope = Envelope(message, this.id)
-        val joined = baseTag.join(tag)
-        MessageManager.mediator.publish(envelope, joined)
-    }
-
-    internal fun publish(envelope: Envelope, tag: Tag){
-        val joined = baseTag.join(tag)
-        MessageManager.mediator.publish(envelope, joined)
-    }
-}
-abstract class ReceivablePublisher() : Publisher(), Receivable{
 }

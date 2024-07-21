@@ -1,37 +1,46 @@
 package com.pj.pubsub
 
-import com.pj.pubsub.proto.NativePubSub.Envelope
+import android.util.Log
+import com.pj.pubsub.data.Message
 
 internal class MessageMediatorImpl : MessageMediator {
+    private val TAG = MessageMediator::class.java.name
 
-    private val idFilter : MutableMap<Int, ReceivablePublisher> by lazy { mutableMapOf() }
-    override fun register(node: ReceivablePublisher) {
-        idFilter[node.id] = node
+    val receiverDic: MutableMap<String, MutableList<Receiver>> = mutableMapOf()
+    val watcherDic: MutableMap<Int, Receiver> = mutableMapOf()
+
+    override fun register(receiver: Receiver) {
+        val receivers = receiverDic.getOrPut(receiver.key){
+            mutableListOf()
+        }
+        receivers.add(receiver)
     }
 
-    override fun publish(envelope: Envelope, tag: Tag) {
-        if(envelope.hasReceiverID()){
-            val receiver = idFilter[envelope.receiverID]
-            if(receiver != null){
-                val envelopeHolder = EnvelopeHolder(envelope, tag)
-                receiver.onReceive(envelopeHolder)
-            }
-            else
-            {
-                this.broadcast(envelope, tag)
-            }
-        }
-        else{
-            this.broadcast(envelope, tag)
-        }
+    override fun unregister(id: Int, key: String) {
+        val receivers = receiverDic[key]
+        receivers?.removeAt(id)
     }
 
-    private fun broadcast(envelope: Envelope, tag: Tag){
-        idFilter.values.filter { receiver ->
-            receiver.matchTag(tag) && receiver.id != envelope.senderID
-        }.forEach { receiver ->
-            val envelopeHolder = EnvelopeHolder(envelope, tag)
-            receiver.onReceive(envelopeHolder)
+    override fun watch(receiver: Receiver) {
+        watcherDic[receiver.nodeId] = receiver
+    }
+
+    override fun unwatch(id: Int) {
+        watcherDic.remove(id)
+    }
+
+    override fun publish(message: Message, publisherId: Int) {
+        val receivers = receiverDic[message.key]
+        receivers?.forEach { receiver ->
+            if(receiver.nodeId == publisherId)
+                return
+            receiver.delegate?.invoke(message)
+        }
+
+        for (watcher in watcherDic.values){
+            if(watcher.nodeId == publisherId)
+                continue
+            watcher.delegate?.invoke(message)
         }
     }
 

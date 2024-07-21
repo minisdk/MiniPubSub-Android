@@ -7,9 +7,11 @@ import android.net.Uri
 import android.util.Log
 
 class SampleInitializer : ContentProvider() {
+
+    lateinit var sample : SampleKit
     override fun onCreate(): Boolean {
-        Log.d("SampleInitializer", "init!!!!")
-        val sample = SampleKit()
+        Log.d("SampleInitializer", "[pubsubtest] init!!!!")
+        sample = SampleKit()
         return true;
     }
 

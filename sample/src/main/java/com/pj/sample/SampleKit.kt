@@ -2,11 +2,7 @@ package com.pj.sample
 
 import android.util.Log
 import com.pj.pubsub.Messenger
-import com.pj.pubsub.extensions.Message
-import com.pj.pubsub.Tag
-import com.pj.pubsub.extensions.ContainerBuilder
-import com.pj.pubsub.extensions.add
-import com.pj.pubsub.extensions.getString
+import com.pj.pubsub.data.Message
 
 class SampleKit {
     private val TAG = SampleKit::class.java.name
@@ -14,28 +10,13 @@ class SampleKit {
     private val messenger : Messenger = Messenger()
 
     init {
-        messenger.setBasePublishingTag(Tag.game)
+        Log.d(TAG, "[pubsubtest] SampleKit init")
         messenger.subscribe("test", this::onTest)
-        messenger.subscribe("testRecall", this::onTestRecall)
     }
 
     private fun onTest(message: Message){
-        val data = message.container.getString("data")
-        Log.d(TAG, "onTest : $data" )
-
-        val containerBuilder = ContainerBuilder()
-        containerBuilder.add("data", "this is android message :D")
-        val result = Message("native", containerBuilder.build())
+        Log.d(TAG, "[pubsubtest] onTest key : ${message.key} data : ${message.data}" )
+        val result = Message("native", "data from android :D")
         messenger.publish(result)
-    }
-
-    private fun onTestRecall(message: Message){
-        val data = message.container.getString("data")
-        Log.d(TAG, "onTestReCall : $data")
-
-        val containerBuilder = ContainerBuilder()
-        containerBuilder.add("data", "RECALL [$data]")
-        val reply = Message("testReturn", containerBuilder.build())
-        messenger.publish(reply)
     }
 }

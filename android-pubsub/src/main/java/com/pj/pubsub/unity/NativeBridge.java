@@ -1,5 +1,7 @@
 package com.pj.pubsub.unity;
 
+import com.pj.pubsub.data.NativeBridgeCallback;
+
 public class NativeBridge{
     private GameRelay gameRelay;
 
@@ -8,6 +10,10 @@ public class NativeBridge{
     }
 
     public void send(byte[] data){
-        this.gameRelay.send(data);
+//        this.gameRelay.send(data);
+    }
+
+    public void send(String json){
+        this.gameRelay.send(json);
     }
 }
