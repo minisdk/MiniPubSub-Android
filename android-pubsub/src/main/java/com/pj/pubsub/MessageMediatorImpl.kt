@@ -18,7 +18,9 @@ internal class MessageMediatorImpl : MessageMediator {
 
     override fun unregister(id: Int, key: String) {
         val receivers = receiverDic[key]
-        receivers?.removeAt(id)
+        receivers?.removeIf{receiver ->
+            receiver.nodeId == id
+        }
     }
 
     override fun watch(receiver: Receiver) {

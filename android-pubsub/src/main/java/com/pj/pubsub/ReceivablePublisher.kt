@@ -28,7 +28,7 @@ interface Subscribable : Node{
 }
 
 interface Watchable : Node{
-    fun watch(delegate: (Message) -> Unit)
+    fun watch(delegate: ReceiverDelegate)
     fun unwatch()
 }
 
