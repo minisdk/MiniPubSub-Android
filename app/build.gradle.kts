@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace = "com.pj.nativecore"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.pj.nativecore"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -67,7 +67,7 @@ dependencies {
     implementation("androidx.compose.material3:material3")
     implementation(platform("androidx.compose:compose-bom:2023.03.00"))
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation(project(mapOf("path" to ":android-pubsub")))
+    implementation(project(mapOf("path" to ":minipubsub")))
     implementation(project(mapOf("path" to ":sample")))
     implementation(platform("androidx.compose:compose-bom:2023.03.00"))
     testImplementation("junit:junit:4.13.2")

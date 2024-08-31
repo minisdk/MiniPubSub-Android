@@ -1,8 +1,8 @@
 package com.pj.sample
 
 import android.util.Log
-import com.pj.pubsub.Messenger
-import com.pj.pubsub.data.Message
+import com.minisdk.pubsub.Messenger
+import com.minisdk.pubsub.data.Message
 
 class SampleKit {
     private val TAG = SampleKit::class.java.name

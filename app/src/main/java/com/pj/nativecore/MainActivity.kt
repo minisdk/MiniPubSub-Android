@@ -3,10 +3,8 @@ package com.pj.nativecore
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.pj.pubsub.Messenger
-import com.pj.pubsub.data.Message
-import com.pj.pubsub.data.NativeBridgeCallback
-import com.pj.pubsub.unity.GameRelay
+import com.minisdk.pubsub.Messenger
+import com.minisdk.pubsub.data.Message
 
 class MainActivity : AppCompatActivity() {
     private val TAG = this::class.java.name
