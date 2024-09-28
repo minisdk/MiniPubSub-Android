@@ -1,12 +1,11 @@
-package com.minisdk.pubsub.unity
+package com.minisdk.pubsub.bridge
 
 import android.util.Log
 import com.google.gson.Gson
 import com.minisdk.pubsub.Watcher
 import com.minisdk.pubsub.data.Message
-import com.minisdk.pubsub.data.NativeBridgeCallback
 
-class GameRelay(private val unityCallback : NativeBridgeCallback) {
+class GameRelay(private val gameCallback : NativeBridgeCallback) {
     private val className = GameRelay::class.java.name
     private val TAG = className
     private val watcher = Watcher()
@@ -18,7 +17,7 @@ class GameRelay(private val unityCallback : NativeBridgeCallback) {
     private fun onReceiveFromNative(message: Message) {
         val json = gson.toJson(message)
         if(json != null){
-            unityCallback.onReceiveString(json)
+            gameCallback.onReceiveString(json)
         }
     }
 

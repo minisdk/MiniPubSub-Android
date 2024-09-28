@@ -1,4 +1,4 @@
-package com.minisdk.pubsub.data;
+package com.minisdk.pubsub.bridge;
 
 public interface NativeBridgeCallback{
     void onReceive(byte[] data);
