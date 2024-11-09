@@ -16,9 +16,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         Log.d(TAG, "[pubsubtest] Mainactivity start")
-        messenger.subscribe("native"){message ->
-            Log.d(TAG, "[pubsubtest] on native: " + message.data)
-        }
-        messenger.publish(Message("test", "hello form app"))
+
+        val t = TestData(1111, false)
+        val m = Message("test", t)
+
+        Log.d(TAG, "onCreate: key : ${m.info.key} data : ${m.data}")
+
+        val tRestored = m.data<TestData>();
     }
+
+    data class TestData(val a:Int, val b: Boolean)
 }

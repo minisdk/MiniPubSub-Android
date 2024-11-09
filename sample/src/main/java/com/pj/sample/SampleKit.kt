@@ -1,14 +1,11 @@
 package com.pj.sample
 
-import android.app.Application
 import android.util.Log
-import android.widget.Toast
 import com.minisdk.pubsub.Messenger
 import com.minisdk.pubsub.data.Message
 
-data class ToastResult(val toastCount: Int){
-    val toastShowCount = toastCount
-}
+data class ToastData(val toastMessage: String, val toastDuration: Int)
+data class ToastResult(val toastCount: Int)
 
 class SampleKit {
     private val TAG = SampleKit::class.java.name
@@ -30,6 +27,7 @@ class SampleKit {
 
     private fun onToast(message: Message){
         Log.d(TAG, "[pubsubtest] onToast key : ${message.key} data : ${message.data}" )
+        Log.d(TAG, "[pubsubtest] ToastData from unreal : ${message.data<ToastData>().toastMessage},   duration : ${message.data<ToastData>().toastDuration}" )
         count++
         val result = Message("SEND_TOAST_RESULT", ToastResult(count))
         messenger.publish(result);

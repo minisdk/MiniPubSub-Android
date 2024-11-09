@@ -8,19 +8,14 @@ public class NativeBridge {
     public NativeBridge(){
         gameRelay = new GameRelay(new NativeBridgeCallback() {
             @Override
-            public void onReceive(byte[] data) {
-
-            }
-
-            @Override
-            public void onReceiveString(String json) {
-                nativeCallback(json);
+            public void onReceive(String info, String data) {
+                nativeCallback(info, data);
             }
         });
     }
 
-    public static native void nativeCallback(String json);
-    public void send(String json){
-        this.gameRelay.send(json);
+    public static native void nativeCallback(String info, String data);
+    public void send(String info, String data){
+        this.gameRelay.send(info, data);
     }
 }
