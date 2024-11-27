@@ -1,4 +1,4 @@
-package com.minisdk.pubsub.unreal;
+package com.minisdk.pubsub.bridge.unreal;
 
 import com.minisdk.pubsub.bridge.GameRelay;
 import com.minisdk.pubsub.bridge.NativeBridgeCallback;

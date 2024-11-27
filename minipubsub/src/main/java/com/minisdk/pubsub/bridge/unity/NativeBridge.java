@@ -1,4 +1,4 @@
-package com.minisdk.pubsub.unity;
+package com.minisdk.pubsub.bridge.unity;
 
 import com.minisdk.pubsub.bridge.GameRelay;
 import com.minisdk.pubsub.bridge.NativeBridgeCallback;
