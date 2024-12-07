@@ -21,8 +21,6 @@ class MainActivity : AppCompatActivity() {
         val m = Message("test", t)
 
         Log.d(TAG, "onCreate: key : ${m.info.key} data : ${m.data}")
-
-        val tRestored = m.data<TestData>();
     }
 
     data class TestData(val a:Int, val b: Boolean)

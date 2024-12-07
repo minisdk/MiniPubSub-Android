@@ -1,17 +1,20 @@
-package com.minisdk.pubsub.bridge.unreal;
+package com.minisdk.pubsub.bridge;
 
-import com.minisdk.pubsub.bridge.GameRelay;
-import com.minisdk.pubsub.bridge.NativeBridgeCallback;
+import android.app.Activity;
 
-public class NativeBridge {
+public class UnrealNativeBridge {
     GameRelay gameRelay;
-    public NativeBridge(){
+    public UnrealNativeBridge(){
         gameRelay = new GameRelay(new NativeBridgeCallback() {
             @Override
             public void onReceive(String info, String data) {
                 nativeCallback(info, data);
             }
         });
+    }
+
+    public static void SetActivity(Activity activity) {
+        ContextHolder.INSTANCE.setActivity(activity);
     }
 
     public static native void nativeCallback(String info, String data);

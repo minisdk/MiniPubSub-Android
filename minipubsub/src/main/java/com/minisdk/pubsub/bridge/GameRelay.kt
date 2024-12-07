@@ -1,6 +1,5 @@
 package com.minisdk.pubsub.bridge
 
-import android.util.Log
 import com.google.gson.Gson
 import com.minisdk.pubsub.Watcher
 import com.minisdk.pubsub.data.Message
