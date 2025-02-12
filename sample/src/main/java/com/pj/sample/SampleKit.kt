@@ -2,9 +2,11 @@ package com.pj.sample
 
 import android.util.Log
 import android.widget.Toast
+import com.minisdk.pubsub.MessageManager
 import com.minisdk.pubsub.Messenger
 import com.minisdk.pubsub.bridge.ContextManager
 import com.minisdk.pubsub.data.Message
+import com.minisdk.pubsub.data.Request
 import com.minisdk.pubsub.module.ModuleBase
 
 data class ToastData(val toastMessage: String, val toastDuration: Int)
@@ -19,21 +21,36 @@ class SampleKit : ModuleBase {
     init {
         Log.d(TAG, "[pubsubtest] SampleKit init")
         messenger.subscribe("SEND_TOAST", this::onToast)
+        messenger.subscribe("SEND_TOAST_ASYNC", this::onToastAsync)
     }
 
     override fun getName(): String {
         return SampleKit::class.java.name
     }
 
-    private fun onToast(message: Message){
+    private fun onToast(request: Request){
         val activity = ContextManager.activityContext
         activity?.runOnUiThread {
-            val toastData = message.data<ToastData>()
+            val toastData = request.data<ToastData>()
             Toast.makeText(activity, toastData.toastMessage, toastData.toastDuration).show()
 
             count++
-            val result = Message("SEND_TOAST_RESULT", ToastResult(count))
-            messenger.publish(result);
+            val result = Message(ToastResult(count))
+            messenger.publish("SEND_TOAST_RESULT", result);
+        }
+    }
+
+    private fun onToastAsync(request: Request){
+        val activity = ContextManager.activityContext
+        Log.d(TAG, "onToastAsync: request : " + request.json)
+        activity?.runOnUiThread {
+            val toastData = request.data<ToastData>()
+            Toast.makeText(activity, toastData.toastMessage, toastData.toastDuration).show()
+
+            count++
+            val result = Message(ToastResult(count))
+            val responseInfo = request.getResponseInfo()
+            messenger.respond(responseInfo, result)
         }
     }
 }

@@ -1,47 +1,50 @@
 package com.minisdk.pubsub
 
+import android.util.Log
+import com.google.gson.Gson
 import com.minisdk.pubsub.data.Message
+import com.minisdk.pubsub.data.Request
 
 internal class MessageMediatorImpl : MessageMediator {
     private val TAG = MessageMediator::class.java.name
+    private val watcherKey = "Key_Watcher_Reserved"
 
-    private val receiverDic: MutableMap<String, MutableList<Receiver>> = mutableMapOf()
-    private val watcherDic: MutableMap<Int, Receiver> = mutableMapOf()
+    private val receiversMap: MutableMap<String, MutableList<Receiver>> = mutableMapOf()
+    private val instantReceiverMap : MutableMap<String, Receiver> = mutableMapOf()
 
     override fun register(receiver: Receiver) {
-        val receivers = receiverDic.getOrPut(receiver.key){
+        val receivers = receiversMap.getOrPut(receiver.key){
             mutableListOf()
         }
         receivers.add(receiver)
     }
 
     override fun unregister(id: Int, key: String) {
-        val receivers = receiverDic[key]
+        val receivers = receiversMap[key]
         receivers?.removeIf{receiver ->
             receiver.nodeId == id
         }
     }
 
-    override fun watch(receiver: Receiver) {
-        watcherDic[receiver.nodeId] = receiver
+    override fun registerInstantReceiver(receiver: Receiver) {
+        instantReceiverMap[receiver.key] = receiver
     }
 
-    override fun unwatch(id: Int) {
-        watcherDic.remove(id)
-    }
+    override fun broadcast(request: Request) {
+        instantReceiverMap.remove(request.key)?.delegate?.invoke(request)
 
-    override fun publish(message: Message, publisherId: Int) {
-        val receivers = receiverDic[message.key]
-        receivers?.forEach { receiver ->
-            if(receiver.nodeId == publisherId)
-                return
-            receiver.delegate?.invoke(message)
+        receiversMap[request.key]?.forEach { receiver ->
+            if(receiver.nodeId != request.info.nodeInfo.publisherId)
+            {
+                receiver.delegate.invoke(request)
+            }
         }
 
-        for (watcher in watcherDic.values){
-            if(watcher.nodeId == publisherId)
-                continue
-            watcher.delegate?.invoke(message)
+        receiversMap[watcherKey]?.forEach {watcher ->
+            if(watcher.nodeId != request.info.nodeInfo.publisherId)
+            {
+                watcher.delegate.invoke(request)
+            }
         }
     }
 

@@ -1,23 +1,18 @@
 package com.minisdk.pubsub
 
 import com.minisdk.pubsub.data.Message
+import com.minisdk.pubsub.data.Request
 
-class Watcher : Node{
+class Watcher : Node(){
+    private val watcherKey = "Key_Watcher_Reserved"
 
     private val publisher = Publisher()
 
-    override val id: Int = publisher.id
-
-    fun watch(delegate: (Message) -> Unit) {
-        MessageManager.mediator.watch(Receiver(id, "", delegate))
+    fun watch(delegate: ReceiveDelegate) {
+        MessageManager.mediator.register(Receiver(id, watcherKey, delegate))
     }
 
     fun unwatch() {
-        MessageManager.mediator.unwatch(id)
+        MessageManager.mediator.unregister(id, watcherKey)
     }
-
-    fun publish(message: Message) {
-        MessageManager.mediator.publish(message, id)
-    }
-
 }

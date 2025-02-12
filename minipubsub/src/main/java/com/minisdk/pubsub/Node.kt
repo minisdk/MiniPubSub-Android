@@ -1,5 +1,10 @@
 package com.minisdk.pubsub
 
-interface Node{
-    val id : Int
+import com.minisdk.pubsub.data.IdCounter
+
+abstract class Node{
+    companion object{
+        private val idCounter = IdCounter()
+    }
+    val id : Int = idCounter.getNext()
 }

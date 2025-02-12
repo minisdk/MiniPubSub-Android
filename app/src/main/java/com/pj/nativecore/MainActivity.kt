@@ -14,14 +14,5 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        Log.d(TAG, "[pubsubtest] Mainactivity start")
-
-        val t = TestData(1111, false)
-        val m = Message("test", t)
-
-        Log.d(TAG, "onCreate: key : ${m.info.key} data : ${m.data}")
     }
-
-    data class TestData(val a:Int, val b: Boolean)
 }
