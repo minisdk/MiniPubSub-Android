@@ -21,7 +21,7 @@ internal class MessageMediatorImpl : MessageMediator {
 
     override fun unregister(id: Int, key: String) {
         val receivers = receiversMap[key]
-        receivers?.removeIf{receiver ->
+        receivers?.removeAll{receiver ->
             receiver.nodeId == id
         }
     }

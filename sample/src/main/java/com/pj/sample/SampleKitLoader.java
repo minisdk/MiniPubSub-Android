@@ -1,11 +1,7 @@
 package com.pj.sample;
 
-import com.minisdk.pubsub.module.ModuleBase;
-import com.minisdk.pubsub.module.ModuleLoader;
-
-public class SampleKitLoader extends ModuleLoader {
-    @Override
-    protected ModuleBase load() {
-        return new SampleKit();
+public class SampleKitLoader{
+    public static void load() {
+        SampleKit.INSTANCE.prepare();
     }
 }

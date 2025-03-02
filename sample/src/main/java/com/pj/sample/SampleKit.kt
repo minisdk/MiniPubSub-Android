@@ -7,12 +7,11 @@ import com.minisdk.pubsub.Messenger
 import com.minisdk.pubsub.bridge.ContextManager
 import com.minisdk.pubsub.data.Message
 import com.minisdk.pubsub.data.Request
-import com.minisdk.pubsub.module.ModuleBase
 
 data class ToastData(val toastMessage: String, val toastDuration: Int)
 data class ToastResult(val toastCount: Int)
 
-class SampleKit : ModuleBase {
+object SampleKit {
     private val TAG = SampleKit::class.java.name
 
     private val messenger : Messenger = Messenger()
@@ -20,12 +19,12 @@ class SampleKit : ModuleBase {
 
     init {
         Log.d(TAG, "[pubsubtest] SampleKit init")
-        messenger.subscribe("SEND_TOAST", this::onToast)
-        messenger.subscribe("SEND_TOAST_ASYNC", this::onToastAsync)
     }
 
-    override fun getName(): String {
-        return SampleKit::class.java.name
+    fun prepare(){
+        Log.d(TAG, "!!!! SampleKit.prepare: run?")
+        messenger.subscribe("SEND_TOAST", this::onToast)
+        messenger.subscribe("SEND_TOAST_ASYNC", this::onToastAsync)
     }
 
     private fun onToast(request: Request){
