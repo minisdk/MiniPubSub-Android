@@ -1,8 +1,5 @@
 package com.minisdk.pubsub
 
-import com.minisdk.pubsub.data.Message
-import com.minisdk.pubsub.data.Request
-
 class Watcher : Node(){
     private val watcherKey = "Key_Watcher_Reserved"
 

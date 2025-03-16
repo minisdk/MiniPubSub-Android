@@ -1,10 +1,10 @@
 package com.minisdk.pubsub
 
 import com.minisdk.pubsub.data.IdCounter
-import com.minisdk.pubsub.data.Message
+import com.minisdk.pubsub.data.Payload
 import com.minisdk.pubsub.data.NodeInfo
-import com.minisdk.pubsub.data.Request
-import com.minisdk.pubsub.data.ResponseInfo
+import com.minisdk.pubsub.data.Message
+import com.minisdk.pubsub.data.MessageInfo
 
 open class Publisher : Node() {
     
@@ -12,26 +12,29 @@ open class Publisher : Node() {
         val idCounter = IdCounter()
     }
 
-    fun publish(key: String, message: Message){
+    fun publish(key: String, payload: Payload){
         val nodeInfo = NodeInfo(id, id)
-        val request = Request(nodeInfo, key, message.json, "")
-        MessageManager.mediator.broadcast(request)
+        val message = Message(nodeInfo, key, payload, "")
+        MessageManager.mediator.broadcast(message)
     }
     
-    fun publish(key: String, message: Message, responseCallback: ReceiveDelegate){
-        val responseKey = "${key}_id${idCounter.getNext()}"
+    fun publish(key: String, payload: Payload, replyCallback: ReceiveDelegate){
+        val replyKey = "${key}_id${idCounter.getNext()}"
         // Register instant receiver
-        val receiver = Receiver(-1, responseKey, responseCallback)
+        val receiver = Receiver(-1, replyKey, replyCallback)
         MessageManager.mediator.registerInstantReceiver(receiver)
-        // Broadcast request
+        // Broadcast message
         val nodeInfo = NodeInfo(id, id)
-        val request = Request(nodeInfo, key, message.json, responseKey)
-        MessageManager.mediator.broadcast(request)
+        val message = Message(nodeInfo, key, payload, replyKey)
+        MessageManager.mediator.broadcast(message)
     }
 
-    fun respond(responseInfo: ResponseInfo, message: Message){
+    fun reply(receivedMessageInfo: MessageInfo, payload: Payload) : Boolean{
+        if(receivedMessageInfo.replyKey.isEmpty())
+            return false
         val nodeInfo = NodeInfo(id, id)
-        val request = Request(nodeInfo, responseInfo.key, message.json, "")
-        MessageManager.mediator.broadcast(request)
+        val message = Message(nodeInfo, receivedMessageInfo.replyKey, payload, "")
+        MessageManager.mediator.broadcast(message)
+        return true
     }
 }

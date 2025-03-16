@@ -14,7 +14,7 @@ public class UnrealNativeBridge {
     }
 
     public static void SetActivity(Activity activity) {
-        ContextHolder.INSTANCE.setActivity(activity);
+        ContextManager.INSTANCE.setActivity(activity);
     }
 
     public static native void nativeCallback(String info, String data);

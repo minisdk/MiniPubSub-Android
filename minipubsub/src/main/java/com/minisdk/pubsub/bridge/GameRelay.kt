@@ -4,8 +4,9 @@ import com.google.gson.Gson
 import com.minisdk.pubsub.MessageManager
 import com.minisdk.pubsub.Watcher
 import com.minisdk.pubsub.data.NodeInfo
-import com.minisdk.pubsub.data.Request
-import com.minisdk.pubsub.data.RequestInfo
+import com.minisdk.pubsub.data.Message
+import com.minisdk.pubsub.data.MessageInfo
+import com.minisdk.pubsub.data.Payload
 
 class GameRelay(private val gameCallback : NativeBridgeCallback) {
     private val className = GameRelay::class.java.name
@@ -16,17 +17,17 @@ class GameRelay(private val gameCallback : NativeBridgeCallback) {
     init {
         watcher.watch(this::onReceiveFromNative)
     }
-    private fun onReceiveFromNative(request: Request) {
-        val info = gson.toJson(request.info)
-        gameCallback.onReceive(info, request.json)
+    private fun onReceiveFromNative(message: Message) {
+        val info = gson.toJson(message.info)
+        gameCallback.onReceive(info, message.payload.json)
     }
 
     fun send(info: String, json: String){
-        val requestInfo = gson.fromJson(info, RequestInfo::class.java)
-        if(requestInfo != null){
-            val nodeInfo = NodeInfo(requestInfo.nodeInfo.requestOwnerId, watcher.id)
-            val request = Request(nodeInfo, requestInfo.key, json, requestInfo.responseKey)
-            MessageManager.mediator.broadcast(request)
+        val messageInfo = gson.fromJson(info, MessageInfo::class.java)
+        if(messageInfo != null){
+            val nodeInfo = NodeInfo(messageInfo.nodeInfo.messageOwnerId, watcher.id)
+            val message = Message(nodeInfo, messageInfo.key, Payload(json), messageInfo.replyKey)
+            MessageManager.mediator.broadcast(message)
         }
     }
 }

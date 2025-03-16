@@ -1,9 +1,6 @@
 package com.minisdk.pubsub
 
-import android.util.Log
-import com.google.gson.Gson
 import com.minisdk.pubsub.data.Message
-import com.minisdk.pubsub.data.Request
 
 internal class MessageMediatorImpl : MessageMediator {
     private val TAG = MessageMediator::class.java.name
@@ -30,20 +27,20 @@ internal class MessageMediatorImpl : MessageMediator {
         instantReceiverMap[receiver.key] = receiver
     }
 
-    override fun broadcast(request: Request) {
-        instantReceiverMap.remove(request.key)?.delegate?.invoke(request)
+    override fun broadcast(message: Message) {
+        instantReceiverMap.remove(message.key)?.delegate?.invoke(message)
 
-        receiversMap[request.key]?.forEach { receiver ->
-            if(receiver.nodeId != request.info.nodeInfo.publisherId)
+        receiversMap[message.key]?.forEach { receiver ->
+            if(receiver.nodeId != message.info.nodeInfo.publisherId)
             {
-                receiver.delegate.invoke(request)
+                receiver.delegate.invoke(message)
             }
         }
 
         receiversMap[watcherKey]?.forEach {watcher ->
-            if(watcher.nodeId != request.info.nodeInfo.publisherId)
+            if(watcher.nodeId != message.info.nodeInfo.publisherId)
             {
-                watcher.delegate.invoke(request)
+                watcher.delegate.invoke(message)
             }
         }
     }

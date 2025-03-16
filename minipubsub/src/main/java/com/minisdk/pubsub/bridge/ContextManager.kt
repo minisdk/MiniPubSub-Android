@@ -1,13 +1,18 @@
 package com.minisdk.pubsub.bridge
 
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
+import java.lang.ref.WeakReference
 
-@SuppressLint("StaticFieldLeak")
 object ContextManager {
+
+    private lateinit var activityRef: WeakReference<Activity>
     val applicationContext: Context?
-        get() = ContextHolder.INSTANCE.activity.applicationContext
+        get() = activityRef.get()?.applicationContext
     val activityContext: Activity?
-        get() = ContextHolder.INSTANCE.activity
+        get() = activityRef.get()
+
+    fun setActivity(activity: Activity){
+        activityRef = WeakReference(activity)
+    }
 }
