@@ -1,9 +1,11 @@
 package com.minisdk.pubsub
 
-class Messenger() : Publisher() {
+import com.minisdk.pubsub.data.SdkType
+
+class Messenger(private val target: SdkType = SdkType.Native) : Publisher() {
 
     fun subscribe(key: String, delegate: ReceiveDelegate) {
-        MessageManager.mediator.register(Receiver(id, key, delegate))
+        MessageManager.mediator.register(Receiver(id, key, target, delegate))
     }
 
     fun unsubscribe(key: String) {

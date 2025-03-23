@@ -9,19 +9,19 @@ data class NodeInfo(
 
 data class MessageInfo(
     val nodeInfo: NodeInfo,
-    val key: String,
-    val replyKey: String
+    val topic: Topic,
+    val replyTopic: Topic
 )
 
 data class Message(val info: MessageInfo, val payload: Payload){
     val key : String
-        get() = info.key
+        get() = info.topic.key
 
     inline fun <reified T> data() : T{
         return Gson().fromJson(this.payload.json, T::class.java)
     }
 
-    constructor(nodeInfo: NodeInfo, key: String, payload: Payload, replyKey: String) : this(
-        MessageInfo(nodeInfo, key, replyKey), payload
+    constructor(nodeInfo: NodeInfo, topic: Topic, replyTopic: Topic, payload: Payload) : this(
+        MessageInfo(nodeInfo, topic, replyTopic), payload
     )
 }

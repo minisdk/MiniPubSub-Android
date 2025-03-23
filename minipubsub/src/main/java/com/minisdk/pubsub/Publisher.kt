@@ -5,6 +5,9 @@ import com.minisdk.pubsub.data.Payload
 import com.minisdk.pubsub.data.NodeInfo
 import com.minisdk.pubsub.data.Message
 import com.minisdk.pubsub.data.MessageInfo
+import com.minisdk.pubsub.data.SdkType
+import com.minisdk.pubsub.data.Topic
+import com.minisdk.pubsub.data.defaultTopic
 
 open class Publisher : Node() {
     
@@ -12,29 +15,25 @@ open class Publisher : Node() {
         val idCounter = IdCounter()
     }
 
-    fun publish(key: String, payload: Payload){
+    fun publish(topic: Topic, payload: Payload){
         val nodeInfo = NodeInfo(id, id)
-        val message = Message(nodeInfo, key, payload, "")
+        val message = Message(nodeInfo, topic, defaultTopic, payload)
         MessageManager.mediator.broadcast(message)
     }
     
-    fun publish(key: String, payload: Payload, replyCallback: ReceiveDelegate){
-        val replyKey = "${key}_id${idCounter.getNext()}"
+    fun publish(topic: Topic, payload: Payload, replyCallback: ReceiveDelegate){
+        val replyKey = "${topic.key}_id${idCounter.getNext()}"
+        val replyTopic = Topic(replyKey, SdkType.Native)
         // Register instant receiver
-        val receiver = Receiver(-1, replyKey, replyCallback)
+        val receiver = Receiver(-1, replyKey, SdkType.Native, replyCallback)
         MessageManager.mediator.registerInstantReceiver(receiver)
         // Broadcast message
         val nodeInfo = NodeInfo(id, id)
-        val message = Message(nodeInfo, key, payload, replyKey)
+        val message = Message(nodeInfo, topic, replyTopic, payload)
         MessageManager.mediator.broadcast(message)
     }
 
-    fun reply(receivedMessageInfo: MessageInfo, payload: Payload) : Boolean{
-        if(receivedMessageInfo.replyKey.isEmpty())
-            return false
-        val nodeInfo = NodeInfo(id, id)
-        val message = Message(nodeInfo, receivedMessageInfo.replyKey, payload, "")
-        MessageManager.mediator.broadcast(message)
-        return true
+    fun reply(receivedMessageInfo: MessageInfo, payload: Payload){
+        this.publish(receivedMessageInfo.replyTopic, payload)
     }
 }

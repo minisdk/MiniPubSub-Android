@@ -31,14 +31,14 @@ internal class MessageMediatorImpl : MessageMediator {
         instantReceiverMap.remove(message.key)?.delegate?.invoke(message)
 
         receiversMap[message.key]?.forEach { receiver ->
-            if(receiver.nodeId != message.info.nodeInfo.publisherId)
+            if(receiver.canInvoke(message.info))
             {
                 receiver.delegate.invoke(message)
             }
         }
 
         receiversMap[watcherKey]?.forEach {watcher ->
-            if(watcher.nodeId != message.info.nodeInfo.publisherId)
+            if(watcher.canInvoke(message.info))
             {
                 watcher.delegate.invoke(message)
             }

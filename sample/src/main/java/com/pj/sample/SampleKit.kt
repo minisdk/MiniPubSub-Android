@@ -6,6 +6,8 @@ import com.minisdk.pubsub.Messenger
 import com.minisdk.pubsub.bridge.ContextManager
 import com.minisdk.pubsub.data.Payload
 import com.minisdk.pubsub.data.Message
+import com.minisdk.pubsub.data.SdkType
+import com.minisdk.pubsub.data.Topic
 
 data class ToastData(val toastMessage: String, val toastDuration: Int)
 data class ToastResult(val toastCount: Int)
@@ -34,7 +36,7 @@ object SampleKit {
 
             count++
             val result = Payload(ToastResult(count))
-            messenger.publish("SEND_TOAST_RESULT", result);
+            messenger.publish(Topic("SEND_TOAST_RESULT", SdkType.Game), result);
         }
     }
 
