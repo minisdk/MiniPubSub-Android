@@ -1,6 +1,8 @@
 package com.minisdk.pubsub
 
 import com.minisdk.pubsub.data.Message
+import com.minisdk.pubsub.data.Payload
+import com.minisdk.pubsub.data.SdkType
 
 internal class MessageMediatorImpl : MessageMediator {
     private val TAG = MessageMediator::class.java.name
@@ -8,6 +10,8 @@ internal class MessageMediatorImpl : MessageMediator {
 
     private val receiversMap: MutableMap<String, MutableList<Receiver>> = mutableMapOf()
     private val instantReceiverMap : MutableMap<String, Receiver> = mutableMapOf()
+    private val handlerMap: MutableMap<String, Handler> = mutableMapOf()
+    private val targetHandlerMap: MutableMap<SdkType, Handler> = mutableMapOf()
 
     override fun register(receiver: Receiver) {
         val receivers = receiversMap.getOrPut(receiver.key){
@@ -43,6 +47,26 @@ internal class MessageMediatorImpl : MessageMediator {
                 watcher.delegate.invoke(message)
             }
         }
+    }
+
+    override fun handle(handler: Handler) {
+        handlerMap[handler.key] = handler
+    }
+
+    override fun handleTarget(handler: Handler) {
+        targetHandlerMap[handler.target] = handler
+    }
+
+    override fun sendSync(message: Message): Payload {
+        val keyHandler = handlerMap[message.key]
+        if(keyHandler != null && keyHandler.canInvoke(message.info)){
+            return keyHandler.handleDelegate.invoke(message)
+        }
+        val targetHandler = targetHandlerMap[message.info.topic.target]
+        if(targetHandler != null && targetHandler.canInvoke(message.info)){
+            return targetHandler.handleDelegate.invoke(message)
+        }
+        return Payload("{}")
     }
 
 }
