@@ -49,12 +49,12 @@ internal class MessageMediatorImpl : MessageMediator {
         }
     }
 
-    override fun handle(handler: Handler) {
-        handlerMap[handler.key] = handler
+    override fun handle(key: String, handler: Handler) {
+        handlerMap[key] = handler
     }
 
-    override fun handleTarget(handler: Handler) {
-        targetHandlerMap[handler.target] = handler
+    override fun handle(target: SdkType, handler: Handler) {
+        targetHandlerMap[target] = handler
     }
 
     override fun sendSync(message: Message): Payload {

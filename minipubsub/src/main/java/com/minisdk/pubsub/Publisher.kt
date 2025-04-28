@@ -36,4 +36,10 @@ open class Publisher : Node() {
     fun reply(receivedMessageInfo: MessageInfo, payload: Payload){
         this.publish(receivedMessageInfo.replyTopic, payload)
     }
+
+    fun sendSync(topic: Topic, payload: Payload){
+        val nodeInfo = NodeInfo(id, id)
+        val message = Message(nodeInfo, topic, defaultTopic, payload)
+        MessageManager.mediator.sendSync(message)
+    }
 }

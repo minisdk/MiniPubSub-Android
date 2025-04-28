@@ -12,4 +12,8 @@ class Messenger(private val target: SdkType = SdkType.Native) : Publisher() {
         MessageManager.mediator.unregister(id, key)
     }
 
+    fun handle(key: String, delegate: HandleDelegate){
+        MessageManager.mediator.handle(key, Handler(id, key, target, delegate))
+    }
+
 }

@@ -10,8 +10,8 @@ typealias HandleDelegate = (Message) -> Payload
 class Handler(
     val nodeId: Int,
     val key: String,
-    val handleDelegate: HandleDelegate,
-    val target: SdkType) {
+    val target: SdkType,
+    val handleDelegate: HandleDelegate) {
 
     fun canInvoke(info: MessageInfo): Boolean
     {

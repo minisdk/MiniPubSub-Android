@@ -26,6 +26,7 @@ object SampleKit {
         Log.d(TAG, "!!!! SampleKit.prepare: run?")
         messenger.subscribe("SEND_TOAST", this::onToast)
         messenger.subscribe("SEND_TOAST_ASYNC", this::onToastAsync)
+        messenger.handle("SEND_TOAST_SYNC", this::onToastSync)
     }
 
     private fun onToast(message: Message){
@@ -51,5 +52,16 @@ object SampleKit {
             val result = Payload(ToastResult(count))
             messenger.reply(message.info, result)
         }
+    }
+
+    private fun onToastSync(message: Message): Payload{
+        val activity = ContextManager.activityContext
+        Log.d(TAG, "onToastAsync: message : " + message.payload.json)
+        activity?.runOnUiThread {
+            val toastData = message.data<ToastData>()
+            Toast.makeText(activity, toastData.toastMessage, toastData.toastDuration).show()
+        }
+        count++
+        return Payload(ToastResult(count))
     }
 }
