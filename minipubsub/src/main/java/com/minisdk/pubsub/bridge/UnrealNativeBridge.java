@@ -21,4 +21,5 @@ public class UnrealNativeBridge {
     public void send(String info, String data){
         this.gameRelay.send(info, data);
     }
+    public String sendSync(String info, String data) { return this.gameRelay.sendSync(info, data); }
 }
