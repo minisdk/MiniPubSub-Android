@@ -17,14 +17,13 @@ internal class MessageMediatorImpl : MessageMediator {
         val receivers = receiversMap.getOrPut(receiver.key){
             mutableListOf()
         }
+        receivers.removeAll { it.nodeId == receiver.nodeId }
         receivers.add(receiver)
     }
 
     override fun unregister(id: Int, key: String) {
         val receivers = receiversMap[key]
-        receivers?.removeAll{receiver ->
-            receiver.nodeId == id
-        }
+        receivers?.removeAll{ it.nodeId == id }
     }
 
     override fun registerInstantReceiver(receiver: Receiver) {

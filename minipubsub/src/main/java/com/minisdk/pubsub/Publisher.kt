@@ -15,6 +15,14 @@ open class Publisher : Node() {
         val idCounter = IdCounter()
     }
 
+    fun publish(topic: Topic){
+        publish(topic, Payload("{}"))
+    }
+
+    fun publish(topic: Topic, replyCallback: ReceiveDelegate){
+        publish(topic, Payload("{}"), replyCallback)
+    }
+
     fun publish(topic: Topic, payload: Payload){
         val nodeInfo = NodeInfo(id, id)
         val message = Message(nodeInfo, topic, defaultTopic, payload)
