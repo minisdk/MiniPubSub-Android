@@ -1,90 +1,85 @@
-# AndroidCore
-Helps comunication between Android and game(Unity only)
+# MiniPubSub-Android
+Helps comunication between Android and game(Unity and Unreal Engine)
 
 ## Getting started
-Download pubsubcore aar in [Release](https://github.com/psmjazz/NativeBridge-Android/releases).
+Download minipubsub aar in [Release](https://github.com/minisdk/MiniPubSub-Android/releases).
 and place it in your module project.
 
-Add aar to your android module project. In your module level build.gradle
+Add aar to your android module project.
+Add Gson to gradle
 ```groovy
-compileOnly(files("[relative path of pubsubcore aar in your project]"))
-compileOnly("com.google.protobuf:protobuf-java:3.25.3")
-compileOnly("com.google.protobuf:protobuf-kotlin:3.25.3")
+dependencies{
+    // other dependencies
+    implementation("com.google.code.gson:gson:2.11.0")
+}
 ```
 
 ## How to use
 
-### Container
-Data storing unit.
+### Payload
+Data storing unit.<br>
+Stores data as json serialized string.<br>
+Stored data must be able to be serialized to json.
 
-Currently storess the following types:
-|types|c#|kotlin|swift|
-|---|---|---|---|
-|boolean|bool|Boolean|Bool|
-|32bit-integer|int|Int|Int32|
-|float|float|Float|Float|
-|string|string|String|String|
-|byte array|byte[]|ByteArray|Data|
-|other Container object|Container|Conatiner|Conatiner|
+### Topic
+Message Identifier.<br>
+Identifies message and helps determine the destination of a message.
+
+## MessageInfo
+Message Describing Unit.<br>
+Describes message's information
 
 ### Message
 Data deliver unit.
-- key : string value, identifier of message. Notified messages are deliverd to handler registerd with key.
-- container : Container object
+- info : MessageInfo object.
+- key : String property, identifier of message. Published messages are delivered to Messenger which registers that key.
+- payload : Payload object
+- data<T> : Stored data of Generic type T
 
-### Tag
-Filters message
-- MessageHandler sets Tags. It only receives message containing all set tags.
-- Notifies message with Tags. messages are arrived messageHandlers which have tags all.
-
-### MessageHandler
-Notify and subscribe messages.
-- Notifies message to other android or game side MessageHandler object. 
+### Messenger
+publish and subscribe messages.
+- Publishes message to other android or game side Messenger. 
 - Subscribes message from other android or game side MessageHandler object.
+- Sends message syncronously to other android or game side Messenger.
+- Handles message from other android or game side MessageHandler object and return syncronously
 
-### Usage
-Sample Code Receiving open native alert request from game.
-```java
-
-class NativeUIController{
-    private val handler = MessageHandler(Tag.native)
+### Usage Sample
+```kotlin
+class MyController{
+    private const val KEY_SUB_HELLO = "SAMPLE::HELLO"
+    private const val KEY_PUB_WORLD = "SAMPLE::WORLD"
+    private const val KEY_SUB_HELLO_REPLY_MODE = "SAMPLE::HELLO_REPLY"
+    private const val KEY_SYNC_SEND = "SAMPLE::SYNCSEND"
+    private val messenger = Messenger()
 
     init {
-        // Set handler with key
-        handler.setHandler("OPEN_ALERT", ::onReceive)
+        messenger.subscribe(KEY_SUB_HELLO, ::OnHello)
+        messenger.subscribe(KEY_SUB_HELLO_REPLY_MODE, ::OnHelloReplyMode)
+        messenger.handle(KEY_SYNC_SEND, ::OnSyncSend)
     }
 
-    private fun onReceive(messageHolder : MessageHolder){
-        // Get data from container
-        val alertMessage = messageHolder.message.container.getString("alertMessage")
-
-        openAlert(alertMessage ?: "OPEN_ALERT", messageHolder)
+    private fun OnHello(message: Message){
+        val myData = message.data<MyHelloData>
+        // Do Something...
+        messenger.publish(
+            Topic(KEY_PUB_WORLD, SdkType.Game),
+            Payload(MyWorldData(/* initialize data members */))
+        )
     }
 
-    private fun openAlert(alertMessage: String, messageHolder: MessageHolder){
-        fun giveBackResult(okPressed : Boolean){
-            // Create ContainerBuilder and set data.
-            val containerBuilder = ContainerBuilder()
-            containerBuilder.add("pressOk", okPressed)
-            val message = Message("ALERT_RESULT", containerBuilder.build())
-
-            // Give back message to message notifier
-            messageHolder.giveBack(message)
-        }
-
-        val builder = AlertDialog.Builder(UnityPlayer.currentActivity)
-        builder.setTitle("Alert")
-        builder.setMessage(alertMessage)
-        builder.setPositiveButton("OK"){_, _ ->
-            giveBackResult(true)
-        }
-        builder.setOnCancelListener {_->
-            giveBackResult(false)
-        }
-
-        val dialog = builder.create()
-        dialog.show()
+    private fun OnHelloReplyMode(message: Message){
+        val myData = message.data<MyHelloData>
+        // Do Something...
+        messenger.reply(
+            message.info,
+            Payload(MyWorldData(/* initialize data members */))
+        )
     }
 
+    private fun OnSyncSend(message: Message): Payload{
+        val mySyncData = message.data<MySyncData>
+        // Do Something...
+        return Payload(MySyncResult(/* initialize data members */)
+    }
 }
 ```
