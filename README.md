@@ -24,7 +24,7 @@ dependencies{
 
 ### MessageInfo
 발행 데이터의 메타데이터입니다.<br>
-해당 발행 데이터의 발행자, 목적지(`Topic`) 등 데이터 전달에 필요한 정보를 담고 있습니다.
+해당 발행 데이터의 발행자, 목적지(`Topic`) 같은 데이터 전달에 필요한 정보를 담고 있습니다.
 
 ### Message
 `Payload`와 `MessageInfo` 객체를 포함한 데이터 전달 객체입니다.<br>
@@ -54,13 +54,13 @@ class MyController{
     private val messenger = Messenger()
 
     init {
-        messenger.subscribe(KEY_SUB_HELLO, ::OnHello)
-        messenger.subscribe(KEY_SUB_HELLO_REPLY_MODE, ::OnHelloReplyMode)
-        messenger.handle(KEY_SYNC_SEND, ::OnSyncSend)
+        messenger.subscribe(KEY_SUB_HELLO, ::onHello)
+        messenger.subscribe(KEY_SUB_HELLO_REPLY_MODE, ::onHelloReplyMode)
+        messenger.handle(KEY_SYNC_SEND, ::onSyncSend)
     }
 
-    private fun OnHello(message: Message){
-        val myData = message.data<MyHelloData>
+    private fun onHello(message: Message){
+        val myData = message.data<MyHelloData>(
         // Do Something...
         messenger.publish(
             Topic(KEY_PUB_WORLD, SdkType.Game),
@@ -68,8 +68,8 @@ class MyController{
         )
     }
 
-    private fun OnHelloReplyMode(message: Message){
-        val myData = message.data<MyHelloData>
+    private fun onHelloReplyMode(message: Message){
+        val myData = message.data<MyHelloData>()
         // Do Something...
         messenger.reply(
             message.info,
@@ -77,8 +77,8 @@ class MyController{
         )
     }
 
-    private fun OnSyncSend(message: Message): Payload{
-        val mySyncData = message.data<MySyncData>
+    private fun onSyncSend(message: Message): Payload{
+        val mySyncData = message.data<MySyncData>()
         // Do Something...
         return Payload(MySyncResult(/* initialize data members */)
     }
