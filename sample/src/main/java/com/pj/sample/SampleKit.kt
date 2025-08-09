@@ -1,41 +1,67 @@
 package com.pj.sample
 
 import android.util.Log
-import com.pj.pubsub.Messenger
-import com.pj.pubsub.extensions.Message
-import com.pj.pubsub.Tag
-import com.pj.pubsub.extensions.ContainerBuilder
-import com.pj.pubsub.extensions.add
-import com.pj.pubsub.extensions.getString
+import android.widget.Toast
+import com.minisdk.pubsub.Messenger
+import com.minisdk.pubsub.bridge.ContextManager
+import com.minisdk.pubsub.data.Payload
+import com.minisdk.pubsub.data.Message
+import com.minisdk.pubsub.data.SdkType
+import com.minisdk.pubsub.data.Topic
 
-class SampleKit {
+data class ToastData(val toastMessage: String, val toastDuration: Int)
+data class ToastResult(val toastCount: Int)
+
+object SampleKit {
     private val TAG = SampleKit::class.java.name
 
     private val messenger : Messenger = Messenger()
+    private var count: Int = 0
 
     init {
-        messenger.setBasePublishingTag(Tag.game)
-        messenger.subscribe("test", this::onTest)
-        messenger.subscribe("testRecall", this::onTestRecall)
+        Log.d(TAG, "[pubsubtest] SampleKit init")
     }
 
-    private fun onTest(message: Message){
-        val data = message.container.getString("data")
-        Log.d(TAG, "onTest : $data" )
-
-        val containerBuilder = ContainerBuilder()
-        containerBuilder.add("data", "this is android message :D")
-        val result = Message("native", containerBuilder.build())
-        messenger.publish(result)
+    fun prepare(){
+        Log.d(TAG, "!!!! SampleKit.prepare: run?")
+        messenger.subscribe("SEND_TOAST", this::onToast)
+        messenger.subscribe("SEND_TOAST_ASYNC", this::onToastAsync)
+        messenger.handle("SEND_TOAST_SYNC", this::onToastSync)
     }
 
-    private fun onTestRecall(message: Message){
-        val data = message.container.getString("data")
-        Log.d(TAG, "onTestReCall : $data")
+    private fun onToast(message: Message){
+        val activity = ContextManager.activityContext
+        activity?.runOnUiThread {
+            val toastData = message.data<ToastData>()
+            Toast.makeText(activity, toastData.toastMessage, toastData.toastDuration).show()
 
-        val containerBuilder = ContainerBuilder()
-        containerBuilder.add("data", "RECALL [$data]")
-        val reply = Message("testReturn", containerBuilder.build())
-        messenger.publish(reply)
+            count++
+            val result = Payload(ToastResult(count))
+            messenger.publish(Topic("SEND_TOAST_RESULT", SdkType.Game), result);
+        }
+    }
+
+    private fun onToastAsync(message: Message){
+        val activity = ContextManager.activityContext
+        Log.d(TAG, "onToastAsync: message : " + message.payload.json)
+        activity?.runOnUiThread {
+            val toastData = message.data<ToastData>()
+            Toast.makeText(activity, toastData.toastMessage, toastData.toastDuration).show()
+
+            count++
+            val result = Payload(ToastResult(count))
+            messenger.reply(message.info, result)
+        }
+    }
+
+    private fun onToastSync(message: Message): Payload{
+        val activity = ContextManager.activityContext
+        Log.d(TAG, "onToastAsync: message : " + message.payload.json)
+        activity?.runOnUiThread {
+            val toastData = message.data<ToastData>()
+            Toast.makeText(activity, toastData.toastMessage, toastData.toastDuration).show()
+        }
+        count++
+        return Payload(ToastResult(count))
     }
 }
